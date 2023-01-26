@@ -1,0 +1,42 @@
+version: '3.7'
+
+volumes:
+  prometheus_data:
+
+
+services:
+  db:
+    image: postgres:15.1-bullseye
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.41
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+
+  redis:
+    image: "redis:5.0.5-alpine3.10"
+    ports:
+      - 6379:6379
+
+  prometheus:
+    image: prom/prometheus:v2.40.0
+    restart: unless-stopped
+    volumes:
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=70d'
+      - '--log.level=debug'
+      - '--web.enable-lifecycle'
+    ports:
+      - 9090:9090

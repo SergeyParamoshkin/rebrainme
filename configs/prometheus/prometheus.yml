@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 30s
+  scrape_timeout: 30s
+  evaluation_interval: 5s
+
+rule_files:
+
+alerting:
+  alertmanagers:
+    - scheme: http
+      path_prefix: /alertmanager
+      static_configs:
+
+# A scrape configuration containing exactly one endpoint to scrape.
+scrape_configs:
+  - job_name: "apps"
+    scheme: http
+    metrics_path: /metrics
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          - 192.168.88.11:9000
+        labels:
+          environment: dev
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __address__
+      - source_labels: [__param_target]
+        target_label: instance
