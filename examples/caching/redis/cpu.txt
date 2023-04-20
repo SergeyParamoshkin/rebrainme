@@ -1,0 +1,1378 @@
+PeriodType: cpu nanoseconds
+Period: 10000000
+Time: 2023-04-20 20:40:48.736439 +0300 MSK
+Duration: 20.1
+Samples:
+samples/count cpu/nanoseconds
+        269 2690000000: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 14 16 17 18 
+        398 3980000000: 1 19 20 4 21 22 23 24 25 26 27 
+        736 7360000000: 1 2 3 4 5 28 29 30 31 32 33 
+        301 3010000000: 34 35 36 37 38 39 
+          1   10000000: 40 41 42 43 44 45 46 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          7   70000000: 59 60 61 62 63 64 65 38 39 
+        569 5690000000: 1 2 3 4 5 6 7 8 9 10 66 67 14 15 14 16 17 18 
+          5   50000000: 68 69 70 71 72 73 37 38 39 
+        184 1840000000: 1 19 20 4 21 22 23 74 
+         36  360000000: 75 76 77 78 79 80 37 38 39 
+         74  740000000: 68 81 82 83 84 37 38 39 
+          1   10000000: 85 86 87 88 89 90 
+          8   80000000: 68 69 70 71 72 91 92 93 94 
+          2   20000000: 59 60 61 62 63 95 96 97 
+          3   30000000: 98 99 100 101 102 103 97 
+          8   80000000: 68 69 70 71 104 105 106 107 108 9 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 109 110 111 112 113 114 115 116 97 117 118 119 
+          1   10000000: 120 12 13 14 15 14 16 17 18 
+          1   10000000: 121 122 10 11 12 13 14 15 14 16 17 18 
+         35  350000000: 123 124 125 126 127 97 
+          1   10000000: 128 129 97 130 131 132 133 134 135 136 137 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 139 140 141 142 143 144 145 146 12 13 14 15 14 16 17 18 
+          9   90000000: 98 99 100 101 102 147 97 
+          1   10000000: 148 149 150 151 37 38 39 
+          1   10000000: 152 153 154 155 
+          1   10000000: 156 14 16 17 18 
+          1   10000000: 157 158 159 160 161 162 97 163 164 165 145 166 67 14 15 14 16 17 18 
+          1   10000000: 167 168 169 170 171 172 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 173 174 175 176 177 178 179 180 97 181 
+          4   40000000: 123 182 183 184 185 97 
+          1   10000000: 186 187 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          3   30000000: 75 76 77 78 79 188 189 37 38 39 
+         21  210000000: 34 35 190 37 38 39 
+          1   10000000: 191 192 84 37 38 39 
+          1   10000000: 193 194 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 204 205 206 207 90 
+          1   10000000: 208 180 97 181 
+          1   10000000: 209 210 146 12 13 14 15 14 16 17 18 
+         17  170000000: 59 60 61 62 211 212 213 37 38 39 
+          1   10000000: 214 215 216 129 97 130 131 217 218 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 219 31 32 33 
+          4   40000000: 98 99 100 101 220 97 
+          2   20000000: 221 222 223 6 7 8 9 10 66 67 14 15 14 16 17 18 
+          2   20000000: 224 225 226 180 97 181 
+          1   10000000: 227 228 226 229 97 181 
+          1   10000000: 230 231 232 233 202 203 14 15 14 16 17 18 
+          1   10000000: 234 4 5 28 29 30 31 32 33 
+          1   10000000: 235 236 237 238 239 240 241 242 243 244 245 246 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 247 248 249 207 90 
+          3   30000000: 34 35 250 116 97 
+          1   10000000: 251 252 253 254 255 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 256 257 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          2   20000000: 258 259 260 261 262 263 207 90 
+          1   10000000: 264 265 266 266 266 267 268 14 16 17 18 
+          1   10000000: 269 270 271 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 272 273 274 17 18 
+          1   10000000: 275 276 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 278 90 
+          1   10000000: 68 69 70 71 72 279 97 
+          1   10000000: 280 281 282 283 284 285 9 10 66 67 14 15 14 16 17 18 
+          4   40000000: 59 60 61 62 211 212 286 37 38 39 
+          2   20000000: 59 60 61 287 288 97 
+          1   10000000: 289 290 291 292 293 294 295 166 67 14 15 14 16 17 18 
+          4   40000000: 75 76 77 78 79 296 39 
+          1   10000000: 297 180 97 181 
+          1   10000000: 298 82 83 84 37 38 39 
+          1   10000000: 299 140 141 142 300 301 302 303 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 304 305 226 180 97 181 
+          1   10000000: 306 226 229 97 181 
+          2   20000000: 307 19 20 4 21 22 23 24 25 26 27 
+          2   20000000: 68 69 70 71 104 105 106 107 108 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 308 309 257 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 310 311 312 313 314 210 166 67 14 15 14 16 17 18 
+          1   10000000: 315 316 317 318 31 319 33 
+          1   10000000: 320 321 322 323 324 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 325 326 327 328 318 31 319 33 
+          1   10000000: 329 207 90 
+          1   10000000: 330 143 144 145 146 12 13 14 15 14 16 17 18 
+          1   10000000: 331 332 333 334 203 14 15 14 16 17 18 
+          1   10000000: 335 336 228 226 180 97 181 
+          1   10000000: 337 338 80 37 38 39 
+          2   20000000: 339 142 340 334 203 14 15 14 16 17 18 
+          1   10000000: 341 342 343 277 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 148 149 344 345 37 38 39 
+          1   10000000: 346 347 142 143 144 145 166 67 14 15 14 16 17 18 
+          1   10000000: 348 349 215 350 351 352 353 97 354 355 356 142 357 207 90 
+          9   90000000: 68 69 70 71 358 282 283 284 285 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 359 
+          1   10000000: 360 361 203 14 15 14 16 17 18 
+          1   10000000: 362 169 363 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 75 76 364 71 72 365 80 37 38 39 
+          1   10000000: 366 367 90 
+          1   10000000: 368 369 305 226 180 97 181 
+          1   10000000: 370 371 372 373 374 177 178 179 180 97 181 
+          1   10000000: 375 376 377 378 305 226 180 97 181 
+          1   10000000: 379 154 155 
+          4   40000000: 75 76 77 78 79 188 189 37 380 92 93 94 
+          1   10000000: 381 30 31 32 33 
+          1   10000000: 123 124 125 126 382 383 384 385 386 387 352 353 97 
+          1   10000000: 388 46 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 389 327 328 318 31 319 33 
+          1   10000000: 390 391 90 
+          1   10000000: 148 149 392 393 84 37 38 39 
+          1   10000000: 394 395 396 397 203 14 15 14 16 17 18 
+          1   10000000: 398 399 36 37 38 39 
+          1   10000000: 400 142 401 402 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          2   20000000: 59 60 61 62 63 403 116 97 
+          1   10000000: 404 159 160 161 162 97 163 164 165 145 146 12 13 14 15 14 16 17 18 
+          1   10000000: 405 406 162 97 163 164 165 145 146 12 13 14 15 14 16 17 18 
+          1   10000000: 407 408 409 410 
+          1   10000000: 411 412 226 180 97 181 
+          1   10000000: 413 414 415 33 
+          1   10000000: 416 417 418 97 419 420 421 
+          1   10000000: 422 194 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 68 69 70 71 72 423 424 37 380 92 93 94 
+          1   10000000: 425 426 142 427 74 
+          1   10000000: 428 158 159 160 161 162 97 163 164 165 145 166 67 14 15 14 16 17 18 
+          1   10000000: 123 124 125 126 382 429 430 431 432 175 433 94 
+          1   10000000: 434 129 97 130 131 132 435 436 437 134 135 136 137 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 438 439 90 
+          1   10000000: 440 441 84 37 38 39 
+          1   10000000: 442 443 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 444 445 446 447 
+          1   10000000: 40 41 448 449 450 451 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 452 453 454 14 16 17 18 
+          1   10000000: 455 456 457 333 334 203 14 15 14 16 17 18 
+          2   20000000: 34 35 250 288 97 
+          1   10000000: 458 459 17 18 
+          1   10000000: 460 144 145 166 67 14 15 14 16 17 18 
+          1   10000000: 461 462 463 464 465 466 467 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 468 448 449 469 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          3   30000000: 68 69 70 71 72 423 424 37 38 39 
+          2   20000000: 472 473 155 
+          3   30000000: 59 60 474 475 445 476 103 97 
+          1   10000000: 477 225 226 180 97 181 
+          1   10000000: 478 479 480 481 470 471 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 482 483 484 402 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 485 448 449 450 451 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 486 487 488 489 490 207 90 
+          5   50000000: 59 60 61 62 491 492 147 97 
+          1   10000000: 493 494 495 28 29 30 31 32 33 
+          1   10000000: 496 142 497 498 302 303 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 499 500 190 37 38 39 
+          1   10000000: 501 216 129 97 130 131 502 503 293 294 295 166 67 14 15 14 16 17 18 
+          1   10000000: 504 505 506 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 507 2 3 4 5 28 29 30 31 32 33 
+          1   10000000: 508 473 155 
+          1   10000000: 509 179 180 97 181 
+          1   10000000: 510 511 512 343 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 513 216 129 97 130 131 132 435 436 514 515 135 136 137 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 516 517 518 216 129 97 130 131 519 169 170 171 172 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 520 521 215 350 226 229 97 181 
+          1   10000000: 522 523 6 7 8 9 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 59 60 474 475 445 524 424 37 525 39 
+          2   20000000: 526 284 285 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 527 528 321 232 529 530 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 531 215 216 129 97 130 131 532 533 534 535 334 203 14 15 14 16 17 18 
+          1   10000000: 536 534 537 334 203 14 15 14 16 17 18 
+          1   10000000: 538 215 216 129 97 130 131 539 540 276 277 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 541 542 543 216 129 97 130 131 544 545 546 547 548 549 33 
+          2   20000000: 59 60 61 62 63 550 97 
+          1   10000000: 551 552 553 554 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 555 518 216 129 97 130 131 556 144 145 146 12 13 14 15 14 16 17 18 
+          1   10000000: 557 558 559 560 561 562 563 207 90 
+          2   20000000: 306 226 180 97 181 
+          1   10000000: 564 565 141 142 143 144 145 166 67 14 15 14 16 17 18 
+          1   10000000: 566 567 42 568 569 171 172 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 570 436 514 515 135 136 137 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 123 124 125 126 382 383 384 385 386 571 180 97 
+          1   10000000: 68 69 70 71 72 572 382 383 384 573 574 575 177 178 576 352 353 97 
+          1   10000000: 577 295 146 12 13 14 15 14 16 17 18 
+          1   10000000: 578 579 22 23 74 
+          1   10000000: 580 581 88 89 90 
+          1   10000000: 582 86 87 88 89 90 
+          1   10000000: 583 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 584 305 226 180 97 181 
+          1   10000000: 68 69 585 586 178 179 229 97 
+          1   10000000: 587 588 589 590 318 31 319 33 
+          1   10000000: 123 124 125 126 382 383 384 591 592 593 352 353 97 
+          1   10000000: 594 595 240 596 457 333 334 203 14 15 14 16 17 18 
+          1   10000000: 597 226 180 97 181 
+          1   10000000: 598 169 363 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 599 600 318 31 319 33 
+          1   10000000: 601 602 171 172 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 603 
+          1   10000000: 604 605 606 607 608 609 610 611 58 14 15 14 16 17 18 
+          1   10000000: 612 613 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 614 466 467 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 615 616 617 618 318 31 319 33 
+          1   10000000: 619 620 621 622 623 
+          1   10000000: 624 
+          1   10000000: 625 626 627 179 180 97 181 
+          2   20000000: 68 69 70 71 358 282 283 284 285 9 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 628 347 629 630 14 15 14 16 17 18 
+          1   10000000: 631 96 97 632 633 634 635 545 546 547 548 549 33 
+          1   10000000: 636 590 318 31 319 33 
+          1   10000000: 637 638 17 18 
+          1   10000000: 59 60 61 639 97 
+          1   10000000: 640 284 285 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 641 642 487 488 489 490 207 90 
+          1   10000000: 643 644 260 645 646 318 31 319 33 
+          1   10000000: 647 648 314 210 146 12 13 14 15 14 16 17 18 
+          1   10000000: 649 650 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 651 318 31 319 33 
+          1   10000000: 513 350 351 352 353 97 354 355 356 240 596 457 333 334 203 14 15 14 16 17 18 
+          1   10000000: 520 521 215 350 226 180 97 181 
+          1   10000000: 652 410 
+          1   10000000: 653 28 29 30 31 32 33 
+          1   10000000: 654 655 146 12 13 14 15 14 16 17 18 
+          1   10000000: 656 180 97 181 
+          1   10000000: 59 60 61 657 424 37 658 39 
+          1   10000000: 148 149 659 621 622 623 
+          1   10000000: 660 543 216 129 97 130 131 661 540 276 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 123 124 125 126 382 383 384 385 386 571 229 97 
+          2   20000000: 477 225 226 229 97 181 
+          1   10000000: 662 494 495 28 29 30 31 32 33 
+          1   10000000: 663 41 142 664 89 90 
+          1   10000000: 665 666 17 18 
+          1   10000000: 667 668 457 333 334 203 14 15 14 16 17 18 
+          1   10000000: 669 670 205 206 207 90 
+          1   10000000: 40 41 142 671 672 205 206 207 90 
+          1   10000000: 673 674 675 90 
+          1   10000000: 676 677 179 180 97 181 
+          1   10000000: 678 679 680 327 328 318 31 319 33 
+          1   10000000: 681 682 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 68 69 70 71 72 683 64 65 38 39 
+          1   10000000: 684 71 685 686 687 
+          1   10000000: 688 689 690 691 207 90 
+          1   10000000: 692 693 129 97 130 131 252 253 254 255 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 694 695 696 37 38 39 
+          1   10000000: 697 698 699 626 700 179 180 97 181 
+          1   10000000: 701 46 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 702 703 704 705 706 707 708 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 709 215 350 351 352 353 97 354 355 356 142 710 13 14 15 14 16 17 18 
+          1   10000000: 711 239 240 712 205 206 207 90 
+          1   10000000: 713 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          2   20000000: 714 305 226 180 97 181 
+          1   10000000: 715 716 717 718 97 719 720 473 155 
+          1   10000000: 721 722 723 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 724 725 205 206 207 90 
+          1   10000000: 68 81 82 83 84 37 380 92 93 94 
+          1   10000000: 726 727 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 728 729 730 731 205 206 207 90 
+          1   10000000: 732 733 417 418 97 419 420 421 
+          1   10000000: 734 735 372 373 374 177 178 179 180 97 181 
+          1   10000000: 736 737 738 739 740 355 356 142 427 74 
+          1   10000000: 308 309 741 742 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 743 42 744 205 206 207 90 
+          1   10000000: 745 473 155 
+          1   10000000: 746 205 206 207 90 
+          1   10000000: 747 155 
+          1   10000000: 748 17 18 
+          1   10000000: 749 750 479 480 481 470 471 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 751 
+          1   10000000: 752 484 402 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 753 754 554 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 755 756 608 609 610 611 58 14 15 14 16 17 18 
+          1   10000000: 757 758 97 759 119 
+          2   20000000: 760 36 37 38 39 
+          1   10000000: 75 76 364 71 72 423 424 37 38 39 
+          1   10000000: 761 588 762 318 31 319 33 
+          1   10000000: 763 764 765 245 246 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 766 767 768 769 372 373 374 177 178 179 180 97 181 
+          1   10000000: 770 530 277 122 10 66 67 14 15 14 16 17 18 
+          3   30000000: 34 35 36 37 380 92 93 94 
+          1   10000000: 771 772 773 774 775 776 207 90 
+          1   10000000: 777 231 232 778 271 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 779 695 696 37 38 39 
+          1   10000000: 780 650 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 781 782 783 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 784 785 374 177 178 179 180 97 181 
+          1   10000000: 786 787 644 260 645 646 318 31 319 33 
+          1   10000000: 788 159 160 161 162 97 163 164 165 145 166 67 14 15 14 16 17 18 
+          1   10000000: 789 790 791 457 333 334 203 14 15 14 16 17 18 
+          1   10000000: 234 4 5 6 7 8 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 792 350 226 180 97 181 
+          1   10000000: 400 142 793 14 15 14 16 17 18 
+          1   10000000: 794 367 90 
+          1   10000000: 795 215 216 129 97 130 131 217 218 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 148 149 796 797 284 285 9 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 798 799 800 14 16 17 18 
+          1   10000000: 801 626 627 179 229 97 181 
+          1   10000000: 802 803 518 216 129 97 130 131 804 90 
+          1   10000000: 805 806 807 87 88 89 90 
+          1   10000000: 808 718 97 719 720 473 155 
+          1   10000000: 792 216 129 97 130 131 809 74 
+          1   10000000: 810 421 
+          1   10000000: 811 215 350 226 180 97 181 
+          1   10000000: 68 69 70 71 72 812 212 213 37 38 39 
+          1   10000000: 531 215 216 129 97 130 813 814 815 90 
+          2   20000000: 68 69 816 817 353 97 
+          1   10000000: 818 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 819 323 324 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 811 215 216 129 97 130 131 820 529 530 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 821 626 700 179 180 97 181 
+          1   10000000: 619 620 621 622 822 
+          1   10000000: 823 824 825 
+          1   10000000: 826 347 142 827 90 
+          1   10000000: 167 168 169 170 171 172 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 828 623 
+          1   10000000: 829 226 180 97 181 
+          1   10000000: 830 831 832 833 834 314 210 166 67 14 15 14 16 17 18 
+          1   10000000: 835 226 229 97 181 
+          1   10000000: 836 837 194 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 838 650 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 839 650 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 840 31 32 33 
+          1   10000000: 148 149 841 586 178 179 229 97 
+          1   10000000: 619 620 621 439 90 
+          1   10000000: 123 124 125 126 382 383 384 573 574 575 177 178 179 180 97 
+          1   10000000: 842 776 207 90 
+          1   10000000: 843 844 111 112 113 845 846 103 97 847 118 119 
+          1   10000000: 848 849 850 97 851 852 142 853 854 205 206 207 90 
+          1   10000000: 173 855 84 37 38 39 
+          1   10000000: 856 347 857 858 859 860 303 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 861 481 470 471 122 10 66 67 14 15 14 16 17 18 
+          2   20000000: 68 81 82 83 84 37 525 39 
+          1   10000000: 862 285 9 10 66 67 14 15 14 16 17 18 
+          1   10000000: 68 69 70 71 72 683 95 96 97 
+          1   10000000: 863 864 865 201 202 203 14 15 14 16 17 18 
+          1   10000000: 866 867 868 25 26 27 
+          1   10000000: 68 69 70 71 72 869 37 380 92 93 94 
+          1   10000000: 68 69 70 71 72 365 188 189 37 38 39 
+          1   10000000: 870 426 42 871 563 207 90 
+          1   10000000: 59 60 61 287 116 97 
+          1   10000000: 872 873 874 246 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 508 111 112 113 845 846 103 97 847 118 119 
+          1   10000000: 875 876 725 205 206 207 90 
+          1   10000000: 877 322 342 343 277 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 878 642 487 488 489 490 207 90 
+          1   10000000: 879 880 484 402 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 881 882 111 112 113 845 846 103 97 847 118 119 
+          1   10000000: 883 305 226 180 97 181 
+          1   10000000: 68 69 70 71 72 869 37 38 39 
+          1   10000000: 59 60 61 62 63 64 65 525 39 
+          1   10000000: 697 884 885 886 887 202 203 14 15 14 16 17 18 
+          1   10000000: 888 889 171 172 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 890 84 37 38 39 
+          1   10000000: 891 742 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 892 893 894 895 600 318 31 319 33 
+          1   10000000: 896 15 14 16 17 18 
+          1   10000000: 897 268 14 16 17 18 
+          1   10000000: 59 60 61 62 63 898 38 39 
+          1   10000000: 899 226 180 97 181 
+          1   10000000: 900 475 445 901 635 545 546 547 902 549 33 
+          1   10000000: 903 505 506 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 888 218 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 904 905 906 327 328 318 31 319 33 
+          1   10000000: 907 908 703 704 705 706 707 708 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 697 698 305 226 229 97 181 
+          1   10000000: 909 650 479 480 481 470 471 122 10 11 12 13 14 15 14 16 17 18 
+          1   10000000: 910 140 141 142 143 144 145 166 67 14 15 14 16 17 18 
+          1   10000000: 911 912 913 25 26 27 
+          1   10000000: 405 914 915 648 314 210 166 67 14 15 14 16 17 18 
+          1   10000000: 68 69 70 71 72 916 917 918 232 919 920 921 10 66 67 14 15 14 16 17 18 
+          1   10000000: 922 923 924 600 318 31 319 33 
+          1   10000000: 109 925 473 155 
+          1   10000000: 926 610 927 13 14 15 14 16 17 18 
+          1   10000000: 928 448 449 469 470 471 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 839 650 479 480 481 470 471 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 929 930 742 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 931 142 427 74 
+          1   10000000: 932 933 249 207 90 
+          1   10000000: 934 37 38 39 
+          1   10000000: 935 194 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 936 937 938 939 66 67 14 15 14 16 17 18 
+          1   10000000: 940 141 142 671 672 205 206 207 90 
+          1   10000000: 941 322 169 552 553 554 138 122 10 66 67 14 15 14 16 17 18 
+          1   10000000: 830 831 832 833 834 314 210 146 12 13 14 15 14 16 17 18 
+          1   10000000: 942 943 484 402 195 196 197 198 199 200 201 202 203 14 15 14 16 17 18 
+          1   10000000: 826 347 142 143 144 145 166 67 14 15 14 16 17 18 
+          1   10000000: 944 90 
+          1   10000000: 945 412 226 180 97 181 
+          1   10000000: 946 947 948 90 
+          1   10000000: 68 69 70 71 72 365 80 37 38 39 
+          1   10000000: 949 
+          1   10000000: 950 226 229 97 181 
+          1   10000000: 951 696 37 380 92 93 94 
+          1   10000000: 952 953 376 377 378 305 226 229 97 181 
+          1   10000000: 954 955 956 327 328 318 31 319 33 
+          1   10000000: 957 691 207 90 
+          1   10000000: 958 959 44 45 46 47 48 49 50 51 50 52 53 54 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 960 783 55 56 57 58 14 15 14 16 17 18 
+          1   10000000: 961 142 962 274 17 18 
+          1   10000000: 963 964 326 327 328 318 31 319 33 
+          1   10000000: 965 560 561 562 563 207 90 
+          1   10000000: 335 966 412 226 180 97 181 
+          1   10000000: 967 832 833 968 969 418 97 419 420 421 
+          1   10000000: 795 215 216 129 97 130 131 532 970 333 334 203 14 15 14 16 17 18 
+          1   10000000: 971 216 129 130 131 972 973 38 39 
+          1   10000000: 974 670 205 206 207 90 
+          1   10000000: 975 976 977 396 397 203 14 15 14 16 17 18 
+Locations
+     1: 0x100267417 M=1 syscall.syscall /usr/local/go/src/runtime/sys_darwin.go:24 s=21
+     2: 0x10027f407 M=1 syscall.write /usr/local/go/src/syscall/zsyscall_darwin_arm64.go:1673 s=1666
+     3: 0x10027d6f7 M=1 syscall.Write /usr/local/go/src/syscall/syscall_unix.go:206 s=196
+     4: 0x1002e6c5f M=1 internal/poll.ignoringEINTRIO /usr/local/go/src/internal/poll/fd_unix.go:794 s=792
+     5: 0x1002e5d23 M=1 internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go:383 s=369
+     6: 0x1002e9f2b M=1 os.(*File).write /usr/local/go/src/os/file_posix.go:48 s=47
+     7: 0x1002e8a57 M=1 os.(*File).Write /usr/local/go/src/os/file.go:175 s=171
+     8: 0x10070e25b M=1 go.uber.org/zap/zapcore.(*lockedWriteSyncer).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/write_syncer.go:66 s=64
+     9: 0x10070013b M=1 go.uber.org/zap/zapcore.(*ioCore).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/core.go:99 s=94
+    10: 0x10070363f M=1 go.uber.org/zap/zapcore.(*CheckedEntry).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:255 s=235
+    11: 0x1007245d3 M=1 go.uber.org/zap.(*Logger).Debug /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:212 s=210
+    12: 0x10078e7a3 M=1 main.(*app).parseUserID /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:44 s=27
+    13: 0x10078f0b7 M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:97 s=94
+    14: 0x1004f9bc3 M=1 net/http.HandlerFunc.ServeHTTP /usr/local/go/src/net/http/server.go:2122 s=2121
+    15: 0x10056859b M=1 github.com/go-chi/chi/v5.(*Mux).routeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444 s=415
+    16: 0x100566f2f M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90 s=63
+    17: 0x1004fd337 M=1 net/http.serverHandler.ServeHTTP /usr/local/go/src/net/http/server.go:2936 s=2915
+    18: 0x1004f8ecb M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1995 s=1846
+    19: 0x10027ef07 M=1 syscall.read /usr/local/go/src/syscall/zsyscall_darwin_arm64.go:1209 s=1202
+    20: 0x10027d637 M=1 syscall.Read /usr/local/go/src/syscall/syscall_unix.go:178 s=177
+    21: 0x1002e56a3 M=1 internal/poll.(*FD).Read /usr/local/go/src/internal/poll/fd_unix.go:163 s=143
+    22: 0x1003ea9f3 M=1 net.(*netFD).Read /usr/local/go/src/net/fd_posix.go:55 s=54
+    23: 0x1003fc16b M=1 net.(*conn).Read /usr/local/go/src/net/net.go:183 s=179
+    24: 0x1004f0c33 M=1 net/http.(*connReader).Read /usr/local/go/src/net/http/server.go:782 s=754
+    25: 0x10047b50f M=1 bufio.(*Reader).fill /usr/local/go/src/bufio/bufio.go:106 s=92
+    26: 0x10047b8bf M=1 bufio.(*Reader).Peek /usr/local/go/src/bufio/bufio.go:144 s=135
+    27: 0x1004f90b3 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:2030 s=1846
+    28: 0x1003eaaf3 M=1 net.(*netFD).Write /usr/local/go/src/net/fd_posix.go:96 s=95
+    29: 0x1003fc47b M=1 net.(*conn).Write /usr/local/go/src/net/net.go:195 s=191
+    30: 0x1004ff0eb M=1 net/http.checkConnErrorWriter.Write /usr/local/go/src/net/http/server.go:3598 s=3597
+    31: 0x10047e3b3 M=1 bufio.(*Writer).Flush /usr/local/go/src/bufio/bufio.go:628 s=621
+    32: 0x1004f6abf M=1 net/http.(*response).finishRequest /usr/local/go/src/net/http/server.go:1652 s=1642
+    33: 0x1004f8f0f M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:2001 s=1846
+    34: 0x10025729f M=1 runtime.kevent /usr/local/go/src/runtime/sys_darwin.go:453 s=452
+    35: 0x1002344ef M=1 runtime.netpoll /usr/local/go/src/runtime/netpoll_kqueue.go:130 s=110
+    36: 0x10023ef67 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2759 s=2672
+    37: 0x1002402af M=1 runtime.schedule /usr/local/go/src/runtime/proc.go:3360 s=3331
+    38: 0x1002407ab M=1 runtime.park_m /usr/local/go/src/runtime/proc.go:3511 s=3487
+    39: 0x1002685c3 M=1 runtime.mcall /usr/local/go/src/runtime/asm_arm64.s:192 s=166
+    40: 0x100218124 M=1 runtime.lockRankMayQueueFinalizer /usr/local/go/src/runtime/mfinal.go:92 s=90
+    41: 0x10020c7df M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:889 s=878
+    42: 0x100252ef7 M=1 runtime.slicebytetostring /usr/local/go/src/runtime/string.go:112 s=81
+    43: 0x10077591b M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).stringWithLen /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:59 s=54
+    44: 0x1007757af M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).string /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:51 s=46
+    45: 0x10077567f M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeString /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:43 s=34
+    46: 0x1007759af M=1 github.com/vmihailenco/msgpack/v5.decodeStringValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:63 s=62
+    47: 0x100785c17 M=1 github.com/vmihailenco/msgpack/v5.(*field).DecodeValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/types.go:118 s=116
+    48: 0x100771437 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).decodeStruct /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_map.go:324 s=310
+    49: 0x100771177 M=1 github.com/vmihailenco/msgpack/v5.decodeStructValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_map.go:282 s=274
+    50: 0x10076c43f M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:309 s=307
+    51: 0x10077489b M=1 github.com/vmihailenco/msgpack/v5.decodeSliceValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_slice.go:109 s=83
+    52: 0x10076c213 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).Decode /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:288 s=171
+    53: 0x10076aa53 M=1 github.com/vmihailenco/msgpack/v5.Unmarshal /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:58 s=54
+    54: 0x10078d92f M=1 github.com/go-redis/cache/v8.(*Cache)._unmarshal /Users/sergey/go/pkg/mod/github.com/go-redis/cache/v8@v8.4.4/cache.go:403 s=370
+    55: 0x10078c92f M=1 github.com/go-redis/cache/v8.(*Cache).get /Users/sergey/go/pkg/mod/github.com/go-redis/cache/v8@v8.4.4/cache.go:214 s=204
+    56: 0x10078c7bb M=1 github.com/go-redis/cache/v8.(*Cache).Get /Users/sergey/go/pkg/mod/github.com/go-redis/cache/v8@v8.4.4/cache.go:194 s=193
+    57: 0x1007905bb M=1 main.(*cachedRepository).GetUserArticles /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/cached_repository.go:67 s=62
+    58: 0x10078f23b M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:103 s=94
+    59: 0x10025744f M=1 runtime.pthread_cond_signal /usr/local/go/src/runtime/sys_darwin.go:523 s=522
+    60: 0x100234947 M=1 runtime.semawakeup /usr/local/go/src/runtime/os_darwin.go:76 s=72
+    61: 0x10020b2b7 M=1 runtime.notewakeup /usr/local/go/src/runtime/lock_sema.go:161 s=142
+    62: 0x10023e457 M=1 runtime.startm /usr/local/go/src/runtime/proc.go:2430 s=2356
+    63: 0x10023e877 M=1 runtime.wakep /usr/local/go/src/runtime/proc.go:2541 s=2510
+    64: 0x10023ff8f M=1 runtime.resetspinning /usr/local/go/src/runtime/proc.go:3244 s=3231
+    65: 0x1002402cb M=1 runtime.schedule /usr/local/go/src/runtime/proc.go:3366 s=3331
+    66: 0x100724693 M=1 go.uber.org/zap.(*Logger).Info /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:220 s=218
+    67: 0x10078f0a3 M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:95 s=94
+    68: 0x100256f1b M=1 runtime.usleep /usr/local/go/src/runtime/sys_darwin.go:302 s=301
+    69: 0x100235077 M=1 runtime.osyield /usr/local/go/src/runtime/os_darwin.go:352 s=351
+    70: 0x10020afb3 M=1 runtime.lock2 /usr/local/go/src/runtime/lock_sema.go:70 s=38
+    71: 0x10020b90b M=1 runtime.lockWithRank /usr/local/go/src/runtime/lockrank_off.go:22 s=21
+    72: 0x10020ae3b M=1 runtime.lock /usr/local/go/src/runtime/lock_sema.go:35 s=34
+    73: 0x10023f12f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2843 s=2672
+    74: 0x1004f04e3 M=1 net/http.(*connReader).backgroundRead /usr/local/go/src/net/http/server.go:674 s=673
+    75: 0x1002573cf M=1 runtime.pthread_cond_wait /usr/local/go/src/runtime/sys_darwin.go:502 s=501
+    76: 0x10023483f M=1 runtime.semasleep /usr/local/go/src/runtime/os_darwin.go:66 s=39
+    77: 0x10020b3af M=1 runtime.notesleep /usr/local/go/src/runtime/lock_sema.go:181 s=165
+    78: 0x10023cddf M=1 runtime.mPark /usr/local/go/src/runtime/proc.go:1530 s=1528
+    79: 0x10023e2af M=1 runtime.stopm /usr/local/go/src/runtime/proc.go:2334 s=2318
+    80: 0x10023ed4f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:3007 s=2672
+    81: 0x100246747 M=1 runtime.runqgrab /usr/local/go/src/runtime/proc.go:6162 s=6140
+    82: 0x10024689f M=1 runtime.runqsteal /usr/local/go/src/runtime/proc.go:6197 s=6195
+    83: 0x10023fa73 M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3094 s=3038
+    84: 0x10023efe3 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2780 s=2672
+    85: 0x10020ecc0 M=1 runtime.mapassign /usr/local/go/src/runtime/map.go:689 s=578
+    86: 0x1002a02b7 M=1 context.propagateCancel /usr/local/go/src/context/context.go:327 s=304
+    87: 0x10029fd5b M=1 context.withCancel /usr/local/go/src/context/context.go:276 s=271
+    88: 0x10029fbf3 M=1 context.WithCancel /usr/local/go/src/context/context.go:239 s=238
+    89: 0x1004f2683 M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1025 s=961
+    90: 0x1004f8417 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1920 s=1846
+    91: 0x10024081b M=1 runtime.goschedImpl /usr/local/go/src/runtime/proc.go:3522 s=3514
+    92: 0x100240987 M=1 runtime.gopreempt_m /usr/local/go/src/runtime/proc.go:3554 s=3550
+    93: 0x10025136f M=1 runtime.newstack /usr/local/go/src/runtime/stack.go:1072 s=964
+    94: 0x10026870f M=1 runtime.morestack /usr/local/go/src/runtime/asm_arm64.s:316 s=277
+    95: 0x10023bc33 M=1 runtime.ready /usr/local/go/src/runtime/proc.go:890 s=873
+    96: 0x10023a777 M=1 runtime.goready.func1 /usr/local/go/src/runtime/proc.go:392 s=391
+    97: 0x10026865b M=1 runtime.systemstack /usr/local/go/src/runtime/asm_arm64.s:243 s=206
+    98: 0x10025740f M=1 runtime.pthread_cond_timedwait_relative_np /usr/local/go/src/runtime/sys_darwin.go:512 s=511
+    99: 0x100234893 M=1 runtime.semasleep /usr/local/go/src/runtime/os_darwin.go:60 s=39
+   100: 0x10020b58f M=1 runtime.notetsleep_internal /usr/local/go/src/runtime/lock_sema.go:232 s=194
+   101: 0x10020b75b M=1 runtime.notetsleep /usr/local/go/src/runtime/lock_sema.go:283 s=277
+   102: 0x10023d3d3 M=1 runtime.forEachP /usr/local/go/src/runtime/proc.go:1717 s=1658
+   103: 0x100263713 M=1 runtime.gcMarkTermination.func4 /usr/local/go/src/runtime/mgc.go:1109 s=1108
+   104: 0x10024b27b M=1 runtime.semrelease1 /usr/local/go/src/runtime/sema.go:187 s=175
+   105: 0x10026662b M=1 sync.runtime_Semrelease /usr/local/go/src/runtime/sema.go:72 s=71
+   106: 0x100277b27 M=1 sync.(*Mutex).unlockSlow /usr/local/go/src/sync/mutex.go:246 s=227
+   107: 0x10027798b M=1 sync.(*Mutex).Unlock /usr/local/go/src/sync/mutex.go:223 s=212
+   108: 0x10070e29b M=1 go.uber.org/zap/zapcore.(*lockedWriteSyncer).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/write_syncer.go:67 s=64
+   109: 0x100229bd0 M=1 runtime.(*gcBits).bytep /usr/local/go/src/runtime/mheap.go:2058 s=2057
+   110: 0x100225167 M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:633 s=492
+   111: 0x1002175f3 M=1 runtime.(*mcentral).uncacheSpan /usr/local/go/src/runtime/mcentral.go:228 s=196
+   112: 0x100216efb M=1 runtime.(*mcache).releaseAll /usr/local/go/src/runtime/mcache.go:291 s=259
+   113: 0x10021702f M=1 runtime.(*mcache).prepareForSweep /usr/local/go/src/runtime/mcache.go:328 s=312
+   114: 0x100243a6b M=1 runtime.procresize /usr/local/go/src/runtime/proc.go:5011 s=4945
+   115: 0x10023ca8f M=1 runtime.startTheWorldWithSema /usr/local/go/src/runtime/proc.go:1346 s=1331
+   116: 0x100263697 M=1 runtime.gcMarkTermination.func3 /usr/local/go/src/runtime/mgc.go:1090 s=1090
+   117: 0x10021a6fb M=1 runtime.gcMarkTermination /usr/local/go/src/runtime/mgc.go:1090 s=923
+   118: 0x10021a05b M=1 runtime.gcMarkDone /usr/local/go/src/runtime/mgc.go:918 s=784
+   119: 0x10021b12b M=1 runtime.gcBgMarkWorker /usr/local/go/src/runtime/mgc.go:1407 s=1241
+   120: 0x1007245b8 M=1 go.uber.org/zap.(*Logger).Debug /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:211 s=210
+   121: 0x1006ff748 M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:106 s=70
+   122: 0x100700097 M=1 go.uber.org/zap/zapcore.(*ioCore).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/core.go:95 s=94
+   123: 0x100256deb M=1 runtime.madvise /usr/local/go/src/runtime/sys_darwin.go:253 s=252
+   124: 0x100217eab M=1 runtime.sysUsedOS /usr/local/go/src/runtime/mem_darwin.go:33 s=29
+   125: 0x100217c1b M=1 runtime.sysUsed /usr/local/go/src/runtime/mem.go:77 s=75
+   126: 0x100228077 M=1 runtime.(*mheap).allocSpan /usr/local/go/src/runtime/mheap.go:1340 s=1168
+   127: 0x1002276bf M=1 runtime.(*mheap).alloc.func1 /usr/local/go/src/runtime/mheap.go:961 s=955
+   128: 0x1002331c8 M=1 runtime.wbBufFlush1 /usr/local/go/src/runtime/mwbbuf.go:260 s=215
+   129: 0x100263167 M=1 runtime.wbBufFlush.func1 /usr/local/go/src/runtime/mwbbuf.go:201 s=200
+   130: 0x10023308b M=1 runtime.wbBufFlush /usr/local/go/src/runtime/mwbbuf.go:200 s=168
+   131: 0x10026ab3f M=1 runtime.gcWriteBarrier /usr/local/go/src/runtime/asm_arm64.s:1250 s=1203
+   132: 0x1006fe04f M=1 go.uber.org/zap/buffer.(*Buffer).AppendByte /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:42 s=41
+   133: 0x100707037 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).AppendString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:300 s=296
+   134: 0x100706903 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).AddString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:201 s=199
+   135: 0x100704c2b M=1 go.uber.org/zap/zapcore.Field.AddTo /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/field.go:149 s=114
+   136: 0x10070544b M=1 go.uber.org/zap/zapcore.addFields /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/field.go:210 s=208
+   137: 0x1006ff9ef M=1 go.uber.org/zap/zapcore.consoleEncoder.writeContext /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:141 s=132
+   138: 0x1006ff83f M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:119 s=70
+   139: 0x100215768 M=1 runtime.writeHeapBits.flush /usr/local/go/src/runtime/mbitmap.go:862 s=843
+   140: 0x100215bcf M=1 runtime.heapBitsSetType /usr/local/go/src/runtime/mbitmap.go:1082 s=942
+   141: 0x10020cc27 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1074 s=878
+   142: 0x10020d03b M=1 runtime.newobject /usr/local/go/src/runtime/malloc.go:1254 s=1253
+   143: 0x100253eef M=1 runtime.CallersFrames /usr/local/go/src/runtime/symtab.go:76 s=75
+   144: 0x1007277a3 M=1 go.uber.org/zap.captureStacktrace /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/stacktrace.go:106 s=70
+   145: 0x100724f13 M=1 go.uber.org/zap.(*Logger).check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:361 s=289
+   146: 0x1007245b7 M=1 go.uber.org/zap.(*Logger).Debug /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:211 s=210
+   147: 0x10026382b M=1 runtime.gcMarkDone.func1 /usr/local/go/src/runtime/mgc.go:814 s=807
+   148: 0x100256ff3 M=1 runtime.nanotime1 /usr/local/go/src/runtime/sys_darwin.go:337 s=332
+   149: 0x1002597ef M=1 runtime.nanotime /usr/local/go/src/runtime/time_nofake.go:19 s=18
+   150: 0x10023c20f M=1 runtime.casgstatus /usr/local/go/src/runtime/proc.go:1080 s=996
+   151: 0x10023f62f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2762 s=2672
+   152: 0x1002319fc M=1 runtime.(*spanSet).pop /usr/local/go/src/runtime/mspanset.go:149 s=141
+   153: 0x100223d97 M=1 runtime.(*mheap).nextSpanForSweep /usr/local/go/src/runtime/mgcsweep.go:108 s=99
+   154: 0x1002245c3 M=1 runtime.sweepone /usr/local/go/src/runtime/mgcsweep.go:373 s=354
+   155: 0x1002243c3 M=1 runtime.bgsweep /usr/local/go/src/runtime/mgcsweep.go:299 s=271
+   156: 0x10056859c M=1 github.com/go-chi/chi/v5.(*Mux).routeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:445 s=415
+   157: 0x1002569b0 M=1 runtime.readvarint /usr/local/go/src/runtime/symtab.go:1176 s=1176
+   158: 0x10025684f M=1 runtime.step /usr/local/go/src/runtime/symtab.go:1160 s=1151
+   159: 0x100255b2b M=1 runtime.pcvalue /usr/local/go/src/runtime/symtab.go:951 s=911
+   160: 0x100256387 M=1 runtime.funcspdelta /usr/local/go/src/runtime/symtab.go:1074 s=1073
+   161: 0x10025d717 M=1 runtime.gentraceback /usr/local/go/src/runtime/traceback.go:203 s=32
+   162: 0x10025f913 M=1 runtime.callers.func1 /usr/local/go/src/runtime/traceback.go:844 s=843
+   163: 0x10025f877 M=1 runtime.callers /usr/local/go/src/runtime/traceback.go:843 s=838
+   164: 0x100208f43 M=1 runtime.Callers /usr/local/go/src/runtime/extern.go:263 s=256
+   165: 0x10072771b M=1 go.uber.org/zap.captureStacktrace /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/stacktrace.go:82 s=70
+   166: 0x100724677 M=1 go.uber.org/zap.(*Logger).Info /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:219 s=218
+   167: 0x100279610 M=1 sync.(*poolChain).popHead /usr/local/go/src/sync/poolqueue.go:261 s=258
+   168: 0x100277fb3 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:138 s=127
+   169: 0x1006feb47 M=1 go.uber.org/zap/buffer.Pool.Get /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/pool.go:41 s=40
+   170: 0x100702fb3 M=1 go.uber.org/zap/zapcore.EntryCaller.TrimmedPath /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:128 s=102
+   171: 0x100702653 M=1 go.uber.org/zap/zapcore.ShortCallerEncoder /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/encoder.go:278 s=276
+   172: 0x1006ff6a3 M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:98 s=70
+   173: 0x100201d40 M=1 runtime/internal/atomic.(*Bool).Load /usr/local/go/src/runtime/internal/atomic/types.go:168 s=167
+   174: 0x100250ee7 M=1 runtime.copystack /usr/local/go/src/runtime/stack.go:891 s=859
+   175: 0x100251c07 M=1 runtime.shrinkstack /usr/local/go/src/runtime/stack.go:1216 s=1162
+   176: 0x10021e51f M=1 runtime.scanstack /usr/local/go/src/runtime/mgcmark.go:775 s=733
+   177: 0x10021d533 M=1 runtime.markroot.func1 /usr/local/go/src/runtime/mgcmark.go:239 s=213
+   178: 0x10021d233 M=1 runtime.markroot /usr/local/go/src/runtime/mgcmark.go:213 s=162
+   179: 0x10021efcf M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1069 s=1036
+   180: 0x10021b303 M=1 runtime.gcBgMarkWorker.func2 /usr/local/go/src/runtime/mgc.go:1348 s=1335
+   181: 0x10021afeb M=1 runtime.gcBgMarkWorker /usr/local/go/src/runtime/mgc.go:1335 s=1241
+   182: 0x100217e4b M=1 runtime.sysUnusedOS /usr/local/go/src/runtime/mem_darwin.go:26 s=23
+   183: 0x100217baf M=1 runtime.sysUnused /usr/local/go/src/runtime/mem.go:62 s=60
+   184: 0x100222a7b M=1 runtime.(*pageAlloc).scavengeOne /usr/local/go/src/runtime/mgcscavenge.go:754 s=706
+   185: 0x10022275b M=1 runtime.(*pageAlloc).scavenge.func1 /usr/local/go/src/runtime/mgcscavenge.go:658 s=657
+   186: 0x1002d6340 M=1 reflect.Value.Type /usr/local/go/src/reflect/value.go:2602 s=2601
+   187: 0x10076c40b M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:308 s=307
+   188: 0x10023eb6b M=1 runtime.gcstopm /usr/local/go/src/runtime/proc.go:2616 s=2594
+   189: 0x10023ed73 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2682 s=2672
+   190: 0x10023f36f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2971 s=2672
+   191: 0x100246f34 M=1 runtime.(*randomEnum).next /usr/local/go/src/runtime/proc.go:6436 s=6433
+   192: 0x10023f8cb M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3047 s=3038
+   193: 0x10057df64 M=1 encoding/json.(*encodeState).stringBytes /usr/local/go/src/encoding/json/encode.go:1105 s=1101
+   194: 0x100579687 M=1 encoding/json.addrTextMarshalerEncoder /usr/local/go/src/encoding/json/encode.go:532 s=521
+   195: 0x10057cec7 M=1 encoding/json.condAddrEncoder.encode /usr/local/go/src/encoding/json/encode.go:958 s=956
+   196: 0x10057afbb M=1 encoding/json.structEncoder.encode /usr/local/go/src/encoding/json/encode.go:759 s=730
+   197: 0x10057c787 M=1 encoding/json.arrayEncoder.encode /usr/local/go/src/encoding/json/encode.go:914 s=907
+   198: 0x10057c3cf M=1 encoding/json.sliceEncoder.encode /usr/local/go/src/encoding/json/encode.go:887 s=867
+   199: 0x100577f27 M=1 encoding/json.(*encodeState).reflectValue /usr/local/go/src/encoding/json/encode.go:358 s=357
+   200: 0x1005779c7 M=1 encoding/json.(*encodeState).marshal /usr/local/go/src/encoding/json/encode.go:330 s=320
+   201: 0x100576d37 M=1 encoding/json.Marshal /usr/local/go/src/encoding/json/encode.go:161 s=157
+   202: 0x100790e5b M=1 main.writeJsonResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:20 s=19
+   203: 0x10078f3d7 M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:109 s=94
+   204: 0x100482a2c M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:509 s=487
+   205: 0x1004826db M=1 net/textproto.(*Reader).ReadMIMEHeader /usr/local/go/src/net/textproto/reader.go:482 s=481
+   206: 0x1004ec54b M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1088 s=1034
+   207: 0x1004f1fcb M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:990 s=961
+   208: 0x10021ed74 M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1084 s=1036
+   209: 0x100727a80 M=1 go.uber.org/zap.(*stacktrace).Next /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/stacktrace.go:127 s=126
+   210: 0x1007250d3 M=1 go.uber.org/zap.(*Logger).check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:372 s=289
+   211: 0x100262f0f M=1 runtime.injectglist.func1 /usr/local/go/src/runtime/proc.go:3295 s=3282
+   212: 0x1002401c3 M=1 runtime.injectglist /usr/local/go/src/runtime/proc.go:3320 s=3255
+   213: 0x10023f61f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2761 s=2672
+   214: 0x100226c10 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:698 s=676
+   215: 0x10021480b M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:333 s=332
+   216: 0x1002331a3 M=1 runtime.wbBufFlush1 /usr/local/go/src/runtime/mwbbuf.go:260 s=215
+   217: 0x1006fe177 M=1 go.uber.org/zap/buffer.(*Buffer).AppendString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:47 s=46
+   218: 0x1006ff74f M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:106 s=70
+   219: 0x1004ff154 M=1 net/http.checkConnErrorWriter.Write /usr/local/go/src/net/http/server.go:3599 s=3597
+   220: 0x10023c917 M=1 runtime.stopTheWorldWithSema /usr/local/go/src/runtime/proc.go:1297 s=1252
+   221: 0x1002e3c74 M=1 internal/poll.(*fdMutex).rwlock /usr/local/go/src/internal/poll/fd_mutex.go:137 s=117
+   222: 0x1002e4243 M=1 internal/poll.(*FD).writeLock /usr/local/go/src/internal/poll/fd_mutex.go:239 s=238
+   223: 0x1002e5b2f M=1 internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go:370 s=369
+   224: 0x100214b0c M=1 runtime.heapBits.nextFast /usr/local/go/src/runtime/mbitmap.go:497 s=489
+   225: 0x10021f457 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1308 s=1256
+   226: 0x10021edb7 M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1103 s=1036
+   227: 0x100226c94 M=1 runtime.spanOfUnchecked /usr/local/go/src/runtime/mheap.go:712 s=711
+   228: 0x10021f3eb M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1268 s=1256
+   229: 0x10021b357 M=1 runtime.gcBgMarkWorker.func2 /usr/local/go/src/runtime/mgc.go:1363 s=1335
+   230: 0x100278a98 M=1 sync.indexLocal /usr/local/go/src/sync/pool.go:280 s=279
+   231: 0x10027842f M=1 sync.(*Pool).pin /usr/local/go/src/sync/pool.go:207 s=198
+   232: 0x100277e27 M=1 sync.(*Pool).Put /usr/local/go/src/sync/pool.go:107 s=95
+   233: 0x100576e6b M=1 encoding/json.Marshal /usr/local/go/src/encoding/json/encode.go:167 s=157
+   234: 0x10027d6b0 M=1 syscall.Write /usr/local/go/src/syscall/syscall_unix.go:196 s=196
+   235: 0x100231780 M=1 runtime.(*spanSet).push /usr/local/go/src/runtime/mspanset.go:74 s=74
+   236: 0x1002175df M=1 runtime.(*mcentral).uncacheSpan /usr/local/go/src/runtime/mcentral.go:236 s=196
+   237: 0x10021697b M=1 runtime.(*mcache).refill /usr/local/go/src/runtime/mcache.go:159 s=147
+   238: 0x10020c633 M=1 runtime.(*mcache).nextFree /usr/local/go/src/runtime/malloc.go:855 s=845
+   239: 0x10020cb07 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1042 s=878
+   240: 0x10024f3e3 M=1 runtime.makeslice /usr/local/go/src/runtime/slice.go:103 s=88
+   241: 0x10076f6bf M=1 github.com/vmihailenco/msgpack/v5.readN /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:624 s=617
+   242: 0x100775d0b M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).bytes /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:95 s=87
+   243: 0x100775b4f M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeBytes /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:84 s=79
+   244: 0x100778af3 M=1 github.com/vmihailenco/msgpack/v5.unmarshalBinaryValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:233 s=232
+   245: 0x100778007 M=1 github.com/vmihailenco/msgpack/v5.nilAwareDecoder.func2 /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:167 s=163
+   246: 0x100777d4f M=1 github.com/vmihailenco/msgpack/v5.addrDecoder.func1 /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:146 s=142
+   247: 0x1004b52bc M=1 vendor/golang.org/x/net/http/httpguts.HeaderValuesContainsToken /usr/local/go/src/vendor/golang.org/x/net/http/httpguts/httplex.go:107 s=106
+   248: 0x1005032b7 M=1 net/http.shouldClose /usr/local/go/src/net/http/transfer.go:748 s=742
+   249: 0x1004ec79b M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1111 s=1034
+   250: 0x10023ca47 M=1 runtime.startTheWorldWithSema /usr/local/go/src/runtime/proc.go:1336 s=1331
+   251: 0x10026ab04 M=1 runtime.gcWriteBarrier /usr/local/go/src/runtime/asm_arm64.s:1224 s=1203
+   252: 0x1002cf283 M=1 reflect.packEface /usr/local/go/src/reflect/value.go:135 s=109
+   253: 0x1002d2b1f M=1 reflect.valueInterface /usr/local/go/src/reflect/value.go:1510 s=1483
+   254: 0x1002d296b M=1 reflect.Value.Interface /usr/local/go/src/reflect/value.go:1480 s=1479
+   255: 0x1005794bb M=1 encoding/json.addrTextMarshalerEncoder /usr/local/go/src/encoding/json/encode.go:527 s=521
+   256: 0x1002fa9b8 M=1 bytes.(*Buffer).WriteByte /usr/local/go/src/bytes/buffer.go:283 s=276
+   257: 0x10057af0f M=1 encoding/json.structEncoder.encode /usr/local/go/src/encoding/json/encode.go:751 s=730
+   258: 0x100213770 M=1 runtime.mapdelete_faststr /usr/local/go/src/runtime/map_faststr.go:328 s=301
+   259: 0x100481123 M=1 net/textproto.MIMEHeader.Del /usr/local/go/src/net/textproto/header.go:55 s=54
+   260: 0x1004e8cd7 M=1 net/http.Header.Del /usr/local/go/src/net/http/header.go:81 s=80
+   261: 0x100502fbf M=1 net/http.fixLength /usr/local/go/src/net/http/transfer.go:722 s=669
+   262: 0x100501a2f M=1 net/http.readTransfer /usr/local/go/src/net/http/transfer.go:525 s=486
+   263: 0x1004ec7bf M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1113 s=1034
+   264: 0x10056afd0 M=1 github.com/go-chi/chi/v5.(*node).findRoute /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/tree.go:492 s=387
+   265: 0x10056b5e7 M=1 github.com/go-chi/chi/v5.(*node).findRoute /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/tree.go:464 s=387
+   266: 0x10056b04b M=1 github.com/go-chi/chi/v5.(*node).findRoute /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/tree.go:503 s=387
+   267: 0x10056a637 M=1 github.com/go-chi/chi/v5.(*node).FindRoute /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/tree.go:367 s=360
+   268: 0x100568543 M=1 github.com/go-chi/chi/v5.(*Mux).routeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:443 s=415
+   269: 0x10026ab40 M=1 runtime.gcWriteBarrier /usr/local/go/src/runtime/asm_arm64.s:1251 s=1203
+   270: 0x10076a99b M=1 github.com/vmihailenco/msgpack/v5.PutDecoder /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:46 s=44
+   271: 0x10076aa63 M=1 github.com/vmihailenco/msgpack/v5.Unmarshal /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:60 s=54
+   272: 0x10026b16c M=1 runtime.duffcopy /usr/local/go/src/runtime/duff_arm64.s:223 s=74
+   273: 0x1004eab67 M=1 net/http.(*Request).WithContext /usr/local/go/src/net/http/request.go:361 s=356
+   274: 0x100566eef M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:87 s=63
+   275: 0x1002f8e30 M=1 fmt.(*pp).doPrint /usr/local/go/src/fmt/print.go:1203 s=1203
+   276: 0x1002f2cef M=1 fmt.Fprint /usr/local/go/src/fmt/print.go:262 s=260
+   277: 0x1006ff7cb M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:108 s=70
+   278: 0x1004f273c M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1028 s=961
+   279: 0x100241233 M=1 runtime.entersyscall_gcwait /usr/local/go/src/runtime/proc.go:3842 s=3838
+   280: 0x10023a790 M=1 runtime.acquireSudog /usr/local/go/src/runtime/proc.go:397 s=397
+   281: 0x10024afc7 M=1 runtime.semacquire1 /usr/local/go/src/runtime/sema.go:131 s=114
+   282: 0x100266687 M=1 sync.runtime_SemacquireMutex /usr/local/go/src/runtime/sema.go:77 s=76
+   283: 0x100277767 M=1 sync.(*Mutex).lockSlow /usr/local/go/src/sync/mutex.go:171 s=117
+   284: 0x100277407 M=1 sync.(*Mutex).Lock /usr/local/go/src/sync/mutex.go:90 s=81
+   285: 0x10070e223 M=1 go.uber.org/zap/zapcore.(*lockedWriteSyncer).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/write_syncer.go:65 s=64
+   286: 0x10023f497 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2989 s=2672
+   287: 0x10023cb53 M=1 runtime.startTheWorldWithSema /usr/local/go/src/runtime/proc.go:1366 s=1331
+   288: 0x100219d9f M=1 runtime.gcStart.func2 /usr/local/go/src/runtime/mgc.go:730 s=729
+   289: 0x1002796e8 M=1 sync.(*poolChain).popTail /usr/local/go/src/sync/poolqueue.go:284 s=271
+   290: 0x10027816b M=1 sync.(*Pool).getSlow /usr/local/go/src/sync/pool.go:163 s=156
+   291: 0x100277fff M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:140 s=127
+   292: 0x100702bc7 M=1 go.uber.org/zap/zapcore.getCheckedEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:45 s=44
+   293: 0x100703903 M=1 go.uber.org/zap/zapcore.(*CheckedEntry).AddCore /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:274 s=272
+   294: 0x1006fffcb M=1 go.uber.org/zap/zapcore.(*ioCore).Check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/core.go:89 s=87
+   295: 0x100724bc7 M=1 go.uber.org/zap.(*Logger).check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:310 s=289
+   296: 0x100241b6b M=1 runtime.exitsyscall0 /usr/local/go/src/runtime/proc.go:4122 s=4087
+   297: 0x10021ef9c M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1065 s=1036
+   298: 0x100246730 M=1 runtime.runqgrab /usr/local/go/src/runtime/proc.go:6150 s=6140
+   299: 0x100215708 M=1 runtime.writeHeapBits.flush /usr/local/go/src/runtime/mbitmap.go:861 s=843
+   300: 0x1002d5d33 M=1 reflect.Value.Slice /usr/local/go/src/reflect/value.go:2487 s=2445
+   301: 0x1002d70fb M=1 reflect.AppendSlice /usr/local/go/src/reflect/value.go:2851 s=2844
+   302: 0x1007749f7 M=1 github.com/vmihailenco/msgpack/v5.growSliceValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_slice.go:122 s=117
+   303: 0x10077481f M=1 github.com/vmihailenco/msgpack/v5.decodeSliceValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_slice.go:106 s=83
+   304: 0x10021f8fc M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1487 s=1458
+   305: 0x10021f4c7 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1336 s=1256
+   306: 0x10021f450 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1341 s=1256
+   307: 0x1002673e4 M=1 syscall.syscall /usr/local/go/src/runtime/sys_darwin.go:22 s=21
+   308: 0x1002f9934 M=1 bytes.(*Buffer).tryGrowByReslice /usr/local/go/src/bytes/buffer.go:109 s=106
+   309: 0x1002fa93b M=1 bytes.(*Buffer).WriteByte /usr/local/go/src/bytes/buffer.go:278 s=276
+   310: 0x100214af0 M=1 runtime.heapBits.next /usr/local/go/src/runtime/mbitmap.go:460 s=450
+   311: 0x100214c37 M=1 runtime.bulkBarrierPreWrite /usr/local/go/src/runtime/mbitmap.go:583 s=534
+   312: 0x100213e97 M=1 runtime.typedmemmove /usr/local/go/src/runtime/mbarrier.go:162 s=157
+   313: 0x10025435f M=1 runtime.(*Frames).Next /usr/local/go/src/runtime/symtab.go:135 s=90
+   314: 0x100727a93 M=1 go.uber.org/zap.(*stacktrace).Next /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/stacktrace.go:127 s=126
+   315: 0x10047ea68 M=1 bufio.(*Writer).Write /usr/local/go/src/bufio/bufio.go:680 s=662
+   316: 0x1004f3d87 M=1 net/http.extraHeader.Write /usr/local/go/src/net/http/server.go:1222 s=1213
+   317: 0x1004f5ba3 M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1507 s=1242
+   318: 0x1004eed83 M=1 net/http.(*chunkWriter).Write /usr/local/go/src/net/http/server.go:375 s=373
+   319: 0x1004f6a7b M=1 net/http.(*response).finishRequest /usr/local/go/src/net/http/server.go:1649 s=1642
+   320: 0x100265a40 M=1 sync.runtime_procPin /usr/local/go/src/runtime/proc.go:6347 s=6346
+   321: 0x1002783e7 M=1 sync.(*Pool).pin /usr/local/go/src/sync/pool.go:199 s=198
+   322: 0x100277f1f M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:131 s=127
+   323: 0x1006ff197 M=1 go.uber.org/zap/zapcore.getSliceEncoder /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:38 s=37
+   324: 0x1006ff423 M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:79 s=70
+   325: 0x100484028 M=1 net/textproto.TrimString /usr/local/go/src/net/textproto/textproto.go:128 s=124
+   326: 0x1004e9c57 M=1 net/http.Header.writeSubset /usr/local/go/src/net/http/header.go:213 s=196
+   327: 0x1004e9973 M=1 net/http.Header.WriteSubset /usr/local/go/src/net/http/header.go:193 s=192
+   328: 0x1004f5b57 M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1506 s=1242
+   329: 0x1004ec458 M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1078 s=1034
+   330: 0x10020d03c M=1 runtime.newobject /usr/local/go/src/runtime/malloc.go:1254 s=1253
+   331: 0x1004e8b10 M=1 net/http.Header.get /usr/local/go/src/net/http/header.go:63 s=63
+   332: 0x1004f3acb M=1 net/http.(*response).WriteHeader /usr/local/go/src/net/http/server.go:1174 s=1135
+   333: 0x100790cd3 M=1 main.writeResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:12 s=11
+   334: 0x10079101b M=1 main.writeJsonResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:28 s=19
+   335: 0x100226b20 M=1 runtime.arenaIdx.l2 /usr/local/go/src/runtime/mheap.go:631 s=629
+   336: 0x100226ca7 M=1 runtime.spanOfUnchecked /usr/local/go/src/runtime/mheap.go:713 s=711
+   337: 0x100245694 M=1 runtime.mput /usr/local/go/src/runtime/proc.go:5695 s=5690
+   338: 0x10023e29f M=1 runtime.stopm /usr/local/go/src/runtime/proc.go:2332 s=2318
+   339: 0x10020c9d0 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1011 s=878
+   340: 0x100790d4b M=1 main.writeResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:14 s=11
+   341: 0x100278090 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:153 s=127
+   342: 0x1002f2357 M=1 fmt.newPrinter /usr/local/go/src/fmt/print.go:152 s=151
+   343: 0x1002f2cdb M=1 fmt.Fprint /usr/local/go/src/fmt/print.go:261 s=260
+   344: 0x100245d23 M=1 runtime.pidleput /usr/local/go/src/runtime/proc.go:5866 s=5859
+   345: 0x10023f1df M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2862 s=2672
+   346: 0x10026b368 M=1 runtime.memclrNoHeapPointers /usr/local/go/src/runtime/memclr_arm64.s:174 s=11
+   347: 0x10020cb33 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1046 s=878
+   348: 0x100226b10 M=1 runtime.arenaIdx.l1 /usr/local/go/src/runtime/mheap.go:617 s=613
+   349: 0x100226beb M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:694 s=676
+   350: 0x10021f4ab M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1335 s=1256
+   351: 0x10021f1a7 M=1 runtime.gcDrainN /usr/local/go/src/runtime/mgcmark.go:1192 s=1150
+   352: 0x10021df1b M=1 runtime.gcAssistAlloc1 /usr/local/go/src/runtime/mgcmark.go:567 s=530
+   353: 0x10021dde3 M=1 runtime.gcAssistAlloc.func1 /usr/local/go/src/runtime/mgcmark.go:475 s=474
+   354: 0x10021dceb M=1 runtime.gcAssistAlloc /usr/local/go/src/runtime/mgcmark.go:474 s=405
+   355: 0x10020cf37 M=1 runtime.deductAssistCredit /usr/local/go/src/runtime/malloc.go:1217 s=1201
+   356: 0x10020c8ab M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:932 s=878
+   357: 0x1004ebfbb M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1038 s=1034
+   358: 0x10024b083 M=1 runtime.semacquire1 /usr/local/go/src/runtime/sema.go:148 s=114
+   359: 0x100268620 M=1 runtime.systemstack /usr/local/go/src/runtime/asm_arm64.s:219 s=206
+   360: 0x1004f2f00 M=1 net/http.(*response).Header /usr/local/go/src/net/http/server.go:1078 s=1078
+   361: 0x100790fbb M=1 main.writeJsonResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:26 s=19
+   362: 0x100277f74 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:133 s=127
+   363: 0x1006ff41b M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:71 s=70
+   364: 0x10020b03f M=1 runtime.lock2 /usr/local/go/src/runtime/lock_sema.go:88 s=38
+   365: 0x10023e293 M=1 runtime.stopm /usr/local/go/src/runtime/proc.go:2331 s=2318
+   366: 0x1004b5c5c M=1 vendor/golang.org/x/net/http/httpguts.ValidHeaderFieldValue /usr/local/go/src/vendor/golang.org/x/net/http/httpguts/httplex.go:310 s=308
+   367: 0x1004f2b1b M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1018 s=961
+   368: 0x100226dec M=1 runtime.pageIndexOf /usr/local/go/src/runtime/mheap.go:739 s=737
+   369: 0x10021f8e3 M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1486 s=1458
+   370: 0x10021f298 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1229 s=1218
+   371: 0x10021eacb M=1 runtime.scanframeworker /usr/local/go/src/runtime/mgcmark.go:972 s=918
+   372: 0x10021e9b3 M=1 runtime.scanstack.func1 /usr/local/go/src/runtime/mgcmark.go:801 s=800
+   373: 0x10025da4f M=1 runtime.gentraceback /usr/local/go/src/runtime/traceback.go:332 s=32
+   374: 0x10021e5c3 M=1 runtime.scanstack /usr/local/go/src/runtime/mgcmark.go:804 s=733
+   375: 0x100229bc8 M=1 runtime.(*gcBits).bytep /usr/local/go/src/runtime/mheap.go:2058 s=2057
+   376: 0x100229c27 M=1 runtime.(*gcBits).bitp /usr/local/go/src/runtime/mheap.go:2064 s=2063
+   377: 0x1002144b3 M=1 runtime.(*mspan).markBitsForIndex /usr/local/go/src/runtime/mbitmap.go:229 s=228
+   378: 0x10021f873 M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1463 s=1458
+   379: 0x100223d84 M=1 runtime.(*mheap).nextSpanForSweep /usr/local/go/src/runtime/mgcsweep.go:106 s=99
+   380: 0x100240833 M=1 runtime.goschedImpl /usr/local/go/src/runtime/proc.go:3526 s=3514
+   381: 0x1003fc458 M=1 net.(*conn).Write /usr/local/go/src/net/net.go:195 s=191
+   382: 0x100227723 M=1 runtime.(*mheap).allocManual /usr/local/go/src/runtime/mheap.go:987 s=983
+   383: 0x100226463 M=1 runtime.getempty.func1 /usr/local/go/src/runtime/mgcwork.go:378 s=377
+   384: 0x10022636b M=1 runtime.getempty /usr/local/go/src/runtime/mgcwork.go:377 s=352
+   385: 0x1002265cf M=1 runtime.handoff /usr/local/go/src/runtime/mgcwork.go:439 s=437
+   386: 0x1002260e3 M=1 runtime.(*gcWork).balance /usr/local/go/src/runtime/mgcwork.go:297 s=288
+   387: 0x10021f0ef M=1 runtime.gcDrainN /usr/local/go/src/runtime/mgcmark.go:1165 s=1150
+   388: 0x100775620 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeString /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:39 s=34
+   389: 0x1004e9bac M=1 net/http.Header.writeSubset /usr/local/go/src/net/http/header.go:211 s=196
+   390: 0x10020f3b8 M=1 runtime.mapiternext /usr/local/go/src/runtime/map.go:872 s=866
+   391: 0x1004f2ba3 M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1013 s=961
+   392: 0x1002404d7 M=1 runtime.checkTimers /usr/local/go/src/runtime/proc.go:3440 s=3425
+   393: 0x10023f9c7 M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3071 s=3038
+   394: 0x1004836e4 M=1 net/textproto.CanonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:640 s=632
+   395: 0x100480ea7 M=1 net/textproto.MIMEHeader.Set /usr/local/go/src/net/textproto/header.go:22 s=21
+   396: 0x1004e8a43 M=1 net/http.Header.Set /usr/local/go/src/net/http/header.go:40 s=39
+   397: 0x100790fdb M=1 main.writeJsonResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:26 s=19
+   398: 0x100233578 M=1 runtime.(*pollDesc).setEventErr /usr/local/go/src/runtime/netpoll.go:164 s=162
+   399: 0x100234647 M=1 runtime.netpoll /usr/local/go/src/runtime/netpoll_kqueue.go:185 s=110
+   400: 0x10020c7a0 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:878 s=878
+   401: 0x100588a3f M=1 github.com/google/uuid.UUID.MarshalText /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/marshal.go:11 s=10
+   402: 0x100579513 M=1 encoding/json.addrTextMarshalerEncoder /usr/local/go/src/encoding/json/encode.go:528 s=521
+   403: 0x10023cb6f M=1 runtime.startTheWorldWithSema /usr/local/go/src/runtime/proc.go:1382 s=1331
+   404: 0x1002568f4 M=1 runtime.step /usr/local/go/src/runtime/symtab.go:1170 s=1151
+   405: 0x1002557b0 M=1 runtime.funcInfo.entry /usr/local/go/src/runtime/symtab.go:852 s=851
+   406: 0x10025dac7 M=1 runtime.gentraceback /usr/local/go/src/runtime/traceback.go:352 s=32
+   407: 0x10026df00 M=1 sync/atomic.(*Value).Store /usr/local/go/src/sync/atomic/value.go:66 s=47
+   408: 0x1002a0ff7 M=1 context.(*cancelCtx).cancel /usr/local/go/src/context/context.go:469 s=453
+   409: 0x10029fcdf M=1 context.WithCancel.func1 /usr/local/go/src/context/context.go:240 s=240
+   410: 0x1004f8ee3 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1997 s=1846
+   411: 0x1002149a8 M=1 runtime.heapBitsForAddr /usr/local/go/src/runtime/mbitmap.go:406 s=403
+   412: 0x10021f443 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1304 s=1256
+   413: 0x100277e20 M=1 sync.(*Pool).Put /usr/local/go/src/sync/pool.go:107 s=95
+   414: 0x1004f1143 M=1 net/http.putBufioWriter /usr/local/go/src/net/http/server.go:850 s=847
+   415: 0x1004f6a8f M=1 net/http.(*response).finishRequest /usr/local/go/src/net/http/server.go:1650 s=1642
+   416: 0x100242554 M=1 runtime.gfget /usr/local/go/src/runtime/proc.go:4466 s=4429
+   417: 0x100241dd3 M=1 runtime.newproc1 /usr/local/go/src/runtime/proc.go:4266 s=4259
+   418: 0x100241d27 M=1 runtime.newproc.func1 /usr/local/go/src/runtime/proc.go:4245 s=4244
+   419: 0x100241cd7 M=1 runtime.newproc /usr/local/go/src/runtime/proc.go:4244 s=4241
+   420: 0x1004f035b M=1 net/http.(*connReader).startBackgroundRead /usr/local/go/src/net/http/server.go:670 s=659
+   421: 0x1004f8e87 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1984 s=1846
+   422: 0x10057e000 M=1 encoding/json.(*encodeState).stringBytes /usr/local/go/src/encoding/json/encode.go:1106 s=1101
+   423: 0x10023d56f M=1 runtime.runSafePointFn /usr/local/go/src/runtime/proc.go:1759 s=1750
+   424: 0x10023ed8f M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2686 s=2672
+   425: 0x10020c580 M=1 runtime.nextFreeFast /usr/local/go/src/runtime/malloc.go:833 s=818
+   426: 0x10020caeb M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1040 s=878
+   427: 0x1003fc217 M=1 net.(*conn).Read /usr/local/go/src/net/net.go:185 s=179
+   428: 0x1002569dc M=1 runtime.readvarint /usr/local/go/src/runtime/symtab.go:1185 s=1176
+   429: 0x10024f98b M=1 runtime.stackpoolalloc /usr/local/go/src/runtime/stack.go:209 s=203
+   430: 0x10024fca7 M=1 runtime.stackcacherefill /usr/local/go/src/runtime/stack.go:292 s=281
+   431: 0x1002501c7 M=1 runtime.stackalloc /usr/local/go/src/runtime/stack.go:394 s=346
+   432: 0x100250e7f M=1 runtime.copystack /usr/local/go/src/runtime/stack.go:875 s=859
+   433: 0x100251347 M=1 runtime.newstack /usr/local/go/src/runtime/stack.go:1064 s=964
+   434: 0x10023318c M=1 runtime.wbBufFlush1 /usr/local/go/src/runtime/mwbbuf.go:250 s=215
+   435: 0x100708c17 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).tryAddRuneSelf /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:531 s=526
+   436: 0x1007087eb M=1 go.uber.org/zap/zapcore.(*jsonEncoder).safeAddString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:494 s=492
+   437: 0x10070701f M=1 go.uber.org/zap/zapcore.(*jsonEncoder).AppendString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:299 s=296
+   438: 0x100291b00 M=1 time.Now /usr/local/go/src/time/time.go:1110 s=1110
+   439: 0x1004f1cab M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:970 s=961
+   440: 0x100246e50 M=1 runtime.(*randomOrder).start /usr/local/go/src/runtime/proc.go:6423 s=6421
+   441: 0x10023f867 M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3047 s=3038
+   442: 0x100212b34 M=1 runtime.mapaccess1_faststr /usr/local/go/src/runtime/map_faststr.go:32 s=13
+   443: 0x100771413 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).decodeStruct /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_map.go:323 s=310
+   444: 0x10020b96c M=1 runtime.unlockWithRank /usr/local/go/src/runtime/lockrank_off.go:33 s=31
+   445: 0x10020b0ab M=1 runtime.unlock /usr/local/go/src/runtime/lock_sema.go:96 s=95
+   446: 0x100226743 M=1 runtime.freeSomeWbufs /usr/local/go/src/runtime/mgcwork.go:472 s=468
+   447: 0x100224443 M=1 runtime.bgsweep /usr/local/go/src/runtime/mgcsweep.go:306 s=271
+   448: 0x10020a5eb M=1 runtime.convTstring /usr/local/go/src/runtime/iface.go:392 s=388
+   449: 0x10070ca6f M=1 go.uber.org/zap/zapcore.(*sliceArrayEncoder).AppendString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/memory_encoder.go:172 s=172
+   450: 0x1007005af M=1 go.uber.org/zap/zapcore.CapitalLevelEncoder /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/encoder.go:61 s=60
+   451: 0x1006ff547 M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:84 s=70
+   452: 0x100203db8 M=1 runtime.efaceeq /usr/local/go/src/runtime/alg.go:255 s=243
+   453: 0x1002a2357 M=1 context.(*valueCtx).Value /usr/local/go/src/context/context.go:623 s=622
+   454: 0x10056837b M=1 github.com/go-chi/chi/v5.(*Mux).routeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:417 s=415
+   455: 0x10020f2a0 M=1 runtime.mapiterinit /usr/local/go/src/runtime/map.go:846 s=815
+   456: 0x1004e8e8b M=1 net/http.Header.Clone /usr/local/go/src/net/http/header.go:101 s=94
+   457: 0x1004f3a63 M=1 net/http.(*response).WriteHeader /usr/local/go/src/net/http/server.go:1171 s=1135
+   458: 0x100277fe4 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:138 s=127
+   459: 0x100566de3 M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:81 s=63
+   460: 0x100253f08 M=1 runtime.CallersFrames /usr/local/go/src/runtime/symtab.go:76 s=75
+   461: 0x1003002c0 M=1 bytes.(*Reader).Read /usr/local/go/src/bytes/reader.go:39 s=39
+   462: 0x1002decbf M=1 io.ReadAtLeast /usr/local/go/src/io/io.go:332 s=326
+   463: 0x1002dee7f M=1 io.ReadFull /usr/local/go/src/io/io.go:351 s=350
+   464: 0x10076f79f M=1 github.com/vmihailenco/msgpack/v5.readN /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:634 s=617
+   465: 0x10076f39b M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).readN /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:606 s=604
+   466: 0x100775feb M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).decodeStringTemp /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:116 s=98
+   467: 0x100771383 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).decodeStruct /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_map.go:318 s=310
+   468: 0x10020cb38 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1104 s=878
+   469: 0x100700e9f M=1 go.uber.org/zap/zapcore.encodeTimeLayout /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/encoder.go:127 s=117
+   470: 0x100700f37 M=1 go.uber.org/zap/zapcore.ISO8601TimeEncoder /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/encoder.go:136 s=135
+   471: 0x1006ff4b7 M=1 go.uber.org/zap/zapcore.consoleEncoder.EncodeEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:81 s=70
+   472: 0x100225138 M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:632 s=492
+   473: 0x100224633 M=1 runtime.sweepone /usr/local/go/src/runtime/mgcsweep.go:391 s=354
+   474: 0x10020b1c3 M=1 runtime.unlock2 /usr/local/go/src/runtime/lock_sema.go:117 s=102
+   475: 0x10020b96b M=1 runtime.unlockWithRank /usr/local/go/src/runtime/lockrank_off.go:32 s=31
+   476: 0x10023d267 M=1 runtime.forEachP /usr/local/go/src/runtime/proc.go:1691 s=1658
+   477: 0x100214b00 M=1 runtime.heapBits.nextFast /usr/local/go/src/runtime/mbitmap.go:491 s=489
+   478: 0x100285ad8 M=1 time.Time.appendFormat /usr/local/go/src/time/format.go:679 s=648
+   479: 0x1002857af M=1 time.Time.AppendFormat /usr/local/go/src/time/format.go:644 s=636
+   480: 0x1002855b3 M=1 time.Time.Format /usr/local/go/src/time/format.go:630 s=620
+   481: 0x100700e77 M=1 go.uber.org/zap/zapcore.encodeTimeLayout /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/encoder.go:127 s=117
+   482: 0x1003b85b8 M=1 encoding/hex.Encode /usr/local/go/src/encoding/hex/hex.go:48 s=44
+   483: 0x10058a577 M=1 github.com/google/uuid.encodeHex /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/uuid.go:201 s=200
+   484: 0x100588a7b M=1 github.com/google/uuid.UUID.MarshalText /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/marshal.go:12 s=10
+   485: 0x10020cce8 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1135 s=878
+   486: 0x100412dd0 M=1 net/url.escape /usr/local/go/src/net/url/url.go:285 s=285
+   487: 0x10041570b M=1 net/url.(*URL).setPath /usr/local/go/src/net/url/url.go:679 s=673
+   488: 0x100414947 M=1 net/url.parse /usr/local/go/src/net/url/url.go:573 s=499
+   489: 0x100413ed3 M=1 net/url.ParseRequestURI /usr/local/go/src/net/url/url.go:488 s=487
+   490: 0x1004ec457 M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1078 s=1034
+   491: 0x10023e7cb M=1 runtime.handoffp /usr/local/go/src/runtime/proc.go:2446 s=2440
+   492: 0x10023d383 M=1 runtime.forEachP /usr/local/go/src/runtime/proc.go:1706 s=1658
+   493: 0x1002e4554 M=1 internal/poll.(*pollDesc).prepare /usr/local/go/src/internal/poll/fd_poll_runtime.go:68 s=64
+   494: 0x1002e4653 M=1 internal/poll.(*pollDesc).prepareWrite /usr/local/go/src/internal/poll/fd_poll_runtime.go:77 s=76
+   495: 0x1002e5bdb M=1 internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go:374 s=369
+   496: 0x10020cb28 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1104 s=878
+   497: 0x1002d6edf M=1 reflect.Value.extendSlice /usr/local/go/src/reflect/value.go:2820 s=2815
+   498: 0x1002d70db M=1 reflect.AppendSlice /usr/local/go/src/reflect/value.go:2850 s=2844
+   499: 0x100256e4f M=1 runtime.read /usr/local/go/src/runtime/sys_darwin.go:269 s=268
+   500: 0x1002345b3 M=1 runtime.netpoll /usr/local/go/src/runtime/netpoll_kqueue.go:157 s=110
+   501: 0x100214898 M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:349 s=332
+   502: 0x100703327 M=1 go.uber.org/zap/zapcore.(*CheckedEntry).reset /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:227 s=220
+   503: 0x100702bef M=1 go.uber.org/zap/zapcore.getCheckedEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:46 s=44
+   504: 0x100275880 M=1 sync.(*Map).Load /usr/local/go/src/sync/map.go:142 s=120
+   505: 0x1007770a3 M=1 github.com/vmihailenco/msgpack/v5.getDecoder /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:49 s=48
+   506: 0x10076c417 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:308 s=307
+   507: 0x1002673fc M=1 syscall.syscall /usr/local/go/src/runtime/sys_darwin.go:22 s=21
+   508: 0x10022518c M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:640 s=492
+   509: 0x10021d1d4 M=1 runtime.markroot /usr/local/go/src/runtime/mgcmark.go:207 s=162
+   510: 0x1002eed7c M=1 fmt.(*fmt).clearflags /usr/local/go/src/fmt/format.go:55 s=54
+   511: 0x1002eede3 M=1 fmt.(*fmt).init /usr/local/go/src/fmt/format.go:60 s=58
+   512: 0x1002f23bb M=1 fmt.newPrinter /usr/local/go/src/fmt/print.go:156 s=151
+   513: 0x100214804 M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:332 s=332
+   514: 0x10070840f M=1 go.uber.org/zap/zapcore.(*jsonEncoder).addKey /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:451 s=448
+   515: 0x1007068f3 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).AddString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:200 s=199
+   516: 0x100214420 M=1 runtime.(*mspan).divideByElemSize /usr/local/go/src/runtime/mbitmap.go:209 s=205
+   517: 0x100214463 M=1 runtime.(*mspan).objIndex /usr/local/go/src/runtime/mbitmap.go:219 s=218
+   518: 0x10021493b M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:362 s=332
+   519: 0x100277f87 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:133 s=127
+   520: 0x100226b00 M=1 runtime.arenaIndex /usr/local/go/src/runtime/mheap.go:596 s=595
+   521: 0x100226bd3 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:682 s=676
+   522: 0x1002366c4 M=1 runtime.freedefer /usr/local/go/src/runtime/panic.go:399 s=388
+   523: 0x1002e5db7 M=1 internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go:388 s=369
+   524: 0x10023d5a3 M=1 runtime.runSafePointFn /usr/local/go/src/runtime/proc.go:1764 s=1750
+   525: 0x100241b6f M=1 runtime.exitsyscall0 /usr/local/go/src/runtime/proc.go:4123 s=4087
+   526: 0x100277460 M=1 sync.(*Mutex).lockSlow /usr/local/go/src/sync/mutex.go:122 s=117
+   527: 0x100246cf8 M=1 runtime.procPin /usr/local/go/src/runtime/proc.go:6335 s=6330
+   528: 0x100265a3f M=1 sync.runtime_procPin /usr/local/go/src/runtime/proc.go:6347 s=6346
+   529: 0x1002f2573 M=1 fmt.(*pp).free /usr/local/go/src/fmt/print.go:181 s=161
+   530: 0x1002f2d67 M=1 fmt.Fprint /usr/local/go/src/fmt/print.go:264 s=260
+   531: 0x100226c44 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:700 s=676
+   532: 0x1004eec7b M=1 net/http.(*conn).hijacked /usr/local/go/src/net/http/server.go:312 s=309
+   533: 0x1004f6547 M=1 net/http.(*response).write /usr/local/go/src/net/http/server.go:1603 s=1602
+   534: 0x1004f63bf M=1 net/http.(*response).Write /usr/local/go/src/net/http/server.go:1594 s=1593
+   535: 0x100790da3 M=1 main.writeResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:14 s=11
+   536: 0x1004f6540 M=1 net/http.(*response).write /usr/local/go/src/net/http/server.go:1603 s=1602
+   537: 0x100790d1f M=1 main.writeResponse /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/http_utils.go:13 s=11
+   538: 0x100226c38 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:702 s=676
+   539: 0x1002f5697 M=1 fmt.(*pp).printArg /usr/local/go/src/fmt/print.go:683 s=681
+   540: 0x1002f8fa3 M=1 fmt.(*pp).doPrint /usr/local/go/src/fmt/print.go:1211 s=1203
+   541: 0x100201c80 M=1 runtime/internal/atomic.(*Uint8).Load /usr/local/go/src/runtime/internal/atomic/types.go:124 s=123
+   542: 0x1002268a3 M=1 runtime.(*mSpanStateBox).get /usr/local/go/src/runtime/mheap.go:395 s=394
+   543: 0x100214883 M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:349 s=332
+   544: 0x1002e4d27 M=1 internal/poll.setDeadlineImpl /usr/local/go/src/internal/poll/fd_poll_runtime.go:162 s=146
+   545: 0x1002e4ad3 M=1 internal/poll.(*FD).SetReadDeadline /usr/local/go/src/internal/poll/fd_poll_runtime.go:138 s=137
+   546: 0x1003eac87 M=1 net.(*netFD).SetReadDeadline /usr/local/go/src/net/fd_posix.go:142 s=141
+   547: 0x1003fccaf M=1 net.(*conn).SetReadDeadline /usr/local/go/src/net/net.go:250 s=246
+   548: 0x1004f0757 M=1 net/http.(*connReader).abortPendingRead /usr/local/go/src/net/http/server.go:720 s=713
+   549: 0x1004f6adb M=1 net/http.(*response).finishRequest /usr/local/go/src/net/http/server.go:1654 s=1642
+   550: 0x100241d5b M=1 runtime.newproc.func1 /usr/local/go/src/runtime/proc.go:4251 s=4244
+   551: 0x1006feb40 M=1 go.uber.org/zap/buffer.Pool.Get /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/pool.go:41 s=40
+   552: 0x100707be3 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).clone /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:361 s=356
+   553: 0x100707ab7 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).Clone /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:351 s=350
+   554: 0x1006ff967 M=1 go.uber.org/zap/zapcore.consoleEncoder.writeContext /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:133 s=132
+   555: 0x100214430 M=1 runtime.(*mspan).objIndex /usr/local/go/src/runtime/mbitmap.go:218 s=218
+   556: 0x100253f27 M=1 runtime.CallersFrames /usr/local/go/src/runtime/symtab.go:76 s=75
+   557: 0x1002030c4 M=1 indexbytebody /usr/local/go/src/internal/bytealg/indexbyte_arm64.s:74 s=26
+   558: 0x1002fbd27 M=1 bytes.IndexByte /usr/local/go/src/bytes/bytes.go:91 s=90
+   559: 0x10047ca47 M=1 bufio.(*Reader).ReadSlice /usr/local/go/src/bufio/bufio.go:347 s=343
+   560: 0x10047cd47 M=1 bufio.(*Reader).ReadLine /usr/local/go/src/bufio/bufio.go:401 s=400
+   561: 0x100481377 M=1 net/textproto.(*Reader).readLineSlice /usr/local/go/src/net/textproto/reader.go:56 s=52
+   562: 0x10048125b M=1 net/textproto.(*Reader).ReadLine /usr/local/go/src/net/textproto/reader.go:39 s=38
+   563: 0x1004ebfdb M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1042 s=1034
+   564: 0x100215474 M=1 runtime.writeHeapBits.write /usr/local/go/src/runtime/mbitmap.go:791 s=791
+   565: 0x100215a57 M=1 runtime.heapBitsSetType /usr/local/go/src/runtime/mbitmap.go:1026 s=942
+   566: 0x10020c4d0 M=1 runtime.nextFreeFast /usr/local/go/src/runtime/malloc.go:818 s=818
+   567: 0x10020c9ef M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1015 s=878
+   568: 0x1006fe687 M=1 go.uber.org/zap/buffer.(*Buffer).String /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:94 s=93
+   569: 0x10070301b M=1 go.uber.org/zap/zapcore.EntryCaller.TrimmedPath /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:133 s=102
+   570: 0x100708c10 M=1 go.uber.org/zap/zapcore.(*jsonEncoder).tryAddRuneSelf /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:531 s=526
+   571: 0x10021ed7f M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1085 s=1036
+   572: 0x100227e0f M=1 runtime.(*mheap).allocSpan /usr/local/go/src/runtime/mheap.go:1207 s=1168
+   573: 0x10022375f M=1 runtime.(*stackScanState).putPtr /usr/local/go/src/runtime/mgcstack.go:215 s=204
+   574: 0x10021f347 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1240 s=1218
+   575: 0x10021e6cf M=1 runtime.scanstack /usr/local/go/src/runtime/mgcmark.go:819 s=733
+   576: 0x10021f18f M=1 runtime.gcDrainN /usr/local/go/src/runtime/mgcmark.go:1184 s=1150
+   577: 0x1006fff68 M=1 go.uber.org/zap/zapcore.(*ioCore).Check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/core.go:88 s=87
+   578: 0x1002e45d4 M=1 internal/poll.(*pollDesc).prepareRead /usr/local/go/src/internal/poll/fd_poll_runtime.go:73 s=72
+   579: 0x1002e55a3 M=1 internal/poll.(*FD).Read /usr/local/go/src/internal/poll/fd_unix.go:156 s=143
+   580: 0x10029fff8 M=1 context.newCancelCtx /usr/local/go/src/context/context.go:297 s=296
+   581: 0x10029fd3b M=1 context.withCancel /usr/local/go/src/context/context.go:275 s=271
+   582: 0x10020e80c M=1 runtime.mapassign /usr/local/go/src/runtime/map.go:594 s=578
+   583: 0x100777ce4 M=1 github.com/vmihailenco/msgpack/v5.addrDecoder.func1 /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:142 s=142
+   584: 0x10021f9bc M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1508 s=1458
+   585: 0x100238b63 M=1 runtime.suspendG /usr/local/go/src/runtime/preempt.go:249 s=104
+   586: 0x10021d50b M=1 runtime.markroot.func1 /usr/local/go/src/runtime/mgcmark.go:231 s=213
+   587: 0x1002b8f3c M=1 strconv.formatBits /usr/local/go/src/strconv/itoa.go:190 s=88
+   588: 0x1002b8953 M=1 strconv.AppendInt /usr/local/go/src/strconv/itoa.go:44 s=40
+   589: 0x1004f6143 M=1 net/http.writeStatusLine /usr/local/go/src/net/http/server.go:1540 s=1533
+   590: 0x1004f5b17 M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1505 s=1242
+   591: 0x100225a2f M=1 runtime.(*gcWork).init /usr/local/go/src/runtime/mgcwork.go:101 s=100
+   592: 0x100225e57 M=1 runtime.(*gcWork).tryGet /usr/local/go/src/runtime/mgcwork.go:207 s=204
+   593: 0x10021f103 M=1 runtime.gcDrainN /usr/local/go/src/runtime/mgcmark.go:1170 s=1150
+   594: 0x1002496b8 M=1 runtime.releasem /usr/local/go/src/runtime/runtime1.go:489 s=487
+   595: 0x10020cd33 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1142 s=878
+   596: 0x1004e8f0b M=1 net/http.Header.Clone /usr/local/go/src/net/http/header.go:104 s=94
+   597: 0x10021f3ec M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1269 s=1256
+   598: 0x100277f2c M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:131 s=127
+   599: 0x1004f1b5c M=1 net/http.appendTime /usr/local/go/src/net/http/server.go:947 s=937
+   600: 0x1004f517b M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1438 s=1242
+   601: 0x10035d508 M=1 strings.LastIndexByte /usr/local/go/src/strings/strings.go:223 s=222
+   602: 0x100702ed7 M=1 go.uber.org/zap/zapcore.EntryCaller.TrimmedPath /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:119 s=102
+   603: 0x100268640 M=1 runtime.systemstack /usr/local/go/src/runtime/asm_arm64.s:235 s=206
+   604: 0x100209b10 M=1 runtime.(*itabTableType).find /usr/local/go/src/runtime/iface.go:103 s=97
+   605: 0x100209857 M=1 runtime.getitab /usr/local/go/src/runtime/iface.go:55 s=34
+   606: 0x10020a9cf M=1 runtime.assertE2I2 /usr/local/go/src/runtime/iface.go:461 s=456
+   607: 0x1002f50e7 M=1 fmt.(*pp).handleMethods /usr/local/go/src/fmt/print.go:664 s=621
+   608: 0x1002f623f M=1 fmt.(*pp).printArg /usr/local/go/src/fmt/print.go:756 s=681
+   609: 0x1002f8573 M=1 fmt.(*pp).doPrintf /usr/local/go/src/fmt/print.go:1077 s=1021
+   610: 0x1002f2a6f M=1 fmt.Sprintf /usr/local/go/src/fmt/print.go:239 s=237
+   611: 0x10079053b M=1 main.(*cachedRepository).GetUserArticles /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/cached_repository.go:63 s=62
+   612: 0x1002d208c M=1 reflect.Value.Field /usr/local/go/src/reflect/value.go:1293 s=1266
+   613: 0x10057ae93 M=1 encoding/json.structEncoder.encode /usr/local/go/src/encoding/json/encode.go:745 s=730
+   614: 0x10076f368 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).readN /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:606 s=604
+   615: 0x1004837bc M=1 net/textproto.CanonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:644 s=632
+   616: 0x100480fff M=1 net/textproto.MIMEHeader.Get /usr/local/go/src/net/textproto/header.go:34 s=30
+   617: 0x1004e8ac7 M=1 net/http.Header.Get /usr/local/go/src/net/http/header.go:50 s=49
+   618: 0x1004f4f87 M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1426 s=1242
+   619: 0x100257067 M=1 runtime.walltime /usr/local/go/src/runtime/sys_darwin.go:356 s=354
+   620: 0x10026797b M=1 time.now /usr/local/go/src/runtime/timestub.go:16 s=15
+   621: 0x100291b23 M=1 time.Now /usr/local/go/src/time/time.go:1111 s=1110
+   622: 0x1004f747b M=1 net/http.(*conn).setState /usr/local/go/src/net/http/server.go:1793 s=1782
+   623: 0x1004f84b3 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1923 s=1846
+   624: 0x1004f8ba0 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1967 s=1846
+   625: 0x10021f280 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1225 s=1218
+   626: 0x10021d64f M=1 runtime.markrootBlock /usr/local/go/src/runtime/mgcmark.go:284 s=263
+   627: 0x10021d3b3 M=1 runtime.markroot /usr/local/go/src/runtime/mgcmark.go:176 s=162
+   628: 0x10026b248 M=1 runtime.memclrNoHeapPointers /usr/local/go/src/runtime/memclr_arm64.s:54 s=11
+   629: 0x10020a69f M=1 runtime.convTslice /usr/local/go/src/runtime/iface.go:403 s=398
+   630: 0x10078f3b3 M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:109 s=94
+   631: 0x10023bbb0 M=1 runtime.ready /usr/local/go/src/runtime/proc.go:873 s=873
+   632: 0x10023a71f M=1 runtime.goready /usr/local/go/src/runtime/proc.go:391 s=390
+   633: 0x1002339ef M=1 runtime.netpollgoready /usr/local/go/src/runtime/netpoll.go:493 s=491
+   634: 0x1002654c7 M=1 internal/poll.runtime_pollSetDeadline /usr/local/go/src/runtime/netpoll.go:401 s=327
+   635: 0x1002e4d1f M=1 internal/poll.setDeadlineImpl /usr/local/go/src/internal/poll/fd_poll_runtime.go:161 s=146
+   636: 0x1004f6090 M=1 net/http.writeStatusLine /usr/local/go/src/net/http/server.go:1533 s=1533
+   637: 0x10056680c M=1 github.com/go-chi/chi/v5.(*Context).Reset /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/context.go:87 s=82
+   638: 0x100566e0b M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:82 s=63
+   639: 0x100241303 M=1 runtime.entersyscall_gcwait /usr/local/go/src/runtime/proc.go:3850 s=3838
+   640: 0x100277490 M=1 sync.(*Mutex).lockSlow /usr/local/go/src/sync/mutex.go:126 s=117
+   641: 0x100411c64 M=1 net/url.shouldEscape /usr/local/go/src/net/url/url.go:103 s=101
+   642: 0x100412e4f M=1 net/url.escape /usr/local/go/src/net/url/url.go:289 s=285
+   643: 0x1004836a0 M=1 net/textproto.CanonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:635 s=632
+   644: 0x1004810ff M=1 net/textproto.MIMEHeader.Del /usr/local/go/src/net/textproto/header.go:55 s=54
+   645: 0x1004f5e07 M=1 net/http.(*chunkWriter).writeHeader.func1 /usr/local/go/src/net/http/server.go:1265 s=1263
+   646: 0x1004f55af M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1455 s=1242
+   647: 0x100256264 M=1 runtime.funcline1 /usr/local/go/src/runtime/symtab.go:1061 s=1054
+   648: 0x100254583 M=1 runtime.(*Frames).Next /usr/local/go/src/runtime/symtab.go:167 s=90
+   649: 0x1002827dc M=1 time.nextStdChunk /usr/local/go/src/time/format.go:287 s=184
+   650: 0x10028590f M=1 time.Time.appendFormat /usr/local/go/src/time/format.go:663 s=648
+   651: 0x1004f51b8 M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1441 s=1242
+   652: 0x10029fce0 M=1 context.WithCancel.func1 /usr/local/go/src/context/context.go:240 s=240
+   653: 0x1002e5d38 M=1 internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go:383 s=369
+   654: 0x10026b1b8 M=1 runtime.duffcopy /usr/local/go/src/runtime/duff_arm64.s:252 s=74
+   655: 0x10072516b M=1 go.uber.org/zap.(*Logger).check /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/logger.go:372 s=289
+   656: 0x10021ed88 M=1 runtime.gcDrain /usr/local/go/src/runtime/mgcmark.go:1089 s=1036
+   657: 0x10023d597 M=1 runtime.runSafePointFn /usr/local/go/src/runtime/proc.go:1762 s=1750
+   658: 0x100240dff M=1 runtime.goexit0 /usr/local/go/src/runtime/proc.go:3687 s=3627
+   659: 0x10026798f M=1 time.now /usr/local/go/src/runtime/timestub.go:17 s=15
+   660: 0x1002268a4 M=1 runtime.(*mSpanStateBox).get /usr/local/go/src/runtime/mheap.go:395 s=394
+   661: 0x1002f5657 M=1 fmt.(*pp).printArg /usr/local/go/src/fmt/print.go:682 s=681
+   662: 0x1002e4578 M=1 internal/poll.(*pollDesc).prepare /usr/local/go/src/internal/poll/fd_poll_runtime.go:69 s=64
+   663: 0x100218114 M=1 runtime.lockRankMayQueueFinalizer /usr/local/go/src/runtime/mfinal.go:91 s=90
+   664: 0x10029fc13 M=1 context.WithCancel /usr/local/go/src/context/context.go:240 s=238
+   665: 0x1004eaaa8 M=1 net/http.(*Request).Context /usr/local/go/src/net/http/request.go:342 s=340
+   666: 0x100566e53 M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:84 s=63
+   667: 0x10020f42c M=1 runtime.mapiternext /usr/local/go/src/runtime/map.go:979 s=866
+   668: 0x1004e8ef3 M=1 net/http.Header.Clone /usr/local/go/src/net/http/header.go:101 s=94
+   669: 0x100483a5c M=1 net/textproto.canonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:730 s=727
+   670: 0x100482bcf M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:528 s=487
+   671: 0x10020dd73 M=1 runtime.makemap /usr/local/go/src/runtime/map.go:312 s=304
+   672: 0x1004827f7 M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:500 s=487
+   673: 0x10028ee24 M=1 time.(*Time).nsec /usr/local/go/src/time/time.go:166 s=165
+   674: 0x10028f53b M=1 time.Time.Equal /usr/local/go/src/time/time.go:299 s=295
+   675: 0x1004f280b M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1034 s=961
+   676: 0x100201c58 M=1 runtime/internal/atomic.(*Int64).Add /usr/local/go/src/runtime/internal/atomic/types.go:109 s=108
+   677: 0x10021d263 M=1 runtime.markroot /usr/local/go/src/runtime/mgcmark.go:249 s=162
+   678: 0x10035b814 M=1 strings.(*byteReplacer).Replace /usr/local/go/src/strings/replace.go:444 s=440
+   679: 0x100359877 M=1 strings.(*Replacer).Replace /usr/local/go/src/strings/replace.go:97 s=95
+   680: 0x1004e9c4b M=1 net/http.Header.writeSubset /usr/local/go/src/net/http/header.go:212 s=196
+   681: 0x10028fb84 M=1 time.Time.locabs /usr/local/go/src/time/time.go:481 s=481
+   682: 0x100285883 M=1 time.Time.appendFormat /usr/local/go/src/time/format.go:650 s=648
+   683: 0x10023e84f M=1 runtime.wakep /usr/local/go/src/runtime/proc.go:2525 s=2510
+   684: 0x10020af20 M=1 runtime.lock2 /usr/local/go/src/runtime/lock_sema.go:47 s=38
+   685: 0x100266a1b M=1 sync.runtime_notifyListNotifyAll /usr/local/go/src/runtime/sema.go:546 s=537
+   686: 0x10027534f M=1 sync.(*Cond).Broadcast /usr/local/go/src/sync/cond.go:92 s=90
+   687: 0x1004f0663 M=1 net/http.(*connReader).backgroundRead /usr/local/go/src/net/http/server.go:710 s=673
+   688: 0x10035f250 M=1 strings.indexFunc /usr/local/go/src/strings/strings.go:828 s=827
+   689: 0x10035f1cf M=1 strings.IndexFunc /usr/local/go/src/strings/strings.go:815 s=814
+   690: 0x1004ebb83 M=1 net/http.validMethod /usr/local/go/src/net/http/request.go:835 s=821
+   691: 0x1004ec1df M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1056 s=1034
+   692: 0x1002144ac M=1 runtime.(*mspan).markBitsForIndex /usr/local/go/src/runtime/mbitmap.go:229 s=228
+   693: 0x1002331d7 M=1 runtime.wbBufFlush1 /usr/local/go/src/runtime/mwbbuf.go:266 s=215
+   694: 0x100258b00 M=1 runtime.nobarrierWakeTime /usr/local/go/src/runtime/time.go:760 s=757
+   695: 0x10023fcd7 M=1 runtime.checkTimersNoP /usr/local/go/src/runtime/proc.go:3137 s=3134
+   696: 0x10023f277 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2946 s=2672
+   697: 0x100214538 M=1 runtime.markBits.setMarked /usr/local/go/src/runtime/mbitmap.go:247 s=243
+   698: 0x10021f8d7 M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1483 s=1458
+   699: 0x10021f367 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1238 s=1218
+   700: 0x10021d423 M=1 runtime.markroot /usr/local/go/src/runtime/mgcmark.go:170 s=162
+   701: 0x100775690 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeString /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:43 s=34
+   702: 0x100260d64 M=1 runtime.resolveTypeOff /usr/local/go/src/runtime/type.go:257 s=230
+   703: 0x100260f6b M=1 runtime.(*_type).typeOff /usr/local/go/src/runtime/type.go:269 s=268
+   704: 0x1002662cb M=1 reflect.resolveTypeOff /usr/local/go/src/runtime/runtime1.go:519 s=518
+   705: 0x1002c7f8f M=1 reflect.(*rtype).typeOff /usr/local/go/src/reflect/type.go:733 s=732
+   706: 0x1002ca403 M=1 reflect.(*rtype).ptrTo /usr/local/go/src/reflect/type.go:1467 s=1465
+   707: 0x1002cfe0b M=1 reflect.Value.Addr /usr/local/go/src/reflect/value.go:278 s=271
+   708: 0x100579467 M=1 encoding/json.addrTextMarshalerEncoder /usr/local/go/src/encoding/json/encode.go:522 s=521
+   709: 0x100226c04 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:698 s=676
+   710: 0x10078e4cf M=1 main.(*app).parseUserID /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:34 s=27
+   711: 0x10020c698 M=1 runtime.(*mcache).nextFree /usr/local/go/src/runtime/malloc.go:868 s=845
+   712: 0x1004827c7 M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:497 s=487
+   713: 0x10076c42c M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).DecodeValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:309 s=307
+   714: 0x10021f8c0 M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1480 s=1458
+   715: 0x100249780 M=1 runtime.puintptr.ptr /usr/local/go/src/runtime/runtime2.go:285 s=285
+   716: 0x100232e3f M=1 runtime.(*consistentHeapStats).release /usr/local/go/src/runtime/mstats.go:787 s=786
+   717: 0x100228caf M=1 runtime.(*mheap).freeSpanLocked /usr/local/go/src/runtime/mheap.go:1625 s=1580
+   718: 0x100228953 M=1 runtime.(*mheap).freeSpan.func1 /usr/local/go/src/runtime/mheap.go:1555 s=1539
+   719: 0x1002288af M=1 runtime.(*mheap).freeSpan /usr/local/go/src/runtime/mheap.go:1539 s=1538
+   720: 0x100224e93 M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:744 s=492
+   721: 0x1002cfc18 M=1 reflect.flag.mustBeAssignable /usr/local/go/src/reflect/value.go:251 s=247
+   722: 0x1002d5b43 M=1 reflect.Value.SetString /usr/local/go/src/reflect/value.go:2437 s=2436
+   723: 0x100775a33 M=1 github.com/vmihailenco/msgpack/v5.decodeStringValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:67 s=62
+   724: 0x100481b50 M=1 net/textproto.(*Reader).readContinuedLineSlice /usr/local/go/src/net/textproto/reader.go:147 s=123
+   725: 0x100482a4f M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:518 s=487
+   726: 0x1006fe60c M=1 go.uber.org/zap/buffer.(*Buffer).Bytes /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:89 s=88
+   727: 0x1006ffa53 M=1 go.uber.org/zap/zapcore.consoleEncoder.writeContext /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/console_encoder.go:149 s=132
+   728: 0x1002ff680 M=1 bytes.Index /usr/local/go/src/bytes/bytes.go:1247 s=1247
+   729: 0x1002fff43 M=1 bytes.Cut /usr/local/go/src/bytes/bytes.go:1341 s=1340
+   730: 0x100483493 M=1 net/textproto.(*Reader).upcomingHeaderKeys /usr/local/go/src/net/textproto/reader.go:610 s=600
+   731: 0x100482787 M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:492 s=487
+   732: 0x100246c98 M=1 runtime.(*gList).pop /usr/local/go/src/runtime/proc.go:6309 s=6307
+   733: 0x1002424f3 M=1 runtime.gfget /usr/local/go/src/runtime/proc.go:4450 s=4429
+   734: 0x10021f274 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1239 s=1218
+   735: 0x10021eaff M=1 runtime.scanframeworker /usr/local/go/src/runtime/mgcmark.go:977 s=918
+   736: 0x10023a6a4 M=1 runtime.goparkunlock /usr/local/go/src/runtime/proc.go:388 s=386
+   737: 0x10024b0cf M=1 runtime.semacquire1 /usr/local/go/src/runtime/sema.go:160 s=114
+   738: 0x10024af5b M=1 runtime.semacquire /usr/local/go/src/runtime/sema.go:111 s=110
+   739: 0x100219e53 M=1 runtime.gcMarkDone /usr/local/go/src/runtime/mgc.go:787 s=784
+   740: 0x10021dd2b M=1 runtime.gcAssistAlloc /usr/local/go/src/runtime/mgcmark.go:483 s=405
+   741: 0x10057de6f M=1 encoding/json.(*encodeState).string /usr/local/go/src/encoding/json/encode.go:1097 s=1029
+   742: 0x10057a2b3 M=1 encoding/json.stringEncoder /usr/local/go/src/encoding/json/encode.go:645 s=617
+   743: 0x10020c7d8 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:878 s=878
+   744: 0x100482e2b M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:551 s=487
+   745: 0x100224b4c M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:628 s=492
+   746: 0x100482f0c M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:564 s=487
+   747: 0x100224550 M=1 runtime.sweepone /usr/local/go/src/runtime/mgcsweep.go:354 s=354
+   748: 0x100566cfc M=1 github.com/go-chi/chi/v5.(*Mux).ServeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:71 s=63
+   749: 0x1002844c0 M=1 time.appendNano /usr/local/go/src/time/format.go:500 s=493
+   750: 0x10028637b M=1 time.Time.appendFormat /usr/local/go/src/time/format.go:810 s=648
+   751: 0x1004f8460 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:1921 s=1846
+   752: 0x10058a570 M=1 github.com/google/uuid.encodeHex /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/uuid.go:201 s=200
+   753: 0x1006fe608 M=1 go.uber.org/zap/buffer.(*Buffer).Bytes /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:89 s=88
+   754: 0x100707acf M=1 go.uber.org/zap/zapcore.(*jsonEncoder).Clone /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/json_encoder.go:352 s=350
+   755: 0x100236390 M=1 runtime.deferprocStack /usr/local/go/src/runtime/panic.go:309 s=307
+   756: 0x1002f52e7 M=1 fmt.(*pp).handleMethods /usr/local/go/src/fmt/print.go:672 s=621
+   757: 0x100233174 M=1 runtime.wbBufFlush1 /usr/local/go/src/runtime/mwbbuf.go:250 s=215
+   758: 0x10021a0ff M=1 runtime.gcMarkDone.func2 /usr/local/go/src/runtime/mgc.go:872 s=870
+   759: 0x100219fb7 M=1 runtime.gcMarkDone /usr/local/go/src/runtime/mgc.go:870 s=784
+   760: 0x10023449c M=1 runtime.netpoll /usr/local/go/src/runtime/netpoll_kqueue.go:128 s=110
+   761: 0x1002b9204 M=1 strconv.formatBits /usr/local/go/src/strconv/itoa.go:136 s=88
+   762: 0x1004f45af M=1 net/http.(*chunkWriter).writeHeader /usr/local/go/src/net/http/server.go:1313 s=1242
+   763: 0x100209948 M=1 runtime.getitab /usr/local/go/src/runtime/iface.go:81 s=34
+   764: 0x10020a923 M=1 runtime.assertE2I /usr/local/go/src/runtime/iface.go:453 s=448
+   765: 0x100778ba7 M=1 github.com/vmihailenco/msgpack/v5.unmarshalBinaryValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:238 s=232
+   766: 0x100255b00 M=1 runtime.pcvalue /usr/local/go/src/runtime/symtab.go:951 s=911
+   767: 0x1002565cb M=1 runtime.pcdatavalue /usr/local/go/src/runtime/symtab.go:1109 s=1105
+   768: 0x100252317 M=1 runtime.(*stkframe).getStackMap /usr/local/go/src/runtime/stkframe.go:172 s=157
+   769: 0x10021ea8f M=1 runtime.scanframeworker /usr/local/go/src/runtime/mgcmark.go:967 s=918
+   770: 0x1002f23f0 M=1 fmt.(*pp).free /usr/local/go/src/fmt/print.go:161 s=161
+   771: 0x100203178 M=1 internal/bytealg.IndexByteString /usr/local/go/src/internal/bytealg/indexbyte_arm64.s:17 s=14
+   772: 0x10035cf9b M=1 strings.IndexByte /usr/local/go/src/strings/strings.go:111 s=110
+   773: 0x1003612c3 M=1 strings.Index /usr/local/go/src/strings/strings.go:1184 s=1178
+   774: 0x100361a8b M=1 strings.Cut /usr/local/go/src/strings/strings.go:1263 s=1262
+   775: 0x1004ebca7 M=1 net/http.parseRequestLine /usr/local/go/src/net/http/request.go:995 s=993
+   776: 0x1004ec0bf M=1 net/http.readRequest /usr/local/go/src/net/http/request.go:1052 s=1034
+   777: 0x100278a80 M=1 sync.indexLocal /usr/local/go/src/sync/pool.go:279 s=279
+   778: 0x10076a9b7 M=1 github.com/vmihailenco/msgpack/v5.PutDecoder /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:47 s=44
+   779: 0x100258b10 M=1 runtime.nobarrierWakeTime /usr/local/go/src/runtime/time.go:763 s=757
+   780: 0x100281508 M=1 time.nextStdChunk /usr/local/go/src/time/format.go:226 s=184
+   781: 0x100768a6c M=1 github.com/klauspost/compress/s2.s2Decode /Users/sergey/go/pkg/mod/github.com/klauspost/compress@v1.15.15/s2/decode_arm64.s:190 s=63
+   782: 0x10076614b M=1 github.com/klauspost/compress/s2.Decode /Users/sergey/go/pkg/mod/github.com/klauspost/compress@v1.15.15/s2/decode.go:80 s=70
+   783: 0x10078d893 M=1 github.com/go-redis/cache/v8.(*Cache)._unmarshal /Users/sergey/go/pkg/mod/github.com/go-redis/cache/v8@v8.4.4/cache.go:395 s=370
+   784: 0x100255744 M=1 runtime.funcInfo.valid /usr/local/go/src/runtime/symtab.go:837 s=837
+   785: 0x10025d817 M=1 runtime.gentraceback /usr/local/go/src/runtime/traceback.go:252 s=32
+   786: 0x100483974 M=1 net/textproto.validHeaderFieldByte /usr/local/go/src/net/textproto/reader.go:687 s=663
+   787: 0x1004836d3 M=1 net/textproto.CanonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:637 s=632
+   788: 0x100256884 M=1 runtime.step /usr/local/go/src/runtime/symtab.go:1162 s=1151
+   789: 0x10020f678 M=1 runtime.mapiternext /usr/local/go/src/runtime/map.go:924 s=866
+   790: 0x10020f34f M=1 runtime.mapiterinit /usr/local/go/src/runtime/map.go:863 s=815
+   791: 0x1004e8f8b M=1 net/http.Header.Clone /usr/local/go/src/net/http/header.go:106 s=94
+   792: 0x100214884 M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:349 s=332
+   793: 0x10078efcb M=1 main.(*app).userArticlesHandler /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:95 s=94
+   794: 0x1004b5ce0 M=1 vendor/golang.org/x/net/http/httpguts.ValidHeaderFieldValue /usr/local/go/src/vendor/golang.org/x/net/http/httpguts/httplex.go:315 s=308
+   795: 0x100226c24 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:702 s=676
+   796: 0x100266d3b M=1 sync.runtime_nanotime /usr/local/go/src/runtime/sema.go:632 s=631
+   797: 0x10027777f M=1 sync.(*Mutex).lockSlow /usr/local/go/src/sync/mutex.go:172 s=117
+   798: 0x100267ab4 M=1 aeshashbody /usr/local/go/src/runtime/asm_arm64.s:615 s=571
+   799: 0x100212ceb M=1 runtime.mapaccess2_faststr /usr/local/go/src/runtime/map_faststr.go:175 s=108
+   800: 0x1005684db M=1 github.com/go-chi/chi/v5.(*Mux).routeHTTP /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:436 s=415
+   801: 0x10021f2d0 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1232 s=1218
+   802: 0x1002268b0 M=1 runtime.(*mspan).base /usr/local/go/src/runtime/mheap.go:501 s=500
+   803: 0x100214453 M=1 runtime.(*mspan).objIndex /usr/local/go/src/runtime/mbitmap.go:219 s=218
+   804: 0x1004f29f7 M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1045 s=961
+   805: 0x1002a08b0 M=1 context.(*cancelCtx).Value /usr/local/go/src/context/context.go:406 s=406
+   806: 0x1002a05ff M=1 context.parentCancelCtx /usr/local/go/src/context/context.go:356 s=351
+   807: 0x1002a0193 M=1 context.propagateCancel /usr/local/go/src/context/context.go:318 s=304
+   808: 0x100228b94 M=1 runtime.(*mheap).freeSpanLocked /usr/local/go/src/runtime/mheap.go:1616 s=1580
+   809: 0x1003fc323 M=1 net.(*conn).Read /usr/local/go/src/net/net.go:185 s=179
+   810: 0x1004f02fc M=1 net/http.(*connReader).startBackgroundRead /usr/local/go/src/net/http/server.go:670 s=659
+   811: 0x100226bd4 M=1 runtime.spanOf /usr/local/go/src/runtime/mheap.go:682 s=676
+   812: 0x100262f43 M=1 runtime.injectglist.func1 /usr/local/go/src/runtime/proc.go:3285 s=3282
+   813: 0x100214cd7 M=1 runtime.bulkBarrierPreWrite /usr/local/go/src/runtime/mbitmap.go:577 s=534
+   814: 0x100214117 M=1 runtime.typedmemclr /usr/local/go/src/runtime/mbarrier.go:319 s=317
+   815: 0x1004f28cb M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1038 s=961
+   816: 0x10023c0cf M=1 runtime.casgstatus /usr/local/go/src/runtime/proc.go:1025 s=996
+   817: 0x10021df2f M=1 runtime.gcAssistAlloc1 /usr/local/go/src/runtime/mgcmark.go:569 s=530
+   818: 0x10057af08 M=1 encoding/json.structEncoder.encode /usr/local/go/src/encoding/json/encode.go:751 s=730
+   819: 0x100277f5c M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:133 s=127
+   820: 0x100277e9f M=1 sync.(*Pool).Put /usr/local/go/src/sync/pool.go:109 s=95
+   821: 0x10021f264 M=1 runtime.scanblock /usr/local/go/src/runtime/mgcmark.go:1235 s=1218
+   822: 0x1004f8f83 M=1 net/http.(*conn).serve /usr/local/go/src/net/http/server.go:2009 s=1846
+   823: 0x100263330 M=1 runtime.(*scavengerState).init.func2 /usr/local/go/src/runtime/mgcscavenge.go:367 s=367
+   824: 0x10022245b M=1 runtime.(*scavengerState).run /usr/local/go/src/runtime/mgcscavenge.go:577 s=551
+   825: 0x10022259f M=1 runtime.bgscavenge /usr/local/go/src/runtime/mgcscavenge.go:631 s=624
+   826: 0x10026b330 M=1 runtime.memclrNoHeapPointers /usr/local/go/src/runtime/memclr_arm64.s:148 s=11
+   827: 0x1004f2887 M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1038 s=961
+   828: 0x1004f73a0 M=1 net/http.(*conn).setState /usr/local/go/src/net/http/server.go:1782 s=1782
+   829: 0x10021f4e8 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1325 s=1256
+   830: 0x1002030c8 M=1 indexbytebody /usr/local/go/src/internal/bytealg/indexbyte_arm64.s:75 s=26
+   831: 0x100253c5b M=1 runtime.findnull /usr/local/go/src/runtime/string.go:537 s=504
+   832: 0x100253c93 M=1 runtime.gostringnocopy /usr/local/go/src/runtime/string.go:561 s=560
+   833: 0x100255ee7 M=1 runtime.funcname /usr/local/go/src/runtime/symtab.go:1011 s=1010
+   834: 0x100254187 M=1 runtime.(*Frames).Next /usr/local/go/src/runtime/symtab.go:119 s=90
+   835: 0x10021f458 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1308 s=1256
+   836: 0x1002f9ed0 M=1 bytes.(*Buffer).Write /usr/local/go/src/bytes/buffer.go:168 s=166
+   837: 0x10057e583 M=1 encoding/json.(*encodeState).stringBytes /usr/local/go/src/encoding/json/encode.go:1167 s=1101
+   838: 0x1002806c8 M=1 time.nextStdChunk /usr/local/go/src/time/format.go:264 s=184
+   839: 0x100280630 M=1 time.nextStdChunk /usr/local/go/src/time/format.go:185 s=184
+   840: 0x1004ff0ec M=1 net/http.checkConnErrorWriter.Write /usr/local/go/src/net/http/server.go:3598 s=3597
+   841: 0x100238b3f M=1 runtime.suspendG /usr/local/go/src/runtime/preempt.go:246 s=104
+   842: 0x1004ebc0c M=1 net/http.parseRequestLine /usr/local/go/src/net/http/request.go:994 s=993
+   843: 0x100226890 M=1 runtime.(*mSpanStateBox).get /usr/local/go/src/runtime/mheap.go:394 s=394
+   844: 0x100224933 M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:508 s=492
+   845: 0x1002636cf M=1 runtime.gcMarkTermination.func4.1 /usr/local/go/src/runtime/mgc.go:1110 s=1109
+   846: 0x10023d22f M=1 runtime.forEachP /usr/local/go/src/runtime/proc.go:1685 s=1658
+   847: 0x10021a723 M=1 runtime.gcMarkTermination /usr/local/go/src/runtime/mgc.go:1108 s=923
+   848: 0x100231b80 M=1 runtime.(*spanSet).reset /usr/local/go/src/runtime/mspanset.go:237 s=230
+   849: 0x100224267 M=1 runtime.finishsweep_m /usr/local/go/src/runtime/mgcsweep.go:260 s=231
+   850: 0x1002638fb M=1 runtime.gcStart.func1 /usr/local/go/src/runtime/mgc.go:668 s=667
+   851: 0x100219bdf M=1 runtime.gcStart /usr/local/go/src/runtime/mgc.go:667 s=578
+   852: 0x10020ce17 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1172 s=878
+   853: 0x10021321b M=1 runtime.mapassign_faststr /usr/local/go/src/runtime/map_faststr.go:221 s=203
+   854: 0x100483023 M=1 net/textproto.readMIMEHeader /usr/local/go/src/net/textproto/reader.go:571 s=487
+   855: 0x10023f8fb M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3048 s=3038
+   856: 0x10026b364 M=1 runtime.memclrNoHeapPointers /usr/local/go/src/runtime/memclr_arm64.s:171 s=11
+   857: 0x10020d0af M=1 runtime.newarray /usr/local/go/src/runtime/malloc.go:1276 s=1268
+   858: 0x10026434b M=1 reflect.unsafe_NewArray /usr/local/go/src/runtime/malloc.go:1281 s=1280
+   859: 0x1002d7693 M=1 reflect.MakeSlice /usr/local/go/src/reflect/value.go:3091 s=3077
+   860: 0x1007749b7 M=1 github.com/vmihailenco/msgpack/v5.growSliceValue /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_slice.go:122 s=117
+   861: 0x1002854fc M=1 time.Time.Format /usr/local/go/src/time/format.go:620 s=620
+   862: 0x1002773f4 M=1 sync.(*Mutex).Lock /usr/local/go/src/sync/mutex.go:87 s=81
+   863: 0x1002cf340 M=1 reflect.unpackEface /usr/local/go/src/reflect/value.go:149 s=146
+   864: 0x1002d7a8b M=1 reflect.ValueOf /usr/local/go/src/reflect/value.go:3150 s=3139
+   865: 0x10057798f M=1 encoding/json.(*encodeState).marshal /usr/local/go/src/encoding/json/encode.go:330 s=320
+   866: 0x100277910 M=1 sync.(*Mutex).Unlock /usr/local/go/src/sync/mutex.go:212 s=212
+   867: 0x1004f01eb M=1 net/http.(*connReader).unlock /usr/local/go/src/net/http/server.go:657 s=657
+   868: 0x1004f0bf3 M=1 net/http.(*connReader).Read /usr/local/go/src/net/http/server.go:781 s=754
+   869: 0x10023eefb M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2743 s=2672
+   870: 0x10020c4fc M=1 runtime.nextFreeFast /usr/local/go/src/runtime/malloc.go:821 s=818
+   871: 0x1004812cf M=1 net/textproto.(*Reader).ReadLine /usr/local/go/src/net/textproto/reader.go:40 s=38
+   872: 0x10076ee98 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).PeekCode /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:568 s=563
+   873: 0x10076eeeb M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).hasNilCode /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:578 s=577
+   874: 0x100777fab M=1 github.com/vmihailenco/msgpack/v5.nilAwareDecoder.func2 /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_value.go:164 s=163
+   875: 0x1004841fc M=1 net/textproto.isASCIILetter /usr/local/go/src/net/textproto/textproto.go:151 s=149
+   876: 0x100481a5f M=1 net/textproto.(*Reader).readContinuedLineSlice /usr/local/go/src/net/textproto/reader.go:147 s=123
+   877: 0x100278428 M=1 sync.(*Pool).pin /usr/local/go/src/sync/pool.go:207 s=198
+   878: 0x100411c70 M=1 net/url.shouldEscape /usr/local/go/src/net/url/url.go:103 s=101
+   879: 0x1003b8544 M=1 encoding/hex.Encode /usr/local/go/src/encoding/hex/hex.go:46 s=44
+   880: 0x10058a72f M=1 github.com/google/uuid.encodeHex /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/uuid.go:207 s=200
+   881: 0x100253e78 M=1 runtime.divRoundUp /usr/local/go/src/runtime/stubs.go:425 s=422
+   882: 0x100225137 M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:632 s=492
+   883: 0x10021f8c8 M=1 runtime.greyobject /usr/local/go/src/runtime/mgcmark.go:1483 s=1458
+   884: 0x10021fe87 M=1 runtime.gcmarknewobject /usr/local/go/src/runtime/mgcmark.go:1571 s=1564
+   885: 0x10020ccaf M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1111 s=878
+   886: 0x10024f617 M=1 runtime.growslice /usr/local/go/src/runtime/slice.go:266 s=157
+   887: 0x100576de7 M=1 encoding/json.Marshal /usr/local/go/src/encoding/json/encode.go:165 s=157
+   888: 0x1006fe134 M=1 go.uber.org/zap/buffer.(*Buffer).AppendString /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:47 s=46
+   889: 0x100702ffb M=1 go.uber.org/zap/zapcore.EntryCaller.TrimmedPath /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:130 s=102
+   890: 0x10023f948 M=1 runtime.stealWork /usr/local/go/src/runtime/proc.go:3052 s=3038
+   891: 0x10057d880 M=1 encoding/json.(*encodeState).string /usr/local/go/src/encoding/json/encode.go:1033 s=1029
+   892: 0x100291874 M=1 time.absDate /usr/local/go/src/time/time.go:1027 s=966
+   893: 0x1002915c7 M=1 time.Time.date /usr/local/go/src/time/time.go:962 s=961
+   894: 0x10028fe23 M=1 time.Time.Date /usr/local/go/src/time/time.go:505 s=504
+   895: 0x1004f16ef M=1 net/http.appendTime /usr/local/go/src/net/http/server.go:942 s=937
+   896: 0x1004f9bc4 M=1 net/http.HandlerFunc.ServeHTTP /usr/local/go/src/net/http/server.go:2123 s=2121
+   897: 0x10056a950 M=1 github.com/go-chi/chi/v5.(*node).FindRoute /Users/sergey/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/tree.go:379 s=360
+   898: 0x10024034f M=1 runtime.schedule /usr/local/go/src/runtime/proc.go:3389 s=3331
+   899: 0x10021f470 M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1321 s=1256
+   900: 0x10020b1cc M=1 runtime.unlock2 /usr/local/go/src/runtime/lock_sema.go:122 s=102
+   901: 0x1002654b7 M=1 internal/poll.runtime_pollSetDeadline /usr/local/go/src/runtime/netpoll.go:399 s=327
+   902: 0x1004f07e3 M=1 net/http.(*connReader).abortPendingRead /usr/local/go/src/net/http/server.go:724 s=713
+   903: 0x100275888 M=1 sync.(*Map).Load /usr/local/go/src/sync/map.go:142 s=120
+   904: 0x100277f18 M=1 sync.(*Pool).Get /usr/local/go/src/sync/pool.go:131 s=127
+   905: 0x1004e95cf M=1 net/http.Header.sortedKeyValues /usr/local/go/src/net/http/header.go:174 s=173
+   906: 0x1004e9ab3 M=1 net/http.Header.writeSubset /usr/local/go/src/net/http/header.go:201 s=196
+   907: 0x100210538 M=1 runtime.mapaccess1_fast32 /usr/local/go/src/runtime/map_fast32.go:19 s=13
+   908: 0x100260d7f M=1 runtime.resolveTypeOff /usr/local/go/src/runtime/type.go:257 s=230
+   909: 0x100281154 M=1 time.nextStdChunk /usr/local/go/src/time/format.go:214 s=184
+   910: 0x1002156f4 M=1 runtime.writeHeapBits.flush /usr/local/go/src/runtime/mbitmap.go:870 s=843
+   911: 0x1002753a4 M=1 sync.(*copyChecker).check /usr/local/go/src/sync/cond.go:99 s=98
+   912: 0x10027533b M=1 sync.(*Cond).Broadcast /usr/local/go/src/sync/cond.go:91 s=90
+   913: 0x1004f0cd7 M=1 net/http.(*connReader).Read /usr/local/go/src/net/http/server.go:792 s=754
+   914: 0x100255a37 M=1 runtime.pcvalue /usr/local/go/src/runtime/symtab.go:946 s=911
+   915: 0x100256223 M=1 runtime.funcline1 /usr/local/go/src/runtime/symtab.go:1059 s=1054
+   916: 0x100206b77 M=1 runtime.GOMAXPROCS /usr/local/go/src/runtime/debug.go:21 s=16
+   917: 0x10027867f M=1 sync.(*Pool).pinSlow /usr/local/go/src/sync/pool.go:229 s=212
+   918: 0x100278457 M=1 sync.(*Pool).pin /usr/local/go/src/sync/pool.go:209 s=198
+   919: 0x1006fec13 M=1 go.uber.org/zap/buffer.Pool.put /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/pool.go:48 s=47
+   920: 0x1006fea2f M=1 go.uber.org/zap/buffer.(*Buffer).Free /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/buffer/buffer.go:140 s=139
+   921: 0x10070016b M=1 go.uber.org/zap/zapcore.(*ioCore).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/core.go:100 s=94
+   922: 0x10028f940 M=1 time.Time.abs /usr/local/go/src/time/time.go:461 s=461
+   923: 0x10029005f M=1 time.Time.Weekday /usr/local/go/src/time/time.go:529 s=528
+   924: 0x1004f1757 M=1 net/http.appendTime /usr/local/go/src/net/http/server.go:944 s=937
+   925: 0x10022514f M=1 runtime.(*sweepLocked).sweep /usr/local/go/src/runtime/mgcsweep.go:633 s=492
+   926: 0x1002f8264 M=1 fmt.(*pp).doPrintf /usr/local/go/src/fmt/print.go:1047 s=1021
+   927: 0x10078e773 M=1 main.(*app).parseUserID /Users/sergey/code/github.com/SergeyParamoshkin/rebrainme/examples/caching/redis/app.go:44 s=27
+   928: 0x10020cdd0 M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1164 s=878
+   929: 0x1002fa124 M=1 bytes.(*Buffer).WriteString /usr/local/go/src/bytes/buffer.go:184 s=178
+   930: 0x10057de53 M=1 encoding/json.(*encodeState).string /usr/local/go/src/encoding/json/encode.go:1095 s=1029
+   931: 0x10020c8ac M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:932 s=878
+   932: 0x100212b54 M=1 runtime.mapaccess1_faststr /usr/local/go/src/runtime/map_faststr.go:32 s=13
+   933: 0x10050328b M=1 net/http.shouldClose /usr/local/go/src/net/http/transfer.go:747 s=742
+   934: 0x10023f030 M=1 runtime.findRunnable /usr/local/go/src/runtime/proc.go:2802 s=2672
+   935: 0x10057df44 M=1 encoding/json.(*encodeState).stringBytes /usr/local/go/src/encoding/json/encode.go:1104 s=1101
+   936: 0x100265a60 M=1 sync.runtime_procUnpin /usr/local/go/src/runtime/proc.go:6354 s=6352
+   937: 0x100277eab M=1 sync.(*Pool).Put /usr/local/go/src/sync/pool.go:113 s=95
+   938: 0x100702c6b M=1 go.uber.org/zap/zapcore.putCheckedEntry /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:54 s=50
+   939: 0x10070387b M=1 go.uber.org/zap/zapcore.(*CheckedEntry).Write /Users/sergey/go/pkg/mod/go.uber.org/zap@v1.24.0/zapcore/entry.go:266 s=235
+   940: 0x100215a3c M=1 runtime.heapBitsSetType /usr/local/go/src/runtime/mbitmap.go:1026 s=942
+   941: 0x100278440 M=1 sync.(*Pool).pin /usr/local/go/src/sync/pool.go:207 s=198
+   942: 0x1003b8548 M=1 encoding/hex.Encode /usr/local/go/src/encoding/hex/hex.go:46 s=44
+   943: 0x10058a69b M=1 github.com/google/uuid.encodeHex /Users/sergey/go/pkg/mod/github.com/google/uuid@v1.3.0/uuid.go:205 s=200
+   944: 0x1004f2ab4 M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1057 s=961
+   945: 0x1002149fc M=1 runtime.heapBitsForAddr /usr/local/go/src/runtime/mbitmap.go:420 s=403
+   946: 0x1004f0e30 M=1 net/http.bufioWriterPool /usr/local/go/src/net/http/server.go:809 s=809
+   947: 0x1004f101f M=1 net/http.newBufioWriterSize /usr/local/go/src/net/http/server.go:836 s=835
+   948: 0x1004f2a8f M=1 net/http.(*conn).readRequest /usr/local/go/src/net/http/server.go:1057 s=961
+   949: 0x1004f04e4 M=1 net/http.(*connReader).backgroundRead /usr/local/go/src/net/http/server.go:674 s=673
+   950: 0x10021f44c M=1 runtime.scanobject /usr/local/go/src/runtime/mgcmark.go:1317 s=1256
+   951: 0x10023fc94 M=1 runtime.checkTimersNoP /usr/local/go/src/runtime/proc.go:3135 s=3134
+   952: 0x100214180 M=1 runtime.addb /usr/local/go/src/runtime/mbitmap.go:57 s=53
+   953: 0x100229bcf M=1 runtime.(*gcBits).bytep /usr/local/go/src/runtime/mheap.go:2058 s=2057
+   954: 0x1004b524c M=1 vendor/golang.org/x/net/http/httpguts.IsTokenRune /usr/local/go/src/vendor/golang.org/x/net/http/httpguts/httplex.go:97 s=95
+   955: 0x1004b5ad7 M=1 vendor/golang.org/x/net/http/httpguts.ValidHeaderFieldName /usr/local/go/src/vendor/golang.org/x/net/http/httpguts/httplex.go:206 s=201
+   956: 0x1004e9b83 M=1 net/http.Header.writeSubset /usr/local/go/src/net/http/header.go:204 s=196
+   957: 0x1004ebb74 M=1 net/http.validMethod /usr/local/go/src/net/http/request.go:835 s=821
+   958: 0x10076f354 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).readN /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode.go:606 s=604
+   959: 0x1007758a7 M=1 github.com/vmihailenco/msgpack/v5.(*Decoder).stringWithLen /Users/sergey/go/pkg/mod/github.com/vmihailenco/msgpack/v5@v5.3.5/decode_string.go:58 s=54
+   960: 0x1007660f8 M=1 github.com/klauspost/compress/s2.Decode /Users/sergey/go/pkg/mod/github.com/klauspost/compress@v1.15.15/s2/decode.go:80 s=70
+   961: 0x10020ca5c M=1 runtime.mallocgc /usr/local/go/src/runtime/malloc.go:1033 s=878
+   962: 0x1004eab2f M=1 net/http.(*Request).WithContext /usr/local/go/src/net/http/request.go:360 s=356
+   963: 0x100484100 M=1 net/textproto.isASCIISpace /usr/local/go/src/net/textproto/textproto.go:145 s=145
+   964: 0x100483fb3 M=1 net/textproto.TrimString /usr/local/go/src/net/textproto/textproto.go:125 s=124
+   965: 0x10047cc8c M=1 bufio.(*Reader).ReadSlice /usr/local/go/src/bufio/bufio.go:381 s=343
+   966: 0x10021499b M=1 runtime.heapBitsForAddr /usr/local/go/src/runtime/mbitmap.go:406 s=403
+   967: 0x100253c48 M=1 runtime.findnull /usr/local/go/src/runtime/string.go:535 s=504
+   968: 0x1002603a3 M=1 runtime.isSystemGoroutine /usr/local/go/src/runtime/traceback.go:1071 s=1052
+   969: 0x100241ee7 M=1 runtime.newproc1 /usr/local/go/src/runtime/proc.go:4300 s=4259
+   970: 0x1004f3437 M=1 net/http.(*response).WriteHeader /usr/local/go/src/net/http/server.go:1136 s=1135
+   971: 0x100214890 M=1 runtime.findObject /usr/local/go/src/runtime/mbitmap.go:349 s=332
+   972: 0x10023ec4b M=1 runtime.execute /usr/local/go/src/runtime/proc.go:2641 s=2628
+   973: 0x100240367 M=1 runtime.schedule /usr/local/go/src/runtime/proc.go:3398 s=3331
+   974: 0x100483a58 M=1 net/textproto.canonicalMIMEHeaderKey /usr/local/go/src/net/textproto/reader.go:730 s=727
+   975: 0x100253cc0 M=1 runtime.add /usr/local/go/src/runtime/stubs.go:18 s=17
+   976: 0x1002132bb M=1 runtime.mapassign_faststr /usr/local/go/src/runtime/map_faststr.go:229 s=203
+   977: 0x100480f2f M=1 net/textproto.MIMEHeader.Set /usr/local/go/src/net/textproto/header.go:22 s=21
+Mappings
+1: 0x0/0x0/0x0   [FN]

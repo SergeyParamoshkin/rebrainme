@@ -173,6 +173,7 @@ func Profiler() http.Handler {
 	r.Handle("/pprof/goroutine", pprof.Handler("goroutine"))
 	r.Handle("/pprof/threadcreate", pprof.Handler("threadcreate"))
 	r.Handle("/pprof/mutex", pprof.Handler("mutex"))
+	r.Handle("/pprof/cpu", pprof.Handler("cpu"))
 	r.Handle("/pprof/heap", pprof.Handler("heap"))
 	r.Handle("/pprof/block", pprof.Handler("block"))
 	r.Handle("/pprof/allocs", pprof.Handler("allocs"))
