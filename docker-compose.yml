@@ -1,42 +1,23 @@
-version: '3.7'
+version: "3.7"
 
 volumes:
-  prometheus_data:
+  rabbitmq_volume:
 
 
 services:
-  db:
-    image: postgres:15.1-bullseye
+  rabbitmq:
+    image: rabbitmq:3.12.1-management-alpine
     restart: unless-stopped
+    hostname: rabbitmq
     ports:
-      - 5432:5432
-    environment:
-      POSTGRES_DB: example
-      POSTGRES_USER: usr
-      POSTGRES_PASSWORD: pwd
-
-  jaeger:
-    image: jaegertracing/all-in-one:1.41
-    ports:
-      - "6831:6831/udp"
-      - "16686:16686"
-
-  redis:
-    image: "redis:5.0.5-alpine3.10"
-    ports:
-      - 6379:6379
-
-  prometheus:
-    image: prom/prometheus:v2.40.0
-    restart: unless-stopped
+      - 1883:1883
+      - 8883:8883
+      - 15675:15675
+      - 15676:15676
     volumes:
-      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention.time=70d'
-      - '--log.level=debug'
-      - '--web.enable-lifecycle'
-    ports:
-      - 9090:9090
+      - rabbitmq_volume:/var/lib/rabbitmq/
+      - ./configs/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=rabbit
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq.conf

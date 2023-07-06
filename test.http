@@ -1,0 +1,2 @@
+###
+GET http://0.0.0.0:9000/metrics HTTP/1.1
