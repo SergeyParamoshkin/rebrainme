@@ -1,0 +1,18 @@
+app:
+  name: ""
+http:
+  host: 0.0.0.0
+  port: ":9000"
+  metricPath: "/metric"
+  readHeaderTimeout: 10
+mqtt:
+  host: "0.0.0.0"
+  port: 1883
+  clientID: "blabla"
+  username: "rabbit"
+  password: "rabbit"
+  topic: "rabbit"
+telegram:
+  token: "5952814866:AAHqFwjFUPrK8c01sfFEX4NgsWNVjBJqOXQ"
+  debug: true
+  chatID: -919031153
