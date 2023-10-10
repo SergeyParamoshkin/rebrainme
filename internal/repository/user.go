@@ -9,7 +9,7 @@ import (
 	"dumper/pkg/postgres"
 
 	"github.com/Masterminds/squirrel"
-	"github.com/gofrs/uuid"
+	"github.com/google/uuid"
 )
 
 type PostgresUserRepository struct {
@@ -23,18 +23,23 @@ func NewPostgresUserRepository(client *postgres.Client) *PostgresUserRepository 
 }
 
 func (r *PostgresUserRepository) GetByID(ctx context.Context, id uuid.UUID) (*model.User, error) {
-	query, _, err := squirrel.Select("*").
-		From("User").
+	query, args, err := squirrel.Select("id", "username", "email").
+		From("users").
 		Where(squirrel.Eq{"id": id}).
 		PlaceholderFormat(squirrel.Dollar).ToSql()
 	if err != nil {
 		return nil, fmt.Errorf("failed to build query: %w", err)
 	}
 
-	row := r.Client.Pool.QueryRow(ctx, query)
+	r.Client.Logger.Info(query)
+	row := r.Client.Pool.QueryRow(ctx, query, args...)
 
 	var User model.User
-	err = row.Scan(&User.ID)
+	err = row.Scan(
+		&User.ID,
+		&User.Username,
+		&User.Email,
+	)
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to scan User: %w", err)

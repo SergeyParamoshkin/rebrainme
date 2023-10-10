@@ -10,27 +10,35 @@ import (
 
 type Client struct {
 	Logger *zap.Logger
+	Config *Config
 	Pool   *pgxpool.Pool
 }
 
-func NewPostgres(logger *zap.Logger) (*Client, error) {
+func NewPostgres(logger *zap.Logger, config *Config) (*Client, error) {
 	return &Client{
 		Logger: logger,
+		Config: config,
 		Pool:   nil,
 	}, nil
 }
 
 func (c *Client) Start(ctx context.Context) error {
 	connStr := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s",
-		"localhost", 5432, "postgres", "postgres")
+		c.Config.Host, c.Config.Port, c.Config.Username,
+		c.Config.Password, c.Config.Database)
 
 	pool, err := pgxpool.New(ctx, connStr)
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to connect to database: %w", err)
 	}
 
 	c.Pool = pool
+	err = c.Pool.Ping(ctx)
 
+	if err != nil {
+		return fmt.Errorf("failed to ping database: %w", err)
+	}
+	
 	return nil
 }
 
