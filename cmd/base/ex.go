@@ -40,6 +40,9 @@ func Fibonacci(n int) int {
 		return 1
 	}
 
+	// TODO:
+	// FIXME:
+	// BUG:
 	return Fibonacci(n-1) + Fibonacci(n-2)
 }
 
