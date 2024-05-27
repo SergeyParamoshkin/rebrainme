@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package reverse;
+
+option go_package = "/reverse";
+
+service Reverse { rpc Do(Request) returns (Response); }
+
+message ReverseParams {
+    int64 count = 1;
+    string message = 2;
+    optional string d = 3;
+    repeated string e = 4;
+} 
+
+message Request { 
+    string message = 1; 
+    // optional string d = 3;
+    // repeated string e = 4;
+    // reserved 2, 15, 9 to 11; 
+    map<string, ReverseParams> f = 5;
+
+}
+
+message Response { 
+    string reply = 1; 
+}
+
+// enum Enum {
+//     A = 0;
+//     B = 1;
+// }
+
+
+// service Mirror {}
+
+// service Uppercase {}
