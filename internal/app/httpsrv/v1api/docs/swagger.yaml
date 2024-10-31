@@ -1,0 +1,192 @@
+basePath: /v1
+definitions:
+  domain.Ticket:
+    properties:
+      createdAt:
+        type: string
+      id:
+        type: string
+      key:
+        type: string
+      queue:
+        type: string
+      summary:
+        type: string
+      type:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  fwerr.Code:
+    enum:
+    - INTERNAL_ERROR
+    - AUTH_ERROR
+    - FORBIDDEN
+    - DB_ERROR
+    - BAD_REQUEST
+    - NOT_FOUND
+    type: string
+    x-enum-varnames:
+    - CodeInternalError
+    - CodeAuthError
+    - CodeForbidden
+    - CodeDBError
+    - CodeBadRequest
+    - CodeNotFound
+  httpresp.ErrResponse:
+    properties:
+      code:
+        $ref: '#/definitions/fwerr.Code'
+      message:
+        type: string
+    type: object
+  v1api.infoResponse:
+    properties:
+      commit_sha:
+        type: string
+      version:
+        type: string
+    type: object
+  v1api.ticketGetResponse:
+    properties:
+      code:
+        type: string
+      data:
+        $ref: '#/definitions/v1api.ticketGetResponseData'
+    type: object
+  v1api.ticketGetResponseData:
+    properties:
+      item:
+        $ref: '#/definitions/domain.Ticket'
+      total:
+        type: integer
+    type: object
+  v1api.ticketListRequest:
+    properties:
+      filter:
+        $ref: '#/definitions/v1api.ticketListRequestFilter'
+      offset:
+        type: integer
+      size:
+        type: integer
+    type: object
+  v1api.ticketListRequestFilter:
+    properties:
+      key:
+        type: string
+    type: object
+  v1api.ticketListResponse:
+    properties:
+      code:
+        type: string
+      data:
+        $ref: '#/definitions/v1api.ticketListResponseData'
+    type: object
+  v1api.ticketListResponseData:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/domain.Ticket'
+        type: array
+      total:
+        type: integer
+    type: object
+externalDocs:
+  description: wiki.ddd.ru
+  url: https://wiki.ddd.ru/
+host: localhost:8080
+info:
+  contact:
+    name: API Support
+  description: This is a server
+  title: alerts API
+  version: v1.0
+paths:
+  /info:
+    get:
+      description: info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1api.infoResponse'
+      summary: info
+      tags:
+      - info
+  /ticket/{id}:
+    get:
+      consumes:
+      - application/json
+      description: User list
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: search
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1api.ticketGetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+      summary: it's very to get all tickets
+      tags:
+      - tickets
+  /ticket/list:
+    post:
+      consumes:
+      - application/json
+      description: User list
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/v1api.ticketListRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1api.ticketListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+      summary: it's very to get all tickets
+      tags:
+      - tickets
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"
