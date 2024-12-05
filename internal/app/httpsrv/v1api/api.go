@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/SergeyParamoshkin/alerts/internal/app/auth"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv"
+	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv/middleware"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv/v1api/docs"
 	_ "github.com/SergeyParamoshkin/alerts/internal/app/httpsrv/v1api/docs"
 	"github.com/SergeyParamoshkin/alerts/internal/tel"
@@ -23,6 +25,9 @@ type API struct {
 	logger    *zap.Logger
 	config    *Config
 	telemetry *tel.Telemetry
+
+	oauth2Controller *auth.OAuth2Controller
+	auth             *auth.Auth
 
 	ticketService TicketService
 
@@ -55,7 +60,11 @@ func (a *API) GenSwaggerJSON(host, basePath string, schemes []string) string {
 //	@host		localhost:8080
 //	@BasePath	/v1
 
-// @securityDefinitions.basic  BasicAuth
+//	@securityDefinitions.apikey	KeycloakAuth
+//	@in							header
+//	@name						Authorization
+//	@description				Keycloak authorization.
+
 // @externalDocs.description	wiki.ddd.ru
 // @externalDocs.url			https://wiki.ddd.ru/
 func New(params Params) (Result, error) {
@@ -66,11 +75,13 @@ func New(params Params) (Result, error) {
 	telemetryRegistry := telemetry.Registry()
 
 	api := &API{
-		router:        chi.NewRouter(),
-		logger:        logger,
-		config:        config,
-		telemetry:     telemetry,
-		ticketService: params.TicketService,
+		router:           chi.NewRouter(),
+		logger:           logger,
+		config:           config,
+		telemetry:        telemetry,
+		ticketService:    params.TicketService,
+		auth:             params.Auth,
+		oauth2Controller: params.OAuth2Controller,
 		promHandler: promhttp.InstrumentMetricHandler(
 			telemetryRegistry,
 			promhttp.HandlerFor(telemetryRegistry, promhttp.HandlerOpts{}),
@@ -83,13 +94,39 @@ func New(params Params) (Result, error) {
 		config.SwaggerUI.Schemes,
 	)
 
+	authMiddleware := middleware.Auth(api.logger, api.auth)
+
 	api.router.Route(fmt.Sprintf("/%s", api.Version()), func(router chi.Router) {
 		router.Use(cors.Handler(cors.Options{
 			AllowedOrigins: []string{"*"},
 			AllowedMethods: []string{"GET", "POST"},
 		}))
 
+		// router.Use(authMiddleware)
+		router.Route("/auth", func(r chi.Router) {
+			r.Group(func(r chi.Router) {
+				// r.Use(authMiddleware)
+
+				// r.Get("/me", api.authMe)
+				// r.Get("/i", api.authMe)
+				// r.Get("/status", api.authStatus)
+				// r.Get("/logout", api.authLogout) // TODO: GET?
+			})
+			r.Route("/internal", func(r chi.Router) {
+			})
+			r.Route("/oauth2", func(r chi.Router) {
+				r.Get("/login", api.oauth2Login)
+				r.Get("/callback", api.oauth2Callback)
+
+				r.Group(func(r chi.Router) {
+					r.Use(authMiddleware)
+					r.Post("/logout", api.oauth2Logout)
+				})
+			})
+		})
+
 		router.Route("/ticket", func(r chi.Router) {
+			r.Use(authMiddleware)
 			r.Get("/{id}", api.ticketGet)
 			r.Post("/list", api.ticketList)
 		})

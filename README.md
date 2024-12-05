@@ -1,0 +1,1 @@
+<http://localhost:8180/realms/wonderland/protocol/openid-connect/auth?response_type=code&client_id=alerts&redirect_uri=http://localhost:8080/v1/auth/oauth2/callback&scope=openid%20offline_access&state=http://localhost:8080/v1/info>

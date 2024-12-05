@@ -1,11 +1,13 @@
 package app
 
 import (
+	"github.com/SergeyParamoshkin/alerts/internal/app/auth"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv/v1api"
 	"github.com/SergeyParamoshkin/alerts/internal/app/repository"
 	"github.com/SergeyParamoshkin/alerts/internal/app/service/ticketsvc"
 	"github.com/SergeyParamoshkin/alerts/internal/config"
+	"github.com/SergeyParamoshkin/alerts/internal/keycloak"
 	"github.com/SergeyParamoshkin/alerts/internal/postgres"
 	"github.com/SergeyParamoshkin/alerts/internal/tel"
 	"go.uber.org/fx"
@@ -19,6 +21,8 @@ func NewApp(config config.Config) *fx.App {
 		v1api.NewModule(),
 		ticketsvc.NewModule(),
 		repository.NewModule(),
+		auth.NewModule(),
+		keycloak.NewModule(),
 		postgres.NewModule(),
 		fx.Provide(
 			func(config *AppConfig) (*zap.Logger, error) {

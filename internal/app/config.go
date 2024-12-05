@@ -3,9 +3,11 @@ package app
 import (
 	"os"
 
+	"github.com/SergeyParamoshkin/alerts/internal/app/auth"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv/v1api"
 	"github.com/SergeyParamoshkin/alerts/internal/app/service/ticketsvc"
+	"github.com/SergeyParamoshkin/alerts/internal/keycloak"
 	"github.com/SergeyParamoshkin/alerts/internal/postgres"
 	"github.com/SergeyParamoshkin/alerts/internal/tel"
 	"go.uber.org/config"
@@ -25,9 +27,9 @@ type AppConfig struct {
 }
 
 type fileConfig struct {
-	App  AppConfig      `yaml:"app"`
-	HTTP httpsrv.Config `yaml:"http"`
-
+	App       AppConfig       `yaml:"app"`
+	Keycloak  keycloak.Config `yaml:"keycloak"`
+	HTTP      httpsrv.Config  `yaml:"http"`
 	Postgres  postgres.Config `yaml:"postgres"`
 	Telemetry tel.Config      `yaml:"telemetry"`
 }
@@ -39,6 +41,8 @@ type ConfigOut struct {
 	HTTP      *httpsrv.Config
 	V1API     *v1api.Config
 	Ticket    *ticketsvc.Config
+	Keycloak  *keycloak.Config
+	OAuth2    *auth.OAuth2Config
 	Postgres  *postgres.Config
 	Telemetry *tel.Config
 }
@@ -52,6 +56,7 @@ func NewConfig(args *Args) (ConfigOut, error) {
 				Hostname: defaultHostname,
 				Debug:    false,
 			},
+			Keycloak:  keycloak.NewDefaultConfig(),
 			HTTP:      httpsrv.NewDefaultConfig(),
 			Postgres:  postgres.NewDefaultConfig(),
 			Telemetry: tel.NewDefaultConfig(),
@@ -78,9 +83,18 @@ func NewConfig(args *Args) (ConfigOut, error) {
 		return ConfigOut{}, err
 	}
 
+	oauth2 := auth.NewDefaultOAuth2Config()
+
+	err = provider.Get("http.oauth2").Populate(&oauth2)
+	if err != nil {
+		return ConfigOut{}, err
+	}
+
 	return ConfigOut{
 		App:       &c.App,
 		HTTP:      &c.HTTP,
+		Keycloak:  &c.Keycloak,
+		OAuth2:    &oauth2,
 		V1API:     &v1API,
 		Postgres:  &c.Postgres,
 		Telemetry: &c.Telemetry,

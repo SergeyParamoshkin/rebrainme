@@ -5,6 +5,7 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/zap"
 
+	"github.com/SergeyParamoshkin/alerts/internal/app/auth"
 	"github.com/SergeyParamoshkin/alerts/internal/app/httpsrv"
 	"github.com/SergeyParamoshkin/alerts/internal/app/service/ticketsvc"
 	"github.com/SergeyParamoshkin/alerts/internal/tel"
@@ -14,6 +15,9 @@ type Params struct {
 	fx.In
 
 	TicketService TicketService
+
+	OAuth2Controller *auth.OAuth2Controller
+	Auth             *auth.Auth
 
 	Logger    *zap.Logger
 	Telemetry *tel.Telemetry

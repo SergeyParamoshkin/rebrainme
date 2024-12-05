@@ -40,11 +40,39 @@ definitions:
       message:
         type: string
     type: object
+  httpresp.SuccessResponse:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    type: object
   v1api.infoResponse:
     properties:
       commit_sha:
         type: string
       version:
+        type: string
+    type: object
+  v1api.oauth2CallbackResponse:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: integer
+      id_token:
+        type: string
+      not-before-policy:
+        type: integer
+      refresh_expires_in:
+        type: integer
+      refresh_token:
+        type: string
+      scope:
+        type: string
+      session_state:
+        type: string
+      token_type:
         type: string
     type: object
   v1api.ticketGetResponse:
@@ -102,6 +130,85 @@ info:
   title: alerts API
   version: v1.0
 paths:
+  /auth/oauth2/callback:
+    get:
+      consumes:
+      - application/json
+      description: Callback
+      parameters:
+      - description: authorization code
+        in: query
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1api.oauth2CallbackResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+      summary: callback
+      tags:
+      - oauth2
+  /auth/oauth2/login:
+    get:
+      description: Login
+      parameters:
+      - description: redirect url
+        in: query
+        name: redirect_url
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1api.oauth2CallbackResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+      summary: login
+      tags:
+      - oauth2
+  /auth/oauth2/logout:
+    post:
+      consumes:
+      - application/json
+      description: Logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpresp.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httpresp.ErrResponse'
+      security:
+      - KeycloakAuth: []
+      summary: logout
+      tags:
+      - oauth2
   /info:
     get:
       description: info
@@ -187,6 +294,9 @@ paths:
       tags:
       - tickets
 securityDefinitions:
-  BasicAuth:
-    type: basic
+  KeycloakAuth:
+    description: Keycloak authorization.
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
