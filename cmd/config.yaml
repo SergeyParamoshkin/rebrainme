@@ -1,0 +1,30 @@
+app:
+  name: "alerts"
+  hostname: ${HOSTNAME:dev}
+  debug: false
+
+http:
+  addr: :8080
+  read_header_timeout: 5s
+  swagger_ui:
+    host: alerts.psvpro.ru
+    base_path: ""
+    schemes:
+      - http
+
+keycloak:
+  base_url: "http://localhost:8180"
+  realm: "wonderland"
+  client_id: "alerts"
+  client_secret: "EfUiuR4lSmq5Qn6AEhGbcwB9qSUpBZsq"
+  redirect_uri: "http://localhost:8080/v1/auth/oauth2/callback"
+  default_login_redirect_url: "http://localhost:8080"
+
+telemetry:
+  service_name: alerts
+  jaeger:
+    agent_host: localhost
+    agent_port: 6831
+
+postgres:
+  database_url: postgres://postgres:11189@localhost:5432/alerts
