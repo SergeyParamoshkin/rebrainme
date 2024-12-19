@@ -21,6 +21,9 @@ type ResultConfig struct {
 
 func NewConfig() (ResultConfig, error) {
 	// TODO: rewrite this to use a config file
+	// FIXME
+	// 
+
 	configFileName := ""
 	flag.StringVar(&configFileName, "config", "config.yml", "config file")
 	flag.Parse()
