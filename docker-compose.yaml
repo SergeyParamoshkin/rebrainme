@@ -1,8 +1,0 @@
-services:
-  db:
-    image: postgres:16
-    restart: unless-stopped	
-    environment:
-      POSTGRES_PASSWORD: 11189
-    ports:
-      - 5432:5432
