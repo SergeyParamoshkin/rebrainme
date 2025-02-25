@@ -1,0 +1,5 @@
+port: 8081
+host: asqwewq
+logging:
+  level: DEBUG
+  format: "%(asctime)s - %(levelname)s - %(message)s"
