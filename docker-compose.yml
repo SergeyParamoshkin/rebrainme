@@ -1,32 +1,28 @@
 services:
-  prometheus:
-    image: prom/prometheus:v2.35.0
-    container_name: prometheus
-    ports:
-      - 9090:9090
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention=24h'
-
-  node-exporter:
-    image: prom/node-exporter:v1.3.1
-    container_name: node-exporter
+  db:
+    image: postgres:15.1-bullseye
     restart: unless-stopped
     ports:
-      - 9100:9100
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.rootfs=/rootfs'
-      - '--path.sysfs=/host/sys'
-      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+      - 5432:5432
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
 
-volumes:
-  prometheus_data: {}
+  jaeger:
+    image: jaegertracing/all-in-one:1.67.0
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+      - "5775:5775/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "14268:14268"
+      - "14250:14250"
+      - "9411:9411"
+      - "4318:4318"
+
+  redis:
+    image: "redis:5.0.5-alpine3.10"
+    ports:
+      - 6379:6379
