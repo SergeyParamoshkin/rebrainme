@@ -4,8 +4,13 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
+	"time"
 
+	"github.com/getsentry/sentry-go"
+	sentryhttp "github.com/getsentry/sentry-go/http"
+	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v4"
@@ -13,6 +18,7 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel/codes"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	trace "go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
@@ -98,8 +104,16 @@ func (a *app) userHandler(w http.ResponseWriter, r *http.Request) {
 		status := http.StatusInternalServerError
 
 		switch {
-		case errors.Is(err, ErrNotFound):
+		case errors.Is(err, &NotFoundError{}):
+			hub := sentry.GetHubFromContext(r.Context())
+			hub.CaptureException(err)
 			status = http.StatusNotFound
+			span.SetStatus(codes.Error, "Not Found")
+			span.AddEvent("not_found", trace.WithAttributes(
+				semconv.ExceptionTypeKey.String("*NotFoundError"),
+				semconv.ExceptionMessageKey.String(err.Error()),
+			))
+
 		default:
 			span.AddEvent("error", trace.WithAttributes(
 				semconv.ExceptionTypeKey.String("MyErrorType"),
@@ -107,7 +121,7 @@ func (a *app) userHandler(w http.ResponseWriter, r *http.Request) {
 			))
 		}
 
-		writeResponse(w, status, fmt.Sprintf(`failed to get user with id %s: %s`, userID, err))
+		writeResponse(w, status, fmt.Sprintf(`failed to get user with id %s`, userID))
 		return
 	}
 
@@ -144,7 +158,7 @@ func (a *app) panicHandler(w http.ResponseWriter, r *http.Request) {
 	defer func() {
 		_ = recover()
 
-		writeResponse(w, http.StatusOK, "panic logged, see server log")
+		writeResponse(w, http.StatusInternalServerError, "panic logged, see server log")
 	}()
 
 	a.logger.Panic("panic!!!")
@@ -173,37 +187,35 @@ func (a *app) New(ctx context.Context, logger *zap.Logger, tracer trace.Tracer) 
 }
 
 func (a *app) Serve() error {
+	err := sentry.Init(sentry.ClientOptions{
+		Dsn:   "http://8a8c6c3d8d7aebf6ef0fd39ca2e9fdfa@localhost:9000/3",
+		Debug: true,
+	})
+	if err != nil {
+		log.Fatalf("sentry.Init: %s", err)
+	}
+	defer sentry.Flush(time.Second)
+
+	sentryMiddleware := sentryhttp.New(sentryhttp.Options{
+		Repanic: true,
+	})
+
 	r := chi.NewRouter()
 
 	r.Use(func(next http.Handler) http.Handler {
 		return otelhttp.NewHandler(next, "chi-http-server")
 	})
-
-	// r.Use(func(h http.Handler) http.Handler {
-	// 	return otelhttp.NewHandler(
-	// 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	// 			h.ServeHTTP(w, r)
-
-	// 			routePattern := chi.RouteContext(r.Context()).RoutePattern()
-
-	// 			span := trace.SpanFromContext(r.Context())
-	// 			span.SetName(routePattern)
-	// 			span.SetAttributes(
-	// 				semconv.HTTPClientAttributesFromHTTPRequest(r)...,
-	// 			)
-	// 			// labeler, ok := otelhttp.LabelerFromContext(r.Context())
-	// 			// if ok {
-	// 			// 	// labeler.Add(semconv.httpRo)
-	// 			// }
-	// 		}),
-	// 		"",
-	// 	)
-	// })
+	r.Use(middleware.Recoverer)
+	r.Use(sentryMiddleware.Handle)
 
 	r.Get("/users", http.HandlerFunc(a.usersHandler))
 	r.Get("/users/{id}", http.HandlerFunc(a.userHandler))
 	r.Get("/users/{id}/articles", http.HandlerFunc(a.userArticlesHandler))
+	r.Get("/error", func(w http.ResponseWriter, r *http.Request) {
+		hub := sentry.GetHubFromContext(r.Context())
+		hub.CaptureException(errors.New("test error"))
+	})
 	r.Get("/panic", http.HandlerFunc(a.panicHandler))
 
-	return http.ListenAndServe("0.0.0.0:9000", r)
+	return http.ListenAndServe("0.0.0.0:8000", r)
 }

@@ -5,7 +5,9 @@ go 1.22.0
 toolchain go1.24.0
 
 require (
-	github.com/go-chi/chi/v5 v5.0.8
+	github.com/getsentry/sentry-go v0.31.1
+	github.com/go-chi/chi v1.5.5
+	github.com/go-chi/chi/v5 v5.2.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v4 v4.17.2
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.60.0
@@ -31,7 +33,6 @@ require (
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgtype v1.13.0 // indirect
 	github.com/jackc/puddle v1.3.0 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.35.0 // indirect
 	go.opentelemetry.io/otel/metric v1.35.0 // indirect

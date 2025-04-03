@@ -50,10 +50,45 @@ const (
 	UserArticlesSelect = `SELECT id, title, text, user_id FROM articles WHERE user_id = $1`
 )
 
-var (
-	ErrNotFound      = errors.New("not found")
-	ErrMultipleFound = errors.New("multiple found")
-)
+var ErrUserNotFound = errors.New("User not found")
+
+// Custom error types
+type NotFoundError struct {
+	Entity string
+	ID     uuid.UUID
+}
+
+func (e *NotFoundError) Error() string {
+	return fmt.Sprintf("%s with id %s not found", e.Entity, e.ID)
+}
+
+type MultipleFoundError struct {
+	Entity string
+	ID     uuid.UUID
+}
+
+func (e *MultipleFoundError) Error() string {
+	return fmt.Sprintf("multiple %s found with id %s", e.Entity, e.ID)
+}
+
+// Для поддержки errors.Is
+func (e *NotFoundError) Is(target error) bool {
+	_, ok := target.(*NotFoundError)
+	return ok
+}
+
+type RepositoryError struct {
+	Operation string
+	Err       error
+}
+
+func (e *RepositoryError) Error() string {
+	return fmt.Sprintf("repository error during %s: %v", e.Operation, e.Err)
+}
+
+func (e *RepositoryError) Unwrap() error {
+	return e.Err
+}
 
 type Repository struct {
 	pool   *pgxpool.Pool
@@ -65,10 +100,38 @@ func (r *Repository) InitSchema(ctx context.Context) error {
 	defer span.End()
 
 	_, err := r.pool.Exec(ctx, DDL)
-	return err
+	if err != nil {
+		return &RepositoryError{
+			Operation: "schema initialization",
+			Err:       err,
+		}
+	}
+	return nil
 }
 
+// Пример использования с проверкой типов ошибок
 func (r *Repository) GetUser(ctx context.Context, id uuid.UUID) (*User, error) {
+	user, err := r.getUser(ctx, id)
+	if err != nil {
+		switch e := err.(type) {
+		case *NotFoundError:
+			return nil, &NotFoundError{}
+			// Специфичная обработка для NotFound
+		case *MultipleFoundError:
+			fmt.Printf("Multiple found: %v\n", e)
+			// Специфичная обработка для MultipleFound
+		case *RepositoryError:
+			fmt.Printf("Repository error: %v\n", e)
+			return nil, &RepositoryError{}
+			// Специфичная обработка для RepositoryError
+		default:
+			fmt.Printf("Unknown error: %v\n", err)
+		}
+	}
+	return user, nil
+}
+
+func (r *Repository) getUser(ctx context.Context, id uuid.UUID) (*User, error) {
 	ctx, span := r.tracer.Start(ctx, "Repository.GetUser")
 	defer span.End()
 
@@ -77,7 +140,15 @@ func (r *Repository) GetUser(ctx context.Context, id uuid.UUID) (*User, error) {
 		attribute.String("arg0", id.String()),
 	)
 
-	rows, _ := r.pool.Query(ctx, UserByIDSelect, id)
+	rows, err := r.pool.Query(ctx, UserByIDSelect, id)
+	if err != nil {
+		return nil, &RepositoryError{
+			Operation: "get user query",
+			Err:       err,
+		}
+	}
+
+	defer rows.Close()
 
 	var (
 		user  User
@@ -86,22 +157,35 @@ func (r *Repository) GetUser(ctx context.Context, id uuid.UUID) (*User, error) {
 
 	for rows.Next() {
 		if found {
-			return nil, fmt.Errorf("%w: user id %s", ErrMultipleFound, id)
+			return nil, &MultipleFoundError{
+				Entity: "user",
+				ID:     id,
+			}
 		}
 
 		if err := rows.Scan(&user.ID, &user.Name); err != nil {
-			return nil, err
+			return nil, &RepositoryError{
+				Operation: "user row scan",
+				Err:       err,
+			}
 		}
 
 		found = true
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, err
+		return nil, &RepositoryError{
+			Operation: "rows processing",
+			Err:       err,
+		}
 	}
 
 	if !found {
-		return nil, fmt.Errorf("%w: user id %s", ErrNotFound, id)
+		// return nil, &NotFoundError{
+		// 	Entity: "user",
+		// 	ID:     id,
+		// }
+		return nil, fmt.Errorf("user %s not found %w", id, ErrUserNotFound)
 	}
 
 	return &user, nil
@@ -115,7 +199,14 @@ func (r *Repository) GetUsers(ctx context.Context) ([]User, error) {
 		attribute.String("query", UsersSelect),
 	)
 
-	rows, _ := r.pool.Query(ctx, UsersSelect)
+	rows, err := r.pool.Query(ctx, UsersSelect)
+	if err != nil {
+		return nil, &RepositoryError{
+			Operation: "get users query",
+			Err:       err,
+		}
+	}
+	defer rows.Close()
 
 	ret := make([]User, 0)
 
@@ -123,14 +214,20 @@ func (r *Repository) GetUsers(ctx context.Context) ([]User, error) {
 		var user User
 
 		if err := rows.Scan(&user.ID, &user.Name); err != nil {
-			return nil, err
+			return nil, &RepositoryError{
+				Operation: "users row scan",
+				Err:       err,
+			}
 		}
 
 		ret = append(ret, user)
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, err
+		return nil, &RepositoryError{
+			Operation: "rows processing",
+			Err:       err,
+		}
 	}
 
 	return ret, nil
@@ -145,7 +242,14 @@ func (r *Repository) GetUserArticles(ctx context.Context, userID uuid.UUID) ([]A
 		attribute.String("arg0", userID.String()),
 	)
 
-	rows, _ := r.pool.Query(ctx, UserArticlesSelect, userID)
+	rows, err := r.pool.Query(ctx, UserArticlesSelect, userID)
+	if err != nil {
+		return nil, &RepositoryError{
+			Operation: "get user articles query",
+			Err:       err,
+		}
+	}
+	defer rows.Close()
 
 	ret := make([]Article, 0)
 
@@ -153,14 +257,20 @@ func (r *Repository) GetUserArticles(ctx context.Context, userID uuid.UUID) ([]A
 		var article Article
 
 		if err := rows.Scan(&article.ID, &article.Title, &article.Text, &article.UserID); err != nil {
-			return nil, err
+			return nil, &RepositoryError{
+				Operation: "article row scan",
+				Err:       err,
+			}
 		}
 
 		ret = append(ret, article)
 	}
 
 	if err := rows.Err(); err != nil {
-		return nil, err
+		return nil, &RepositoryError{
+			Operation: "rows processing",
+			Err:       err,
+		}
 	}
 
 	return ret, nil
