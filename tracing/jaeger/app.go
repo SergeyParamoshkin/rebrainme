@@ -33,6 +33,24 @@ type app struct {
 	repository *Repository
 }
 
+func (a *app) readyHandler(w http.ResponseWriter, r *http.Request) {
+	err := a.repository.pool.Ping(r.Context())
+	if err != nil {
+		a.logger.Error(err.Error())
+		writeResponse(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	// cache
+	// .... 
+
+	// other deps
+	// .... 
+	//
+
+	writeResponse(w, http.StatusOK, "ready")
+}
+
 func (a *app) parseUserID(ctx context.Context, r *http.Request) (*uuid.UUID, error) {
 	ctx, span := a.tracer.Start(ctx, "parseUserID")
 	defer span.End()
@@ -216,6 +234,15 @@ func (a *app) Serve() error {
 		hub.CaptureException(errors.New("test error"))
 	})
 	r.Get("/panic", http.HandlerFunc(a.panicHandler))
+
+	// Liveness probe (проверка, что сервис "жив")
+	r.Get("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("OK"))
+	})
+
+	// Readiness probe (проверка, что сервис готов принимать трафик)
+	r.Get("/ready", http.HandlerFunc(a.readyHandler))
 
 	return http.ListenAndServe("0.0.0.0:8000", r)
 }

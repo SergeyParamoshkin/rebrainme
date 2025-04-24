@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: my-app:latest # Замени на свой образ
+          ports:
+            - containerPort: 8080
+          # Liveness Probe (проверяет, "жив" ли контейнер)
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 15 # Ждать 15 сек перед первой проверкой
+            periodSeconds: 10 # Проверять каждые 10 сек
+            timeoutSeconds: 5 # Таймаут запроса
+            failureThreshold: 3 # После 3 ошибок контейнер перезапустится
+          # Readiness Probe (проверяет, готов ли контейнер принимать трафик)
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 1
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

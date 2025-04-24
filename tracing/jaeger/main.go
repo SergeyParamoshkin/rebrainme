@@ -10,6 +10,7 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	"go.uber.org/zap"
+	//  "github.com/coreos/go-systemd/daemon"
 )
 
 const (
@@ -86,4 +87,8 @@ func main() {
 	if err := a.Serve(); err != nil {
 		log.Fatal(err)
 	}
+
+	//	if _, err := daemon.SdNotify(true, "READY=1"); err != nil {
+	//	    log.Printf("Failed to notify systemd: %v", err)
+	//	}
 }

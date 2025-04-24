@@ -34,3 +34,15 @@ content-type: application/json
 ### Get user by bad id 
 GET http://localhost:8000/users/b29f95a2-499a-4079-97f5-ff55c3854fee
 content-type: application/json
+
+
+
+### Get user by bad id 
+GET http://localhost:8000/healthz
+content-type: application/json
+
+
+
+### Get user by bad id 
+GET http://localhost:8000/ready
+content-type: application/json

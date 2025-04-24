@@ -8,6 +8,11 @@ services:
       POSTGRES_DB: example
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd
+    # healthcheck:
+    #   test: ["CMD", "pg_isready"]
+    #   interval: 30s
+    #   timeout: 5s
+    #   retries: 3
 
   jaeger:
     image: jaegertracing/all-in-one:1.67.0
