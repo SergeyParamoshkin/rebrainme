@@ -8,26 +8,67 @@ services:
       POSTGRES_DB: example
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://172.18.0.1:3100/loki/api/v1/push"
+
+
     # healthcheck:
     #   test: ["CMD", "pg_isready"]
     #   interval: 30s
     #   timeout: 5s
     #   retries: 3
 
-  jaeger:
-    image: jaegertracing/all-in-one:1.67.0
+  app:
+    build: .
     ports:
-      - "6831:6831/udp"
-      - "16686:16686"
-      - "5775:5775/udp"
-      - "6832:6832/udp"
-      - "5778:5778"
-      - "14268:14268"
-      - "14250:14250"
-      - "9411:9411"
-      - "4318:4318"
+      - 9000:9000
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://172.18.0.1:3100/loki/api/v1/push"
 
-  redis:
-    image: "redis:5.0.5-alpine3.10"
+  loki:
+    image: grafana/loki:latest
     ports:
-      - 6379:6379
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   environment:
+  #     - INSTANCE=loki
+  #   volumes:
+  #     # - /var/log:/var/log
+  #     - ./configs/promtail/config.yml:/etc/promtail/config.yml
+  #   command: -config.file=/etc/promtail/config.yml
+
+  grafana:
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_FEATURE_TOGGLES_ENABLE=alertingSimplifiedRouting,alertingQueryAndExpressionsStepMode
+    entrypoint:
+      - sh
+      - -euc
+      - |
+        mkdir -p /etc/grafana/provisioning/datasources
+        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+        apiVersion: 1
+        datasources:
+        - name: Loki
+          type: loki
+          access: proxy 
+          orgId: 1
+          url: http://loki:3100
+          basicAuth: false
+          isDefault: true
+          version: 1
+          editable: false
+        EOF
+        /run.sh
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
