@@ -8,11 +8,11 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
 
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	trace "go.opentelemetry.io/otel/trace"
 )
@@ -196,14 +196,26 @@ func (a *app) New(ctx context.Context, logger *slog.Logger, tracer trace.Tracer)
 
 func (a *app) Serve() error {
 	r := chi.NewRouter()
-	r.Use(func(next http.Handler) http.Handler {
-		return otelhttp.NewHandler(next, "chi-http-server")
+
+	r.Use(middleware.Logger)
+	r.Route("/debug", func(r chi.Router) {
+		r.Mount("/", middleware.Profiler())
 	})
 
 	r.Get("/users", a.usersHandler)
 	r.Get("/users/{id}", a.userHandler)
 	r.Get("/users/{id}/articles", a.userArticlesHandler)
 	r.Get("/panic", a.panicHandler)
+
+	// r.Route("/debug/pprof", func(p chi.Router) {
+	// 	p.Get("/", pprof.Index)
+	// 	p.Get("/cmdline", pprof.Cmdline)
+	// 	p.Get("/profile", pprof.Profile)
+	// 	p.Post("/symbol", pprof.Symbol)
+	// 	p.Get("/symbol", pprof.Symbol)
+	// 	p.Get("/trace", pprof.Trace)
+	// 	p.Get("/{profile}", pprof.Index)
+	// })
 
 	return http.ListenAndServe(":9000", r)
 }

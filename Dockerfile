@@ -9,7 +9,7 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/myapp ./slog
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/myapp ./app
 
 FROM alpine:3.21.3
 
