@@ -1,125 +1,185 @@
-```
-docker plugin install grafana/loki-docker-driver:3.3.2-arm64 --alias loki --grant-all-permissions
-```
+# Context
+
+## Что такое context в Go?
+
+context.Context — это стандартный интерфейс в Go, предназначенный для:
+
+отмены операций
+установки таймаутов и дедлайнов
+передачи метаданных по цепочке вызовов (например, в middleware)
+
+## Зачем он нужен?
+
+Управление временем выполнения операций (например, прерывание запроса к БД).
+Уменьшение утечек горутин.
+Общий механизм отмены операций в сетевых вызовах, асинхронных задачах.
+
+## Где используется?
+
+В стандартной библиотеке (http, database/sql, net/http, os/exec)
+В gRPC
+Везде
+
+# Основные концепции
 
 ```
-wrk -c 1 -t 1 -d 300s http://localhost:9000/users  
+type Context interface {
+    Deadline() (deadline time.Time, ok bool)
+    Done() <-chan struct{}
+    Err() error
+    Value(key any) any
+}
 ```
 
-# CPU профилирование
+* Done() — канал, который закрывается при отмене или истечении времени.
+* Err() — возвращает причину отмены (context.Canceled, context.DeadlineExceeded).
+* Deadline() — возвращает дедлайн, если установлен.
+* Value() — возвращает значение, связанное с ключом
 
-`go tool pprof http://localhost:9000/debug/pprof/profile`
+# Создание контекста
 
-# Память
+* context.Background()
+Базовый пустой контекст — стартовая точка.
+Используется в main, и в тестах
 
-`go tool pprof http://localhost:9000/debug/pprof/heap`
+* context.TODO()
+Заполнитель, когда контекст нужен, но неизвестно, какой.
 
-# Горутины
+* context.WithCancel(parent)
+Создаёт контекст, который можно отменить вручную:
 
-`go tool pprof http://localhost:9000/debug/pprof/goroutine`
-
-# cmdline
-
-`go tool pprof http://localhost:9000/debug/pprof/cmdline`
-
-`go tool pprof http://localhost:9000/debug/pprof/profile?seconds=30`
-
-`go tool pprof -http=:8080 http://localhost:9000/debug/pprof/heap\?seconds\=30`
-
-# Понимание Samples в pprof
-
-В **pprof** термин **samples** (сэмплы) относится к **точкам данных, собранным профилировщиком во время работы программы**. Их значение и интерпретация зависят от типа профиля:
-
-## Для CPU-профиля
-
-- **Что такое сэмплы**:  
-  Каждый сэмпл = **одно прерывание выполнения программы** (100 раз в секунду по умолчанию). Профилировщик фиксирует стек вызовов в момент прерывания.
-
-- **Как интерпретировать**:  
-  `samples = X` ≈ `X * 10ms` CPU-времени  
-  Пример: `samples = 150` ≈ 1.5 секунды работы CPU
-
-- **В выводе `top`**:
-
-  ```bash
-  flat  flat%   sum%   cum   cum%
-  300ms 30.00% 30.00%  300ms 30.00%  runtime.mallocgc  # 30 сэмплов ≈ 300ms
-  ```
-
-## Для Heap-профиля (память)
-
-- **Что такое сэмплы**:  
-  Каждый сэмпл = **одна аллокация памяти** в куче (с учётом частоты сэмплирования). Частота задаётся через `runtime.MemProfileRate` (по умолчанию 512 КБ).
-
-- **Как интерпретировать**:  
-  `samples = X` ≈ `X * MemProfileRate` байт аллоцированной памяти  
-  Пример: 10 сэмплов ≈ `10 * 512KB = 5.12 MB`
-
-- **В выводе `top -alloc_objects`**:
-
-  ```bash
-  flat  flat%   sum%   cum   cum%
-  2048  40.0%  40.0%   2048  40.0%  mypkg.parseJSON  # 2048 аллокаций
-  ```
-
-## Для Block/Mutex профилей
-
-- **Что такое сэмплы**:  
-  Каждый сэмпл = **одно событие блокировки** (длительность или количество).
-
-- **Как интерпретировать**:  
-  Прямое соответствие количеству блокировок  
-  Пример: `samples = 100` = 100 случаев блокировки
-
-## Почему это важно?
-
-- **Относительные значения**: Сэмплы показывают **относительную нагрузку**, а не абсолютное время/память
-- **Статистическая модель**: Это выборка, а не полные данные (но репрезентативная для оптимизаций)
-- **Фокус на hot-spots**: Функции с большим количеством сэмплов — кандидаты на оптимизацию
-
-## Как читать в pprof?
-
-1. **Интерактивный режим**:
-
-   ```bash
-   go tool pprof http://localhost:6060/debug/pprof/profile
-   (pprof) top -cum
-   ```
-
-   - `flat` — сэмплы непосредственно в функции
-   - `cum` — сэмплы в функции + в её вызовах
-
-2. **Flame Graph**:  
-   Ширина блока = количество сэмплов в стеке вызовов
-
-## Примеры проблем через призму сэмплов
-
-| **Проблема**          | **Где искать**        | **Что видим в samples**         |
-| --------------------- | --------------------- | ------------------------------- |
-| Утечка памяти         | `heap` профиль        | Рост `inuse_objects` сэмплов    |
-| Горячая CPU-функция   | `cpu` профиль         | Высокий `flat` в `top`          |
-| Частые блокировки     | `mutex` профиль       | 1000+ сэмплов в одной функции   |
-| Бесполезные аллокации | `heap -alloc_objects` | Сэмплы в холостых конструкторах |
-
-## Важные нюансы
-
-1. **Частота сэмплирования**:
-   - CPU: настраивается через `?seconds=30&hz=500` (500 Гц вместо 100)
-   - Память: `runtime.MemProfileRate = 1` для точных данных (но влияет на производительность)
-
-2. **Точность**:  
-   точности для поиска узких мест ([Brendan Gregg](http://www.brendangregg.com/flamegraphs.html))
-
-Для глубокого анализа используйте:
-
-```bash
-go tool pprof -http=:8080 profile.pprof
+```
+ctx, cancel := context.WithCancel(context.Background())
+defer cancel()
 ```
 
 ```
-wget http://localhost:9000/debug/pprof/trace\?seconds\=10 -O trace
+context.WithTimeout(parent, duration)
+```
+
+Контекст отменяется по истечении таймаута:
+
+```
+ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+defer cancel()
 ```
 
 ```
-go tool trace trace
+context.WithDeadline(parent, time)
 ```
+
+Аналогично, но на конкретное время.
+
+```
+context.WithValue(parent, key, value)
+```
+
+Контекст с дополнительным значением:
+
+```
+ctx := context.WithValue(ctx, "requestID", "abc123")
+```
+
+# Примеры
+
+```
+func handler(w http.ResponseWriter, r *http.Request) {
+    ctx := r.Context()
+    select {
+    case <-time.After(2 * time.Second):
+        fmt.Fprintln(w, "done")
+    case <-ctx.Done():
+        http.Error(w, "request cancelled", http.StatusRequestTimeout)
+    }
+}
+```
+
+```
+func fetchUser(ctx context.Context, db *sql.DB, id int) (*User, error) {
+    ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+    defer cancel()
+
+    row := db.QueryRowContext(ctx, "SELECT name FROM users WHERE id=?", id)
+    ...
+}
+```
+
+### До 1.20
+
+Ранее, до Go 1.20, чтобы понять, почему контекст был отменён, приходилось использовать:
+`ctx.Err()`
+Но ctx.Err(), всегда возвращает только одно из двух значений (Canceled, DeadlineExceeded),
+не позволяет узнать вложенные ошибки, если они были причиной отмены.
+
+Что делает context.Cause()?
+
+`context.Cause(ctx)` возвращает реальную причину отмены контекста, включая:
+
+ошибки, переданные в WithCancelCause
+context.Canceled, context.DeadlineExceeded
+любую другую ошибку, которую мы сами передали
+
+```
+ctx, cancel := context.WithCancelCause(context.Background())
+cancel(errors.New("user aborted operation"))
+
+<-ctx.Done()
+
+fmt.Println(context.Cause(ctx)) // "user aborted operation"
+fmt.Println(ctx.Err())          // "context canceled"
+
+```
+
+```
+func handler(ctx context.Context) error {
+    ctx, cancel := context.WithCancelCause(ctx)
+    defer cancel(errors.New("request aborted by handler"))
+
+    // что-то делаем...
+
+    <-ctx.Done()
+
+    return context.Cause(ctx)
+}
+
+```
+
+# Плохие практики
+
+```
+// Плохо:
+ctx := context.WithValue(context.Background(), "userID", 42)
+// Хорошо:
+func handle(ctx context.Context, userID int) {}
+```
+
+```
+ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+// cancel забыли -> ресурсы не освободятся
+```
+
+```
+select {
+case <-ctx.Done():
+    // Плохо: не обрабатывается err
+}
+```
+
+# И ещё
+
+```
+type Handler struct {
+    ctx context.Context // плохо, Контекст должен передаваться явно в аргументах.
+}
+```
+
+Не передавай nil вместо контекста
+— Всегда передавай context.Background() хотя бы.
+
+Не злоупотребляй context.WithValue
+— Только для request-scoped данных: requestID, auth token.
+
+Никогда не забывай cancel()
+— Особенно при использовании WithTimeout, WithCancel.
+
+Не используй context.TODO() в production-коде, старайтесь)

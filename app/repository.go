@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log/slog"
+	"time"
 
 	"go.opentelemetry.io/otel/attribute"
 	trace "go.opentelemetry.io/otel/trace"
@@ -82,6 +83,7 @@ func (r *Repository) GetUser(ctx context.Context, id uuid.UUID) (*User, error) {
 	ctx, span := r.tracer.Start(ctx, "Repository.GetUser")
 	defer span.End()
 
+	fmt.Println(ctx)
 	logger := r.logger.With("userID", id)
 	logger.DebugContext(ctx, "Executing user query", "query", UserByIDSelect)
 
@@ -90,13 +92,15 @@ func (r *Repository) GetUser(ctx context.Context, id uuid.UUID) (*User, error) {
 		attribute.String("arg0", id.String()),
 	)
 
+	ctx, cancel := context.WithDeadline(ctx, time.Now().Add(1*time.Second))
+	defer cancel()
 	rows, err := r.pool.Query(ctx, UserByIDSelect, id)
 	if err != nil {
 		logger.ErrorContext(ctx, "Database query failed", "error", err)
 		return nil, fmt.Errorf("query failed: %w", err)
 	}
-	defer rows.Close()
 
+	defer rows.Close()
 	var (
 		user  User
 		found bool

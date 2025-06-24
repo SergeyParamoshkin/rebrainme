@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	DatabaseURL = "postgres://usr:pwd@db:5432/example?sslmode=disable"
+	DatabaseURL = "postgres://usr:pwd@127.0.0.1:5432/example?sslmode=disable"
 )
 
 type slogWrapper struct {

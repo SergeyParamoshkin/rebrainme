@@ -17,6 +17,8 @@ import (
 	trace "go.opentelemetry.io/otel/trace"
 )
 
+type retryCountKey int64
+
 // SlogAdapter реализует интерфейс pgx.Logger
 type SlogAdapter struct {
 	logger *slog.Logger
@@ -85,6 +87,10 @@ func (a *app) usersHandler(w http.ResponseWriter, r *http.Request) {
 	a.logger.WithGroup("request").Debug("API.usersHandler",
 		"method", r.Method,
 		"url", r.URL)
+
+	const retryCountKey = "retryCount"
+	ctx = context.WithValue(ctx, retryCountKey, 10)
+
 	users, err := a.repo.GetUsers(ctx)
 	if err != nil {
 		a.logger.ErrorContext(ctx, "failed to get users", "error", err)
