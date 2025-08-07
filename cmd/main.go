@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/SergeyParamoshkin/rebrainme/internal/app"
+)
 
 func main() {
 	fmt.Println()
 	fmt.Scanln()
+
+	app.NewApp()
 }

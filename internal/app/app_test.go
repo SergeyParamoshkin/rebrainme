@@ -2,6 +2,7 @@ package app
 
 import "testing"
 
+func BenchmarkApp(t *testing.B) {}
 func TestNewApp(t *testing.T) {
 	tests := []struct {
 		name string
