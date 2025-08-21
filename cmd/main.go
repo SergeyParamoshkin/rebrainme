@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	fmt.Println()
-	fmt.Scanln()
+	fmt.Println("errrr")
 
 	app.NewApp()
 }
