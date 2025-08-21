@@ -1,0 +1,42 @@
+# Конфигурационный файл для демо-приложения Cobra + Viper
+
+# Настройки сервера
+server:
+  host: localhost
+  port: 8080
+  graceful: true
+  read_timeout: 30s
+  write_timeout: 30s
+
+# Настройки базы данных
+database:
+  host: localhost
+  port: 5432
+  name: demo_db
+  user: demo_user
+  password: demo_password
+  max_connections: 25
+  connection_timeout: 10s
+
+# Настройки логирования
+logging:
+  level: info
+  format: json
+  output: stdout
+
+# Настройки приложения
+app:
+  name: "Cobra Viper Demo"
+  version: "1.0.0"
+  environment: development
+  debug: false
+
+# Настройки API
+api:
+  rate_limit: 100
+  timeout: 30s
+  cors:
+    enabled: true
+    origins:
+      - http://localhost:3000
+      - http://localhost:8080

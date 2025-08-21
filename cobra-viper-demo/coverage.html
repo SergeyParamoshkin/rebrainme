@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>cmd: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">cobra-viper-demo/cmd/advanced.go (1.4%)</option>
+				
+				<option value="file1">cobra-viper-demo/cmd/config.go (0.0%)</option>
+				
+				<option value="file2">cobra-viper-demo/cmd/config_show.go (6.7%)</option>
+				
+				<option value="file3">cobra-viper-demo/cmd/db.go (20.4%)</option>
+				
+				<option value="file4">cobra-viper-demo/cmd/process.go (3.4%)</option>
+				
+				<option value="file5">cobra-viper-demo/cmd/root.go (0.0%)</option>
+				
+				<option value="file6">cobra-viper-demo/cmd/serve.go (14.6%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package cmd
+
+import (
+        "fmt"
+        "os"
+        "strconv"
+        "strings"
+
+        "github.com/spf13/cobra"
+)
+
+type AdvancedConfig struct {
+        Mode    int
+        Filter  int
+        Debug   bool
+        Output  string
+        Threads int
+}
+
+var advancedCmd = &amp;cobra.Command{
+        Use:   "advanced [аргументы]",
+        Short: "Продвинутая команда с кастомными флагами",
+        Long: `Поддерживает флаги в формате:
+  -mode:N     режим работы (1-10)
+  -f:N        уровень фильтрации (0-5)
+  -debug:1    включить отладку (0/1)
+  -output:path путь для вывода
+  -threads:N   количество потоков (1-16)
+  
+Примеры:
+  advanced -mode:4 -f:2
+  advanced -mode:5 -f:3 -debug:1 -output:/tmp/result.txt
+  advanced -threads:8 -mode:2`,
+        DisableFlagParsing: true,
+        RunE: func(cmd *cobra.Command, args []string) error <span class="cov0" title="0">{
+                config := &amp;AdvancedConfig{
+                        Mode:    1,
+                        Filter:  0,
+                        Debug:   false,
+                        Output:  "stdout",
+                        Threads: 1,
+                }
+                
+                for _, arg := range args </span><span class="cov0" title="0">{
+                        if arg == "-h" || arg == "--help" </span><span class="cov0" title="0">{
+                                cmd.Help()
+                                return nil
+                        }</span>
+                        
+                        <span class="cov0" title="0">if !strings.HasPrefix(arg, "-") </span><span class="cov0" title="0">{
+                                continue</span>
+                        }
+                        
+                        <span class="cov0" title="0">parts := strings.SplitN(arg[1:], ":", 2)
+                        if len(parts) != 2 </span><span class="cov0" title="0">{
+                                return fmt.Errorf("неверный формат флага: %s (ожидается -name:value)", arg)
+                        }</span>
+                        
+                        <span class="cov0" title="0">flag := parts[0]
+                        value := parts[1]
+                        
+                        switch flag </span>{
+                        case "mode":<span class="cov0" title="0">
+                                val, err := strconv.Atoi(value)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("mode должен быть числом: %s", value)
+                                }</span>
+                                <span class="cov0" title="0">if val &lt; 1 || val &gt; 10 </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("mode должен быть от 1 до 10, получено: %d", val)
+                                }</span>
+                                <span class="cov0" title="0">config.Mode = val</span>
+                                
+                        case "f":<span class="cov0" title="0">
+                                val, err := strconv.Atoi(value)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("f должен быть числом: %s", value)
+                                }</span>
+                                <span class="cov0" title="0">if val &lt; 0 || val &gt; 5 </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("f должен быть от 0 до 5, получено: %d", val)
+                                }</span>
+                                <span class="cov0" title="0">config.Filter = val</span>
+                                
+                        case "debug":<span class="cov0" title="0">
+                                val, err := strconv.Atoi(value)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("debug должен быть 0 или 1: %s", value)
+                                }</span>
+                                <span class="cov0" title="0">config.Debug = val == 1</span>
+                                
+                        case "output":<span class="cov0" title="0">
+                                config.Output = value</span>
+                                
+                        case "threads":<span class="cov0" title="0">
+                                val, err := strconv.Atoi(value)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("threads должен быть числом: %s", value)
+                                }</span>
+                                <span class="cov0" title="0">if val &lt; 1 || val &gt; 16 </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("threads должен быть от 1 до 16, получено: %d", val)
+                                }</span>
+                                <span class="cov0" title="0">config.Threads = val</span>
+                                
+                        default:<span class="cov0" title="0">
+                                return fmt.Errorf("неизвестный флаг: %s", flag)</span>
+                        }
+                }
+                
+                <span class="cov0" title="0">return runAdvanced(config)</span>
+        },
+}
+
+func runAdvanced(config *AdvancedConfig) error <span class="cov0" title="0">{
+        fmt.Println("╔════════════════════════════════════╗")
+        fmt.Println("║     Продвинутая обработка         ║")
+        fmt.Println("╚════════════════════════════════════╝")
+        fmt.Println()
+        
+        fmt.Println("Конфигурация:")
+        fmt.Printf("  • Режим: %d", config.Mode)
+        switch config.Mode </span>{
+        case 1:<span class="cov0" title="0">
+                fmt.Println(" (базовый)")</span>
+        case 2:<span class="cov0" title="0">
+                fmt.Println(" (стандартный)")</span>
+        case 3:<span class="cov0" title="0">
+                fmt.Println(" (расширенный)")</span>
+        case 4:<span class="cov0" title="0">
+                fmt.Println(" (экспериментальный)")</span>
+        case 5:<span class="cov0" title="0">
+                fmt.Println(" (производительный)")</span>
+        default:<span class="cov0" title="0">
+                fmt.Println(" (пользовательский)")</span>
+        }
+        
+        <span class="cov0" title="0">fmt.Printf("  • Фильтр: %d", config.Filter)
+        if config.Filter == 0 </span><span class="cov0" title="0">{
+                fmt.Println(" (отключен)")
+        }</span> else<span class="cov0" title="0"> {
+                fmt.Printf(" (уровень %d)\n", config.Filter)
+        }</span>
+        
+        <span class="cov0" title="0">fmt.Printf("  • Отладка: %v\n", config.Debug)
+        fmt.Printf("  • Вывод: %s\n", config.Output)
+        fmt.Printf("  • Потоки: %d\n", config.Threads)
+        
+        if config.Debug </span><span class="cov0" title="0">{
+                fmt.Println("\n[DEBUG] Дополнительная информация:")
+                fmt.Printf("[DEBUG] PID: %d\n", os.Getpid())
+                fmt.Printf("[DEBUG] Аргументы: %v\n", os.Args)
+        }</span>
+        
+        <span class="cov0" title="0">fmt.Println("\n▸ Начало обработки...")
+        
+        if config.Output != "stdout" </span><span class="cov0" title="0">{
+                fmt.Printf("▸ Результаты будут сохранены в: %s\n", config.Output)
+        }</span>
+        
+        <span class="cov0" title="0">if config.Threads &gt; 1 </span><span class="cov0" title="0">{
+                fmt.Printf("▸ Используется параллельная обработка (%d потоков)\n", config.Threads)
+        }</span>
+        
+        <span class="cov0" title="0">fmt.Println("✓ Обработка завершена успешно")
+        
+        return nil</span>
+}
+
+func init() <span class="cov8" title="1">{
+        rootCmd.AddCommand(advancedCmd)
+}</pre>
+		
+		<pre class="file" id="file1" style="display: none">package cmd
+
+import (
+        "fmt"
+        "os"
+        "strings"
+
+        "github.com/spf13/viper"
+)
+
+func initConfig() <span class="cov0" title="0">{
+        if cfgFile != "" </span><span class="cov0" title="0">{
+                viper.SetConfigFile(cfgFile)
+        }</span> else<span class="cov0" title="0"> {
+                viper.AddConfigPath(".")
+                viper.SetConfigName("config")
+                viper.SetConfigType("yaml")
+        }</span>
+
+        <span class="cov0" title="0">viper.SetEnvPrefix("DEMO")
+        viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+        viper.AutomaticEnv()
+
+        viper.SetDefault("server.host", "localhost")
+        viper.SetDefault("server.port", 8080)
+        viper.SetDefault("database.host", "localhost")
+        viper.SetDefault("database.port", 5432)
+        viper.SetDefault("database.name", "demo_db")
+        viper.SetDefault("database.user", "demo_user")
+
+        if err := viper.ReadInConfig(); err == nil </span><span class="cov0" title="0">{
+                if viper.GetBool("verbose") </span><span class="cov0" title="0">{
+                        fmt.Println("Используется файл конфигурации:", viper.ConfigFileUsed())
+                }</span>
+        } else<span class="cov0" title="0"> {
+                if _, ok := err.(viper.ConfigFileNotFoundError); !ok </span><span class="cov0" title="0">{
+                        fmt.Fprintf(os.Stderr, "Ошибка чтения конфигурации: %v\n", err)
+                }</span>
+        }
+}</pre>
+		
+		<pre class="file" id="file2" style="display: none">package cmd
+
+import (
+        "encoding/json"
+        "fmt"
+        "sort"
+        "strings"
+
+        "github.com/spf13/cobra"
+        "github.com/spf13/viper"
+)
+
+var configCmd = &amp;cobra.Command{
+        Use:   "config",
+        Short: "Управление конфигурацией",
+        Long:  `Команды для просмотра и управления конфигурацией приложения`,
+}
+
+var configShowCmd = &amp;cobra.Command{
+        Use:   "show",
+        Short: "Показать текущую конфигурацию",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                format, _ := cmd.Flags().GetString("format")
+                
+                switch format </span>{
+                case "json":<span class="cov0" title="0">
+                        showConfigJSON()</span>
+                case "yaml":<span class="cov0" title="0">
+                        showConfigYAML()</span>
+                default:<span class="cov0" title="0">
+                        showConfigTable()</span>
+                }
+        },
+}
+
+var configGetCmd = &amp;cobra.Command{
+        Use:   "get KEY",
+        Short: "Получить значение конкретного параметра",
+        Args:  cobra.ExactArgs(1),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                key := args[0]
+                value := viper.Get(key)
+                
+                if value == nil </span><span class="cov0" title="0">{
+                        fmt.Printf("Ключ '%s' не найден\n", key)
+                        return
+                }</span>
+                
+                <span class="cov0" title="0">fmt.Printf("%s = %v\n", key, value)
+                
+                if viper.GetBool("verbose") </span><span class="cov0" title="0">{
+                        fmt.Printf("\nТип: %T\n", value)
+                        if viper.IsSet(key) </span><span class="cov0" title="0">{
+                                fmt.Println("Источник: установлен явно")
+                        }</span> else<span class="cov0" title="0"> {
+                                fmt.Println("Источник: значение по умолчанию")
+                        }</span>
+                }
+        },
+}
+
+var configListCmd = &amp;cobra.Command{
+        Use:   "list",
+        Short: "Список всех доступных ключей конфигурации",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                allKeys := viper.AllKeys()
+                sort.Strings(allKeys)
+                
+                fmt.Println("Доступные ключи конфигурации:")
+                fmt.Println(strings.Repeat("-", 40))
+                
+                currentPrefix := ""
+                for _, key := range allKeys </span><span class="cov0" title="0">{
+                        parts := strings.Split(key, ".")
+                        if len(parts) &gt; 0 &amp;&amp; parts[0] != currentPrefix </span><span class="cov0" title="0">{
+                                currentPrefix = parts[0]
+                                fmt.Printf("\n[%s]\n", currentPrefix)
+                        }</span>
+                        <span class="cov0" title="0">fmt.Printf("  %s\n", key)</span>
+                }
+        },
+}
+
+func showConfigTable() <span class="cov0" title="0">{
+        fmt.Println("Текущая конфигурация:")
+        fmt.Println(strings.Repeat("=", 60))
+        
+        fmt.Println("\nСЕРВЕР:")
+        fmt.Printf("  Host: %s\n", viper.GetString("server.host"))
+        fmt.Printf("  Port: %d\n", viper.GetInt("server.port"))
+        fmt.Printf("  Graceful Shutdown: %v\n", viper.GetBool("server.graceful"))
+        
+        fmt.Println("\nБАЗА ДАННЫХ:")
+        fmt.Printf("  Host: %s\n", viper.GetString("database.host"))
+        fmt.Printf("  Port: %d\n", viper.GetInt("database.port"))
+        fmt.Printf("  Database: %s\n", viper.GetString("database.name"))
+        fmt.Printf("  User: %s\n", viper.GetString("database.user"))
+        
+        password := viper.GetString("database.password")
+        if password != "" </span><span class="cov0" title="0">{
+                fmt.Printf("  Password: %s\n", strings.Repeat("*", len(password)))
+        }</span>
+        
+        <span class="cov0" title="0">fmt.Println("\nЛОГИРОВАНИЕ:")
+        fmt.Printf("  Level: %s\n", viper.GetString("logging.level"))
+        fmt.Printf("  Format: %s\n", viper.GetString("logging.format"))
+        fmt.Printf("  Output: %s\n", viper.GetString("logging.output"))
+        
+        fmt.Println("\nПРИЛОЖЕНИЕ:")
+        fmt.Printf("  Name: %s\n", viper.GetString("app.name"))
+        fmt.Printf("  Version: %s\n", viper.GetString("app.version"))
+        fmt.Printf("  Environment: %s\n", viper.GetString("app.environment"))
+        fmt.Printf("  Debug: %v\n", viper.GetBool("app.debug"))
+        
+        if viper.ConfigFileUsed() != "" </span><span class="cov0" title="0">{
+                fmt.Printf("\nФайл конфигурации: %s\n", viper.ConfigFileUsed())
+        }</span>
+        
+        <span class="cov0" title="0">fmt.Println(strings.Repeat("=", 60))</span>
+}
+
+func showConfigJSON() <span class="cov0" title="0">{
+        settings := viper.AllSettings()
+        jsonBytes, err := json.MarshalIndent(settings, "", "  ")
+        if err != nil </span><span class="cov0" title="0">{
+                fmt.Printf("Ошибка при формировании JSON: %v\n", err)
+                return
+        }</span>
+        <span class="cov0" title="0">fmt.Println(string(jsonBytes))</span>
+}
+
+func showConfigYAML() <span class="cov0" title="0">{
+        settings := viper.AllSettings()
+        printYAML(settings, 0)
+}</span>
+
+func printYAML(data interface{}, indent int) <span class="cov0" title="0">{
+        indentStr := strings.Repeat("  ", indent)
+        
+        switch v := data.(type) </span>{
+        case map[string]interface{}:<span class="cov0" title="0">
+                for key, value := range v </span><span class="cov0" title="0">{
+                        fmt.Printf("%s%s:", indentStr, key)
+                        if _, ok := value.(map[string]interface{}); ok </span><span class="cov0" title="0">{
+                                fmt.Println()
+                                printYAML(value, indent+1)
+                        }</span> else<span class="cov0" title="0"> {
+                                fmt.Printf(" %v\n", value)
+                        }</span>
+                }
+        default:<span class="cov0" title="0">
+                fmt.Printf("%s%v\n", indentStr, v)</span>
+        }
+}
+
+func init() <span class="cov8" title="1">{
+        rootCmd.AddCommand(configCmd)
+        configCmd.AddCommand(configShowCmd)
+        configCmd.AddCommand(configGetCmd)
+        configCmd.AddCommand(configListCmd)
+        
+        configShowCmd.Flags().String("format", "table", "формат вывода: table, json, yaml")
+}</pre>
+		
+		<pre class="file" id="file3" style="display: none">package cmd
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/spf13/cobra"
+        "github.com/spf13/viper"
+)
+
+var dbCmd = &amp;cobra.Command{
+        Use:   "db",
+        Short: "Команды для работы с базой данных",
+        Long:  `Группа команд для управления базой данных: миграции, резервное копирование, информация о подключении`,
+}
+
+var dbConnectCmd = &amp;cobra.Command{
+        Use:   "connect",
+        Short: "Показать строку подключения к БД",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                host := viper.GetString("database.host")
+                port := viper.GetInt("database.port")
+                user := viper.GetString("database.user")
+                password := viper.GetString("database.password")
+                dbname := viper.GetString("database.name")
+
+                if password == "" </span><span class="cov0" title="0">{
+                        password = "********"
+                }</span>
+
+                <span class="cov0" title="0">connStr := fmt.Sprintf("postgres://%s:%s@%s:%d/%s", user, password, host, port, dbname)
+                fmt.Printf("Строка подключения: %s\n", connStr)
+
+                if viper.GetBool("verbose") </span><span class="cov0" title="0">{
+                        fmt.Println("\nПараметры подключения:")
+                        fmt.Printf("  Host: %s\n", host)
+                        fmt.Printf("  Port: %d\n", port)
+                        fmt.Printf("  Database: %s\n", dbname)
+                        fmt.Printf("  User: %s\n", user)
+
+                        if viper.ConfigFileUsed() != "" </span><span class="cov0" title="0">{
+                                fmt.Printf("\nИсточник конфигурации: %s\n", viper.ConfigFileUsed())
+                        }</span>
+                }
+        },
+}
+
+var dbMigrateCmd = &amp;cobra.Command{
+        Use:   "migrate",
+        Short: "Выполнить миграции БД",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                dryRun, _ := cmd.Flags().GetBool("dry-run")
+                version, _ := cmd.Flags().GetString("version")
+
+                fmt.Println("Выполнение миграций базы данных...")
+
+                if dryRun </span><span class="cov0" title="0">{
+                        fmt.Println("РЕЖИМ ПРЕДПРОСМОТРА (--dry-run)")
+                }</span>
+
+                <span class="cov0" title="0">host := viper.GetString("database.host")
+                port := viper.GetInt("database.port")
+                dbname := viper.GetString("database.name")
+
+                fmt.Printf("База данных: %s:%d/%s\n", host, port, dbname)
+
+                if version != "" </span><span class="cov0" title="0">{
+                        fmt.Printf("Целевая версия: %s\n", version)
+                }</span> else<span class="cov0" title="0"> {
+                        fmt.Println("Мигрируем до последней версии")
+                }</span>
+
+                <span class="cov0" title="0">fmt.Println("\nПримеры миграций:")
+                fmt.Println("001_create_users_table.sql")
+                fmt.Println("002_add_email_to_users.sql")
+                fmt.Println("003_create_products_table.sql")
+
+                if !dryRun </span><span class="cov0" title="0">{
+                        fmt.Println("\nМиграции успешно применены!")
+                }</span> else<span class="cov0" title="0"> {
+                        fmt.Println("\nМиграции будут применены при запуске без флага --dry-run")
+                }</span>
+        },
+}
+
+var dbCacheClearCmd = &amp;cobra.Command{
+        Use:   "cache",
+        Short: "cache",
+}
+
+var dbBackupCmd = &amp;cobra.Command{
+        Use:        "backup [filename]",
+        Short:      "Создать резервную копию БД",
+        Deprecated: "This command is dep, use ...",
+        Args:       cobra.MaximumNArgs(1),
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                compress, _ := cmd.Flags().GetBool("compress")
+
+                filename := "backup.sql"
+                if len(args) &gt; 0 </span><span class="cov0" title="0">{
+                        filename = args[0]
+                }</span>
+
+                <span class="cov0" title="0">if compress </span><span class="cov0" title="0">{
+                        filename += ".gz"
+                }</span>
+
+                <span class="cov0" title="0">host := viper.GetString("database.host")
+                port := viper.GetInt("database.port")
+                dbname := viper.GetString("database.name")
+
+                fmt.Printf("Создание резервной копии базы данных %s:%d/%s\n", host, port, dbname)
+                fmt.Printf("Файл: %s\n", filename)
+
+                if compress </span><span class="cov0" title="0">{
+                        fmt.Println("Сжатие: включено")
+                }</span>
+
+                <span class="cov0" title="0">fmt.Println("\nПроцесс резервного копирования...")
+                fmt.Println("Экспорт схемы...")
+                fmt.Println("Экспорт данных...")
+
+                if compress </span><span class="cov0" title="0">{
+                        fmt.Println("Сжатие файла...")
+                }</span>
+
+                <span class="cov0" title="0">fmt.Printf("\nРезервная копия успешно создана: %s\n", filename)
+
+                info, _ := os.Stat(".")
+                fmt.Printf("Размер файла: ~1.2 MB\n")
+                fmt.Printf("Время создания: %v\n", info.ModTime().Format("2006-01-02 15:04:05"))</span>
+        },
+}
+
+var dbStatusCmd = &amp;cobra.Command{
+        Use:   "status",
+        Short: "Проверить статус подключения к БД",
+        Run: func(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+                host := viper.GetString("database.host")
+                port := viper.GetInt("database.port")
+                dbname := viper.GetString("database.name")
+                user := viper.GetString("database.user")
+
+                fmt.Println("Проверка подключения к базе данных...")
+                fmt.Printf("Сервер: %s:%d\n", host, port)
+                fmt.Printf("База данных: %s\n", dbname)
+                fmt.Printf("Пользователь: %s\n", user)
+
+                fmt.Println("\n✓ Подключение установлено")
+                fmt.Println("✓ База данных доступна")
+                fmt.Println("✓ Права доступа проверены")
+
+                fmt.Println("\nСтатистика:")
+                fmt.Println("  Версия PostgreSQL: 14.5")
+                fmt.Println("  Размер БД: 42 MB")
+                fmt.Println("  Таблиц: 15")
+                fmt.Println("  Активных подключений: 3")
+        }</span>,
+}
+
+func init() <span class="cov8" title="1">{
+        rootCmd.AddCommand(dbCmd)
+
+        dbCmd.AddCommand(dbConnectCmd)
+        dbCmd.AddCommand(dbMigrateCmd)
+        dbCmd.AddCommand(dbBackupCmd)
+        dbCmd.AddCommand(dbStatusCmd)
+        dbCmd.AddCommand(dbCacheClearCmd)
+
+        dbMigrateCmd.Flags().Bool("dry-run", false, "показать какие миграции будут применены без их выполнения")
+        dbMigrateCmd.Flags().String("version", "", "мигрировать до определенной версии")
+
+        dbBackupCmd.Flags().Bool("compress", false, "сжать резервную копию с помощью gzip")
+
+        dbCmd.PersistentFlags().String("db-host", "", "хост БД (переопределяет конфигурацию)")
+        dbCmd.PersistentFlags().Int("db-port", 0, "порт БД (переопределяет конфигурацию)")
+        dbCmd.PersistentFlags().String("db-name", "", "имя БД (переопределяет конфигурацию)")
+        dbCmd.PersistentFlags().String("db-user", "", "пользователь БД (переопределяет конфигурацию)")
+        dbCmd.PersistentFlags().String("db-password", "", "пароль БД (переопределяет конфигурацию)")
+
+        viper.BindPFlag("database.host", dbCmd.PersistentFlags().Lookup("db-host"))
+        viper.BindPFlag("database.port", dbCmd.PersistentFlags().Lookup("db-port"))
+        viper.BindPFlag("database.name", dbCmd.PersistentFlags().Lookup("db-name"))
+        viper.BindPFlag("database.user", dbCmd.PersistentFlags().Lookup("db-user"))
+        viper.BindPFlag("database.password", dbCmd.PersistentFlags().Lookup("db-password"))
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package cmd
+
+import (
+        "fmt"
+        "strconv"
+        "strings"
+
+        "github.com/spf13/cobra"
+)
+
+var (
+        mode int
+        f    int
+)
+
+var processCmd = &amp;cobra.Command{
+        Use:                "process",
+        Short:              "Обработка данных с параметрами",
+        Long:               `Команда для обработки данных с поддержкой флагов в формате -mode:4 -f:2`,
+        DisableFlagParsing: true,
+        RunE: func(cmd *cobra.Command, args []string) error <span class="cov0" title="0">{
+                for _, arg := range args </span><span class="cov0" title="0">{
+                        if strings.HasPrefix(arg, "-mode:") </span><span class="cov0" title="0">{
+                                val := strings.TrimPrefix(arg, "-mode:")
+                                m, err := strconv.Atoi(val)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("неверное значение для mode: %s", val)
+                                }</span>
+                                <span class="cov0" title="0">mode = m</span>
+                        } else<span class="cov0" title="0"> if strings.HasPrefix(arg, "-f:") </span><span class="cov0" title="0">{
+                                val := strings.TrimPrefix(arg, "-f:")
+                                fVal, err := strconv.Atoi(val)
+                                if err != nil </span><span class="cov0" title="0">{
+                                        return fmt.Errorf("неверное значение для f: %s", val)
+                                }</span>
+                                <span class="cov0" title="0">f = fVal</span>
+                        } else<span class="cov0" title="0"> if arg == "-h" || arg == "--help" </span><span class="cov0" title="0">{
+                                cmd.Help()
+                                return nil
+                        }</span>
+                }
+                
+                <span class="cov0" title="0">fmt.Printf("Запуск обработки:\n")
+                fmt.Printf("  Mode: %d\n", mode)
+                fmt.Printf("  F: %d\n", f)
+                
+                switch mode </span>{
+                case 1:<span class="cov0" title="0">
+                        fmt.Println("Режим 1: Базовая обработка")</span>
+                case 2:<span class="cov0" title="0">
+                        fmt.Println("Режим 2: Расширенная обработка")</span>
+                case 3:<span class="cov0" title="0">
+                        fmt.Println("Режим 3: Полная обработка")</span>
+                case 4:<span class="cov0" title="0">
+                        fmt.Println("Режим 4: Экспериментальная обработка")</span>
+                default:<span class="cov0" title="0">
+                        fmt.Printf("Режим %d: Пользовательский режим\n", mode)</span>
+                }
+                
+                <span class="cov0" title="0">if f &gt; 0 </span><span class="cov0" title="0">{
+                        fmt.Printf("Применение фильтра уровня %d\n", f)
+                }</span>
+                
+                <span class="cov0" title="0">return nil</span>
+        },
+}
+
+func init() <span class="cov8" title="1">{
+        rootCmd.AddCommand(processCmd)
+}</pre>
+		
+		<pre class="file" id="file5" style="display: none">package cmd
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/spf13/cobra"
+        "github.com/spf13/viper"
+)
+
+var cfgFile string
+
+var rootCmd = &amp;cobra.Command{
+        Use:   "cobra-viper-demo",
+        Short: "Демонстрационное приложение для вебинара по Cobra и Viper",
+        Long: `Это приложение демонстрирует основные возможности библиотек Cobra и Viper:
+- Создание CLI приложений с подкомандами
+- Работа с флагами и аргументами
+- Конфигурирование через файлы, переменные окружения и флаги
+- Приоритеты конфигурации`,
+        Version: "1.0.0",
+}
+
+func Execute() <span class="cov0" title="0">{
+        cobra.OnInitialize(initConfig)
+
+        rootCmd.PersistentFlags().StringVar(&amp;cfgFile, "config", "", "путь к файлу конфигурации (по умолчанию ./config.yaml)")
+        rootCmd.PersistentFlags().Bool("verbose", false, "включить подробный вывод")
+
+        viper.BindPFlag("verbose", rootCmd.PersistentFlags().Lookup("verbose"))
+
+        if err := rootCmd.Execute(); err != nil </span><span class="cov0" title="0">{
+                fmt.Println(err)
+                os.Exit(1)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package cmd
+
+import (
+        "context"
+        "fmt"
+        "log"
+        "net/http"
+        "os"
+        "os/signal"
+        "time"
+
+        "github.com/spf13/cobra"
+        "github.com/spf13/viper"
+)
+
+var serveCmd = &amp;cobra.Command{
+        Use:   "serve",
+        Short: "Запуск HTTP сервера",
+        Long:  `Запускает HTTP сервер с настройками из конфигурации`,
+        Run:   runServer,
+}
+
+func init() <span class="cov8" title="1">{
+        rootCmd.AddCommand(serveCmd)
+
+        serveCmd.Flags().String("host", "", "хост сервера (переопределяет конфигурацию)")
+        serveCmd.Flags().Int("port", 0, "порт сервера (переопределяет конфигурацию)")
+        serveCmd.Flags().Bool("graceful", true, "включить graceful shutdown")
+
+        viper.BindPFlag("server.host", serveCmd.Flags().Lookup("host"))
+        viper.BindPFlag("server.port", serveCmd.Flags().Lookup("port"))
+        viper.BindPFlag("server.graceful", serveCmd.Flags().Lookup("graceful"))
+}</span>
+
+func runServer(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+        host := viper.GetString("server.host")
+        port := viper.GetInt("server.port")
+        graceful := viper.GetBool("server.graceful")
+        verbose := viper.GetBool("verbose")
+
+        if verbose </span><span class="cov0" title="0">{
+                fmt.Println("Конфигурация сервера:")
+                fmt.Printf("  Host: %s\n", host)
+                fmt.Printf("  Port: %d\n", port)
+                fmt.Printf("  Graceful shutdown: %v\n", graceful)
+                if viper.ConfigFileUsed() != "" </span><span class="cov0" title="0">{
+                        fmt.Printf("  Конфигурационный файл: %s\n", viper.ConfigFileUsed())
+                }</span>
+        }
+
+        <span class="cov0" title="0">mux := http.NewServeMux()
+
+        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) </span><span class="cov0" title="0">{
+                fmt.Fprintf(w, "Привет от Cobra и Viper!\n\n")
+                fmt.Fprintf(w, "Текущая конфигурация:\n")
+                fmt.Fprintf(w, "Server: %s:%d\n", host, port)
+                fmt.Fprintf(w, "Database: %s:%d/%s\n",
+                        viper.GetString("database.host"),
+                        viper.GetInt("database.port"),
+                        viper.GetString("database.name"))
+        }</span>)
+
+        <span class="cov0" title="0">mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) </span><span class="cov0" title="0">{
+                w.WriteHeader(http.StatusOK)
+                fmt.Fprintln(w, "OK")
+        }</span>)
+
+        <span class="cov0" title="0">mux.HandleFunc("/config", func(w http.ResponseWriter, r *http.Request) </span><span class="cov0" title="0">{
+                w.Header().Set("Content-Type", "application/json")
+                settings := viper.AllSettings()
+                fmt.Fprintf(w, "%v\n", settings)
+        }</span>)
+
+        <span class="cov0" title="0">addr := fmt.Sprintf("%s:%d", host, port)
+        srv := &amp;http.Server{
+                Addr:    addr,
+                Handler: mux,
+        }
+
+        if graceful </span><span class="cov0" title="0">{
+                go func() </span><span class="cov0" title="0">{
+                        sigint := make(chan os.Signal, 1)
+                        signal.Notify(sigint, os.Interrupt)
+                        &lt;-sigint
+
+                        fmt.Println("\nПолучен сигнал прерывания, завершаем работу...")
+
+                        ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+                        defer cancel()
+
+                        if err := srv.Shutdown(ctx); err != nil </span><span class="cov0" title="0">{
+                                log.Printf("Ошибка при завершении сервера: %v", err)
+                        }</span>
+                }()
+        }
+
+        <span class="cov0" title="0">fmt.Printf("Сервер запущен на http://%s\n", addr)
+        fmt.Println("Нажмите Ctrl+C для остановки")
+
+        if err := srv.ListenAndServe(); err != nil &amp;&amp; err != http.ErrServerClosed </span><span class="cov0" title="0">{
+                log.Fatalf("Ошибка запуска сервера: %v", err)
+        }</span>
+
+        <span class="cov0" title="0">fmt.Println("Сервер остановлен")</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
