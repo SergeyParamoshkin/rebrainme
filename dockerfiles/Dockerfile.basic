@@ -1,0 +1,54 @@
+# ============================================
+# Вариант 1: Базовый multi-stage build
+# Размер: ~20-25 MB
+# ============================================
+
+# Этап 1: Сборка приложения
+FROM golang:1.24-alpine AS builder
+
+# Установка необходимых инструментов для сборки
+RUN apk add --no-cache git ca-certificates tzdata
+
+# Установка рабочей директории
+WORKDIR /build
+
+# Копируем файлы зависимостей
+COPY go.mod go.sum ./
+
+# Скачиваем зависимости (этот слой будет кэшироваться)
+RUN go mod download && go mod verify
+
+# Копируем исходный код
+COPY . .
+
+# Собираем приложение
+# -ldflags="-s -w" уменьшает размер бинарника, удаляя отладочную информацию
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build -ldflags="-s -w" -o app ./cmd
+
+# Этап 2: Финальный образ
+FROM alpine:3.21
+
+# Установка CA сертификатов и обновление пакетов
+RUN apk --no-cache add ca-certificates tzdata && \
+    apk --no-cache upgrade
+
+# Создаем непривилегированного пользователя
+RUN addgroup -g 1000 appuser && \
+    adduser -D -u 1000 -G appuser appuser
+
+# Копируем бинарник из builder
+COPY --from=builder /build/app /usr/local/bin/app
+
+# Переключаемся на непривилегированного пользователя
+USER appuser
+
+# Указываем рабочую директорию
+WORKDIR /home/appuser
+
+# Health check (опционально)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+
+# Запуск приложения
+CMD ["app"]

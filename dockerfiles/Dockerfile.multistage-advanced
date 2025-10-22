@@ -1,0 +1,150 @@
+# ============================================
+# Вариант 5: Продвинутый multi-stage с тестами и линтингом
+# Размер: ~20 MB
+# Особенности: включает этапы тестирования и проверки качества
+# ============================================
+
+# Этап 1: Модули и кэширование зависимостей
+FROM golang:1.24-alpine AS modules
+
+WORKDIR /modules
+
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+
+# Этап 2: Линтинг и проверка кода
+FROM golang:1.24-alpine AS linter
+
+RUN apk add --no-cache git
+
+# Установка golangci-lint
+RUN go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+WORKDIR /app
+
+# Копируем модули из предыдущего этапа
+COPY --from=modules /go/pkg /go/pkg
+COPY . .
+
+# Запуск линтера (можно отключить с помощью build arg)
+ARG SKIP_LINT=false
+RUN if [ "$SKIP_LINT" != "true" ]; then \
+    golangci-lint run --timeout=5m ./...; \
+    fi
+
+# Этап 3: Тестирование
+FROM golang:1.24-alpine AS tester
+
+RUN apk add --no-cache git make
+
+WORKDIR /app
+
+# Копируем модули
+COPY --from=modules /go/pkg /go/pkg
+COPY . .
+
+# Запуск тестов с coverage
+ARG SKIP_TESTS=false
+RUN if [ "$SKIP_TESTS" != "true" ]; then \
+    go test -v -race -coverprofile=coverage.out -covermode=atomic ./...; \
+    go tool cover -func=coverage.out; \
+    fi
+
+# Этап 4: Сборка приложения
+FROM golang:1.24-alpine AS builder
+
+RUN apk add --no-cache git ca-certificates tzdata
+
+WORKDIR /build
+
+# Копируем модули
+COPY --from=modules /go/pkg /go/pkg
+
+# Копируем исходный код
+COPY . .
+
+# Build arguments для версионирования
+ARG VERSION=dev
+ARG BUILD_TIME
+ARG GIT_COMMIT
+
+# Сборка с инъекцией метаданных
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build \
+    -ldflags="-s -w \
+    -X main.Version=${VERSION} \
+    -X main.BuildTime=${BUILD_TIME} \
+    -X main.GitCommit=${GIT_COMMIT}" \
+    -trimpath \
+    -o app ./cmd
+
+# Проверка бинарника
+RUN chmod +x /build/app && \
+    /build/app --version || echo "No version flag available"
+
+# Этап 5: Финальный минимальный образ
+FROM alpine:3.21
+
+# Метаданные
+ARG VERSION=dev
+ARG BUILD_TIME
+ARG GIT_COMMIT
+
+LABEL maintainer="your-email@example.com" \
+    version="${VERSION}" \
+    build.time="${BUILD_TIME}" \
+    git.commit="${GIT_COMMIT}" \
+    description="Production-ready Go application"
+
+# Установка runtime зависимостей
+RUN apk --no-cache add ca-certificates tzdata && \
+    apk --no-cache upgrade && \
+    rm -rf /var/cache/apk/*
+
+# Создание пользователя
+RUN addgroup -g 1000 appuser && \
+    adduser -D -u 1000 -G appuser appuser
+
+# Создание необходимых директорий
+RUN mkdir -p /app/config /app/logs /app/data && \
+    chown -R appuser:appuser /app
+
+# Копируем timezone данные
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Копируем бинарник
+COPY --from=builder --chown=appuser:appuser /build/app /usr/local/bin/app
+
+# Копируем конфигурационные файлы (если есть)
+# COPY --chown=appuser:appuser configs/ /app/config/
+
+USER appuser
+WORKDIR /app
+
+# Environment variables
+ENV TZ=UTC \
+    APP_ENV=production
+
+# Expose порт
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+
+# Запуск приложения
+ENTRYPOINT ["app"]
+CMD []
+
+# ============================================
+# Пример сборки с передачей аргументов:
+# docker build \
+#   --build-arg VERSION=1.0.0 \
+#   --build-arg BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ) \
+#   --build-arg GIT_COMMIT=$(git rev-parse --short HEAD) \
+#   --build-arg SKIP_TESTS=false \
+#   --build-arg SKIP_LINT=false \
+#   -t myapp:1.0.0 \
+#   -f Dockerfile.multistage-advanced .
+# ============================================

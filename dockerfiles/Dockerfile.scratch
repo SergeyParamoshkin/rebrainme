@@ -1,0 +1,75 @@
+# ============================================
+# Вариант 4: Минимальный образ на базе scratch
+# Размер: ~5-10 MB (только бинарник)
+# Особенности: абсолютный минимум, максимальная безопасность
+# ============================================
+
+# Этап 1: Сборка приложения
+FROM golang:1.24-alpine AS builder
+
+WORKDIR /build
+
+# Копируем зависимости
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+
+# Копируем код
+COPY . .
+
+# Сборка полностью статического бинарника
+# Это критично для scratch образа
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build \
+    -a \
+    -installsuffix cgo \
+    -ldflags="-s -w -extldflags '-static'" \
+    -trimpath \
+    -tags netgo \
+    -o app ./cmd
+
+# Проверка статической линковки
+RUN ldd /build/app 2>&1 | grep -q "not a dynamic executable" || (echo "Binary is not static!" && exit 1)
+
+# Этап 2: Создание минимального образа
+FROM scratch
+
+# Метаданные
+LABEL maintainer="your-email@example.com" \
+      version="1.0" \
+      description="Minimal scratch-based Go application"
+
+# Копируем CA сертификаты для HTTPS
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Копируем timezone информацию (если нужно)
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
+
+# Копируем /etc/passwd для непривилегированного пользователя
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
+
+# Создаем минимальный /tmp
+COPY --from=builder --chown=65534:65534 /tmp /tmp
+
+# Копируем бинарник
+COPY --from=builder /build/app /app
+
+# Используем nobody пользователя (65534:65534)
+USER 65534:65534
+
+# Expose порт
+EXPOSE 8080
+
+# Запуск приложения
+ENTRYPOINT ["/app"]
+
+# ВАЖНЫЕ ЗАМЕЧАНИЯ для scratch образов:
+#
+# 1. НЕТ НИЧЕГО: ни shell, ни файловой системы, ни утилит
+# 2. Бинарник должен быть полностью статическим
+# 3. Нельзя использовать CGO (C-библиотеки)
+# 4. Health checks не работают (нет утилит)
+# 5. Отладка усложнена (нет shell для exec)
+# 6. Идеально для продакшена с максимальной безопасностью
+#
+# Для отладки используйте другие варианты Dockerfile

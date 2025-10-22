@@ -1,0 +1,379 @@
+# ============================================
+# GitHub Actions с BuildKit для Golang
+# ============================================
+
+name: BuildKit CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # ============================================
+  # Job 1: Тестирование
+  # ============================================
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24'
+          cache: true
+
+      - name: Run tests
+        run: |
+          go test -v -race -coverprofile=coverage.out ./...
+          go tool cover -func=coverage.out
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.out
+
+  # ============================================
+  # Job 2: BuildKit с cache
+  # ============================================
+  build-buildkit:
+    name: Build with BuildKit
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            image=moby/buildkit:latest
+            network=host
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix=sha-
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            VERSION=${{ github.ref_name }}
+            BUILD_TIME=${{ github.event.head_commit.timestamp }}
+            GIT_COMMIT=${{ github.sha }}
+
+  # ============================================
+  # Job 3: BuildKit с advanced features
+  # ============================================
+  build-advanced:
+    name: Build with Cache Mounts
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Используем Dockerfile с BuildKit features
+      - name: Create Dockerfile with cache mounts
+        run: |
+          cat > Dockerfile.buildkit <<'EOF'
+          # syntax=docker/dockerfile:1.4
+
+          FROM golang:1.24-alpine AS builder
+
+          WORKDIR /build
+
+          # Cache go modules
+          RUN --mount=type=cache,target=/go/pkg/mod \
+              --mount=type=bind,source=go.sum,target=go.sum \
+              --mount=type=bind,source=go.mod,target=go.mod \
+              go mod download -x
+
+          COPY . .
+
+          # Cache go build
+          RUN --mount=type=cache,target=/go/pkg/mod \
+              --mount=type=cache,target=/root/.cache/go-build \
+              CGO_ENABLED=0 GOOS=linux go build \
+              -ldflags="-s -w" \
+              -trimpath \
+              -o app ./cmd
+
+          FROM gcr.io/distroless/static-debian12:nonroot
+          COPY --from=builder /build/app /app
+          ENTRYPOINT ["/app"]
+          EOF
+
+      - name: Build and push with cache mounts
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile.buildkit
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildkit-latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ============================================
+  # Job 4: Multi-platform build с BuildKit
+  # ============================================
+  build-multiplatform:
+    name: Multi-Platform Build
+    runs-on: ubuntu-latest
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract version
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Build and push multi-platform
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.VERSION }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ============================================
+  # Job 5: BuildKit с secrets
+  # ============================================
+  build-with-secrets:
+    name: Build with Secrets
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with secrets
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:secrets
+          secrets: |
+            github_token=${{ secrets.GITHUB_TOKEN }}
+            npm_token=${{ secrets.NPM_TOKEN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ============================================
+  # Job 6: Security сканирование
+  # ============================================
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: build-buildkit
+    if: github.event_name != 'pull_request'
+
+    steps:
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # ============================================
+  # Job 7: Registry cache optimization
+  # ============================================
+  build-with-registry-cache:
+    name: Build with Registry Cache
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push with registry cache
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:registry-cache
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
+
+  # ============================================
+  # Job 8: Inline cache
+  # ============================================
+  build-with-inline-cache:
+    name: Build with Inline Cache
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push with inline cache
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:inline-cache
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:inline-cache
+          cache-to: type=inline
+
+  # ============================================
+  # Job 9: Export to multiple formats
+  # ============================================
+  build-and-export:
+    name: Build and Export
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true
+          tags: myapp:test
+
+      - name: Test image
+        run: |
+          docker run --rm myapp:test --version
+
+      - name: Build and export to tar
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          outputs: type=tar,dest=myapp.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image
+          path: myapp.tar

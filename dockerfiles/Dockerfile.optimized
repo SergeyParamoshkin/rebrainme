@@ -1,0 +1,83 @@
+# ============================================
+# Вариант 2: Оптимизированный с кэшированием
+# Размер: ~20 MB
+# Особенности: максимальное использование кэша слоев
+# ============================================
+
+# Этап 1: Сборка с оптимизацией кэширования
+FROM golang:1.24-alpine AS builder
+
+# Установка инструментов сборки одним слоем
+RUN apk add --no-cache \
+    git \
+    ca-certificates \
+    tzdata \
+    upx
+
+WORKDIR /build
+
+# Сначала копируем только файлы зависимостей
+# Это позволит кэшировать слой с зависимостями
+COPY go.mod go.sum ./
+
+# Скачиваем зависимости с верификацией
+RUN go mod download && \
+    go mod verify
+
+# Теперь копируем исходный код
+# Изменения в коде не инвалидируют кэш зависимостей
+COPY cmd/ ./cmd/
+COPY internal/ ./internal/
+COPY pkg/ ./pkg/
+
+# Сборка с максимальной оптимизацией
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build \
+    -ldflags="-s -w -X main.Version=${VERSION:-dev} -X main.BuildTime=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+    -trimpath \
+    -o app ./cmd && \
+    # Сжимаем бинарник с помощью UPX (опционально, уменьшает размер на 50-70%)
+    upx --best --lzma app
+
+# Этап 2: Минимальный финальный образ
+FROM alpine:3.21
+
+# Метаданные образа (Docker labels)
+LABEL maintainer="your-email@example.com" \
+      version="1.0" \
+      description="Optimized Go application"
+
+# Установка только необходимых пакетов
+RUN apk --no-cache add ca-certificates tzdata && \
+    apk --no-cache upgrade && \
+    # Очистка кэша
+    rm -rf /var/cache/apk/*
+
+# Создание непривилегированного пользователя
+RUN addgroup -g 1000 appuser && \
+    adduser -D -u 1000 -G appuser appuser
+
+# Копируем timezone данные и CA сертификаты
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Копируем бинарник
+COPY --from=builder --chown=appuser:appuser /build/app /usr/local/bin/app
+
+# Создаем директорию для конфигурации и данных
+RUN mkdir -p /app/config /app/data && \
+    chown -R appuser:appuser /app
+
+USER appuser
+WORKDIR /app
+
+# Expose порт (документация)
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
+
+# Запуск
+ENTRYPOINT ["app"]
+CMD []

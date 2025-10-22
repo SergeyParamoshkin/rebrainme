@@ -1,0 +1,66 @@
+# ============================================
+# Вариант 3: Distroless образ
+# Размер: ~15 MB
+# Особенности: минимальная поверхность атаки, нет shell
+# ============================================
+
+# Этап 1: Сборка приложения
+FROM golang:1.24-alpine AS builder
+
+WORKDIR /build
+
+# Копируем файлы зависимостей
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+
+# Копируем исходный код
+COPY . .
+
+# Сборка статического бинарника
+# CGO_ENABLED=0 критично для distroless образов
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build \
+    -a \
+    -installsuffix cgo \
+    -ldflags="-s -w -extldflags '-static'" \
+    -trimpath \
+    -o app ./cmd
+
+# Проверка, что бинарник статический
+RUN ldd /build/app && exit 1 || echo "Static binary confirmed"
+
+# Этап 2: Distroless образ
+# Используем distroless base-debian12 для Go приложений
+FROM gcr.io/distroless/static-debian12:nonroot
+
+# Метаданные
+LABEL maintainer="your-email@example.com" \
+      version="1.0" \
+      description="Distroless Go application"
+
+# Копируем CA сертификаты для HTTPS запросов
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# Копируем бинарник
+# Distroless по умолчанию использует nonroot пользователя (UID 65532)
+COPY --from=builder /build/app /app
+
+# Рабочая директория
+WORKDIR /
+
+# Expose порт
+EXPOSE 8080
+
+# Distroless образы не имеют shell, поэтому используем exec форму
+# Health check не работает в distroless (нет wget/curl)
+# Используйте внешний мониторинг или Kubernetes liveness/readiness probes
+
+# Запуск приложения
+ENTRYPOINT ["/app"]
+
+# ПРИМЕЧАНИЕ: В distroless образах:
+# - Нет package manager (apk, apt)
+# - Нет shell (/bin/sh)
+# - Нет отладочных утилит
+# - Минимальная поверхность атаки
+# - Для отладки используйте :debug тег с busybox

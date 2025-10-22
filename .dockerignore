@@ -1,0 +1,108 @@
+# ============================================
+# .dockerignore - исключаем ненужные файлы из контекста сборки
+# Это ускоряет сборку и уменьшает размер контекста
+# ============================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE и редакторы
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Документация
+*.md
+README*
+CHANGELOG*
+LICENSE
+docs/
+*.txt
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+.circleci
+
+# Тесты и coverage
+*_test.go
+test/
+tests/
+coverage.out
+coverage.html
+*.test
+testdata/
+
+# Временные файлы
+*.tmp
+*.log
+*.bak
+tmp/
+temp/
+
+# Скомпилированные бинарники и артефакты
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+*.out
+bin/
+dist/
+build/
+__debug*
+
+# Vendor (если используется go mod)
+vendor/
+
+# Environment файлы (могут содержать секреты!)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Docker файлы (не нужны в образе)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Материалы вебинара
+webinar-materials/
+
+# Кэш и зависимости
+go.sum
+node_modules/
+.npm
+.cache
+
+# Данные и логи
+*.db
+*.sqlite
+*.sqlite3
+data/
+logs/
+
+# Backup файлы
+*.backup
+*.bak
+*.orig
+
+# OS specific
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Прочее
+*.pem
+*.key
+*.crt
+secrets/

@@ -1,0 +1,423 @@
+# ============================================
+# Tekton Pipeline с Kaniko для Golang
+# Cloud-native CI/CD в Kubernetes
+# ============================================
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: docker-credentials
+  annotations:
+    tekton.dev/docker-0: https://index.docker.io/v1/
+type: kubernetes.io/basic-auth
+stringData:
+  username: <your-username>
+  password: <your-password>
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: build-bot
+secrets:
+  - name: docker-credentials
+
+---
+# ============================================
+# Task 1: Git Clone
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-clone
+spec:
+  workspaces:
+    - name: output
+      description: The git repo will be cloned onto the volume
+  params:
+    - name: url
+      type: string
+      description: git url to clone
+    - name: revision
+      type: string
+      description: git revision to checkout
+      default: main
+  steps:
+    - name: clone
+      image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:latest
+      script: |
+        #!/bin/sh
+        cd $(workspaces.output.path)
+        git clone -b $(params.revision) $(params.url) .
+
+---
+# ============================================
+# Task 2: Go Tests
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: golang-test
+spec:
+  workspaces:
+    - name: source
+  params:
+    - name: package
+      description: package to test
+      default: ./...
+  steps:
+    - name: test
+      image: golang:1.24-alpine
+      workingDir: $(workspaces.source.path)
+      script: |
+        #!/bin/sh
+        set -e
+        go mod download
+        go test -v -race -coverprofile=coverage.out $(params.package)
+        go tool cover -func=coverage.out
+
+---
+# ============================================
+# Task 3: Kaniko Build
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: kaniko-build
+spec:
+  workspaces:
+    - name: source
+  params:
+    - name: IMAGE
+      description: Name of the image to build
+    - name: DOCKERFILE
+      description: Path to the Dockerfile
+      default: ./Dockerfile
+    - name: CONTEXT
+      description: Build context
+      default: ./
+    - name: EXTRA_ARGS
+      description: Extra args for kaniko
+      type: array
+      default: []
+    - name: BUILDER_IMAGE
+      description: Kaniko executor image
+      default: gcr.io/kaniko-project/executor:v1.19.0
+  results:
+    - name: IMAGE_DIGEST
+      description: Digest of the image just built
+    - name: IMAGE_URL
+      description: URL of the image just built
+  steps:
+    - name: build-and-push
+      image: $(params.BUILDER_IMAGE)
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: DOCKER_CONFIG
+          value: /tekton/home/.docker
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=$(params.DOCKERFILE)
+        - --context=$(workspaces.source.path)/$(params.CONTEXT)
+        - --destination=$(params.IMAGE)
+        - --digest-file=/tekton/results/IMAGE_DIGEST
+        - --cache=true
+        - --cache-repo=$(params.IMAGE)/cache
+        - --cache-ttl=168h
+        - --snapshot-mode=redo
+        - --compressed-caching=false
+        - --use-new-run
+        - $(params.EXTRA_ARGS[*])
+
+    - name: write-url
+      image: bash:latest
+      script: |
+        #!/usr/bin/env bash
+        echo -n "$(params.IMAGE)" | tee $(results.IMAGE_URL.path)
+
+---
+# ============================================
+# Task 4: Trivy Security Scan
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: trivy-scan
+spec:
+  params:
+    - name: IMAGE
+      description: Image to scan
+    - name: SEVERITY
+      description: Severity levels to fail on
+      default: "CRITICAL,HIGH"
+  steps:
+    - name: scan
+      image: aquasec/trivy:latest
+      command:
+        - trivy
+      args:
+        - image
+        - --severity
+        - $(params.SEVERITY)
+        - --exit-code
+        - "1"
+        - $(params.IMAGE)
+
+---
+# ============================================
+# Pipeline: Full CI/CD
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: golang-kaniko-pipeline
+spec:
+  params:
+    - name: repo-url
+      type: string
+      description: Git repository URL
+    - name: repo-revision
+      type: string
+      description: Git revision
+      default: main
+    - name: image-name
+      type: string
+      description: Docker image name
+    - name: dockerfile-path
+      type: string
+      description: Path to Dockerfile
+      default: ./Dockerfile
+
+  workspaces:
+    - name: shared-data
+      description: Shared workspace for pipeline
+
+  tasks:
+    # 1. Clone repository
+    - name: fetch-source
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-data
+      params:
+        - name: url
+          value: $(params.repo-url)
+        - name: revision
+          value: $(params.repo-revision)
+
+    # 2. Run tests
+    - name: run-tests
+      runAfter: [fetch-source]
+      taskRef:
+        name: golang-test
+      workspaces:
+        - name: source
+          workspace: shared-data
+      params:
+        - name: package
+          value: ./...
+
+    # 3. Build Basic variant
+    - name: build-basic
+      runAfter: [run-tests]
+      taskRef:
+        name: kaniko-build
+      workspaces:
+        - name: source
+          workspace: shared-data
+      params:
+        - name: IMAGE
+          value: "$(params.image-name):basic-$(context.pipelineRun.name)"
+        - name: DOCKERFILE
+          value: webinar-materials/dockerfiles/Dockerfile.basic
+
+    # 4. Build Optimized variant
+    - name: build-optimized
+      runAfter: [run-tests]
+      taskRef:
+        name: kaniko-build
+      workspaces:
+        - name: source
+          workspace: shared-data
+      params:
+        - name: IMAGE
+          value: "$(params.image-name):optimized-$(context.pipelineRun.name)"
+        - name: DOCKERFILE
+          value: webinar-materials/dockerfiles/Dockerfile.optimized
+        - name: EXTRA_ARGS
+          value:
+            - --build-arg=VERSION=1.0.0
+            - --build-arg=BUILD_TIME=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            - --build-arg=GIT_COMMIT=$(params.repo-revision)
+
+    # 5. Build Distroless variant
+    - name: build-distroless
+      runAfter: [run-tests]
+      taskRef:
+        name: kaniko-build
+      workspaces:
+        - name: source
+          workspace: shared-data
+      params:
+        - name: IMAGE
+          value: "$(params.image-name):distroless-$(context.pipelineRun.name)"
+        - name: DOCKERFILE
+          value: webinar-materials/dockerfiles/Dockerfile.distroless
+
+    # 6. Security scan
+    - name: security-scan
+      runAfter: [build-optimized]
+      taskRef:
+        name: trivy-scan
+      params:
+        - name: IMAGE
+          value: "$(params.image-name):optimized-$(context.pipelineRun.name)"
+        - name: SEVERITY
+          value: "CRITICAL,HIGH"
+
+---
+# ============================================
+# PipelineRun: Execute Pipeline
+# ============================================
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: golang-kaniko-run
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: golang-kaniko-pipeline
+  params:
+    - name: repo-url
+      value: https://github.com/user/repo.git
+    - name: repo-revision
+      value: main
+    - name: image-name
+      value: registry.example.com/myapp
+    - name: dockerfile-path
+      value: ./Dockerfile
+  workspaces:
+    - name: shared-data
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+
+---
+# ============================================
+# EventListener для автоматических сборок
+# (требует Tekton Triggers)
+# ============================================
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-listener
+spec:
+  serviceAccountName: build-bot
+  triggers:
+    - name: github-push
+      interceptors:
+        - ref:
+            name: github
+          params:
+            - name: eventTypes
+              value: ["push"]
+      bindings:
+        - name: github-push-binding
+      template:
+        ref: pipeline-template
+
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: github-push-binding
+spec:
+  params:
+    - name: gitrevision
+      value: $(body.head_commit.id)
+    - name: gitrepositoryurl
+      value: $(body.repository.clone_url)
+
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: pipeline-template
+spec:
+  params:
+    - name: gitrevision
+    - name: gitrepositoryurl
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: golang-kaniko-run-
+      spec:
+        serviceAccountName: build-bot
+        pipelineRef:
+          name: golang-kaniko-pipeline
+        params:
+          - name: repo-url
+            value: $(tt.params.gitrepositoryurl)
+          - name: repo-revision
+            value: $(tt.params.gitrevision)
+          - name: image-name
+            value: registry.example.com/myapp
+        workspaces:
+          - name: shared-data
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
+
+---
+# ============================================
+# Использование:
+#
+# 1. Установить Tekton:
+#    kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+#
+# 2. Применить манифесты:
+#    kubectl apply -f tekton-kaniko-pipeline.yml
+#
+# 3. Запустить Pipeline:
+#    kubectl create -f - <<EOF
+#    apiVersion: tekton.dev/v1beta1
+#    kind: PipelineRun
+#    metadata:
+#      generateName: golang-kaniko-run-
+#    spec:
+#      serviceAccountName: build-bot
+#      pipelineRef:
+#        name: golang-kaniko-pipeline
+#      params:
+#        - name: repo-url
+#          value: https://github.com/user/repo.git
+#        - name: repo-revision
+#          value: main
+#        - name: image-name
+#          value: registry.example.com/myapp
+#      workspaces:
+#        - name: shared-data
+#          volumeClaimTemplate:
+#            spec:
+#              accessModes: [ReadWriteOnce]
+#              resources:
+#                requests:
+#                  storage: 1Gi
+#    EOF
+#
+# 4. Следить за прогрессом:
+#    tkn pipelinerun logs -f
+#
+# ============================================

@@ -1,0 +1,207 @@
+version: "3.9"
+
+# ============================================
+# Docker Compose для демонстрации различных вариантов сборки
+# Используйте: docker-compose -f docker-compose.demo.yml up
+# ============================================
+
+services:
+  # Приложение с базовым Dockerfile
+  app-basic:
+    build:
+      context: ../
+      dockerfile: webinar-materials/dockerfiles/Dockerfile.basic
+    container_name: demo-app-basic
+    ports:
+      - "8081:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=appdb
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+  # Приложение с оптимизированным Dockerfile
+  app-optimized:
+    build:
+      context: ../
+      dockerfile: webinar-materials/dockerfiles/Dockerfile.optimized
+      args:
+        VERSION: "1.0.0"
+        BUILD_TIME: "2025-01-01T00:00:00Z"
+    container_name: demo-app-optimized
+    ports:
+      - "8082:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=appdb
+      - TZ=UTC
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+  # Приложение с distroless образом
+  app-distroless:
+    build:
+      context: ../
+      dockerfile: webinar-materials/dockerfiles/Dockerfile.distroless
+    container_name: demo-app-distroless
+    ports:
+      - "8083:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=appdb
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+  # Приложение с scratch образом
+  app-scratch:
+    build:
+      context: ../
+      dockerfile: webinar-materials/dockerfiles/Dockerfile.scratch
+    container_name: demo-app-scratch
+    ports:
+      - "8084:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=appdb
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+  # Приложение с продвинутым multi-stage
+  app-advanced:
+    build:
+      context: ../
+      dockerfile: webinar-materials/dockerfiles/Dockerfile.multistage-advanced
+      args:
+        VERSION: "1.0.0"
+        BUILD_TIME: "2025-01-01T00:00:00Z"
+        GIT_COMMIT: "abc123"
+        SKIP_TESTS: "true"  # Пропускаем тесты для быстрой демо-сборки
+        SKIP_LINT: "true"   # Пропускаем линтер для быстрой демо-сборки
+    container_name: demo-app-advanced
+    ports:
+      - "8085:8080"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=appdb
+      - APP_ENV=production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+  # PostgreSQL база данных
+  postgres:
+    image: postgres:16-alpine
+    container_name: demo-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - demo-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Adminer для управления БД
+  adminer:
+    image: adminer:latest
+    container_name: demo-adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - demo-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  # Portainer для мониторинга контейнеров (опционально)
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: demo-portainer
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    networks:
+      - demo-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    driver: local
+  portainer-data:
+    driver: local
+
+networks:
+  demo-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# ============================================
+# Полезные команды:
+#
+# Запустить все сервисы:
+#   docker-compose -f docker-compose.demo.yml up -d
+#
+# Запустить конкретный вариант:
+#   docker-compose -f docker-compose.demo.yml up app-basic
+#
+# Посмотреть логи:
+#   docker-compose -f docker-compose.demo.yml logs -f app-basic
+#
+# Остановить все:
+#   docker-compose -f docker-compose.demo.yml down
+#
+# Остановить и удалить volumes:
+#   docker-compose -f docker-compose.demo.yml down -v
+#
+# Пересобрать образы:
+#   docker-compose -f docker-compose.demo.yml build --no-cache
+#
+# Посмотреть размеры образов:
+#   docker images | grep demo-app
+# ============================================
