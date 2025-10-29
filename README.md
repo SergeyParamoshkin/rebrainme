@@ -2,8 +2,44 @@
 
 Этот репозиторий содержит примеры и описание различных подходов к тестированию в Go.
 
+## Быстрый старт
+
+```bash
+# Клонирование репозитория
+git clone https://github.com/SergeyParamoshkin/rebrainme.git
+cd rebrainme
+
+# Установка зависимостей
+go mod download
+
+# Запуск всех тестов
+go test ./...
+
+# Запуск тестов с подробным выводом
+go test -v ./...
+
+# Запуск бенчмарков
+go test -bench=. ./examples/03_benchmarks/
+
+# Запуск фаззинга (30 секунд)
+go test -fuzz=FuzzReverse -fuzztime=30s ./examples/05_fuzzing/
+```
+
+## Структура примеров
+
+```
+examples/
+├── 01_basic/           - Базовые примеры тестов (calculator)
+├── 02_table_driven/    - Табличные тесты (strings)
+├── 03_benchmarks/      - Примеры бенчмарков
+├── 04_testing_main/    - Тестирование функции main
+├── 05_fuzzing/         - Примеры фаззинг-тестов
+└── 06_advanced/        - Продвинутые примеры (моки, testify)
+```
+
 ## Содержание
 
+- [Примеры кода](#примеры-кода)
 - [Типы тестирования](#типы-тестирования)
 - [Структура тестов](#структура-тестов)
 - [Табличные тесты](#табличные-тесты)
@@ -11,6 +47,140 @@
 - [Бенчмарки](#бенчмарки)
 - [Тестирование main](#тестирование-main)
 - [Фаззинг](#фаззинг)
+- [Продвинутые техники](#продвинутые-техники)
+
+## Примеры кода
+
+### 01_basic - Базовые тесты
+
+**Расположение:** `examples/01_basic/`
+
+Простые примеры unit-тестов для функций калькулятора.
+
+```bash
+# Запуск
+go test ./examples/01_basic/
+
+# С подробным выводом
+go test -v ./examples/01_basic/
+```
+
+**Что внутри:**
+- Простые unit-тесты
+- Тесты с подтестами (subtests)
+- Обработка ошибок в тестах
+
+### 02_table_driven - Табличные тесты
+
+**Расположение:** `examples/02_table_driven/`
+
+Примеры табличных тестов для работы со строками.
+
+```bash
+# Запуск всех тестов
+go test ./examples/02_table_driven/
+
+# Запуск конкретного теста
+go test -run TestReverse ./examples/02_table_driven/
+```
+
+**Что внутри:**
+- Табличные тесты с разными сценариями
+- Работа с Unicode и emoji
+- Тестирование валидации
+- Проверка инвариантов
+
+### 03_benchmarks - Бенчмарки
+
+**Расположение:** `examples/03_benchmarks/`
+
+Сравнение производительности различных реализаций.
+
+```bash
+# Запуск всех бенчмарков
+go test -bench=. ./examples/03_benchmarks/
+
+# С информацией о памяти
+go test -bench=. -benchmem ./examples/03_benchmarks/
+
+# Конкретный бенчмарк
+go test -bench=BenchmarkStringConcat ./examples/03_benchmarks/
+
+# Сохранить результаты
+go test -bench=. -benchmem ./examples/03_benchmarks/ > bench_results.txt
+```
+
+**Что внутри:**
+- Сравнение конкатенации строк (+ vs Builder vs Join)
+- Сравнение алгоритмов (рекурсивный vs итеративный Fibonacci)
+- Параллельные бенчмарки
+- Измерение аллокаций памяти
+
+### 04_testing_main - Тестирование main
+
+**Расположение:** `examples/04_testing_main/`
+
+Различные подходы к тестированию функции main.
+
+```bash
+# Запуск тестов
+go test ./examples/04_testing_main/
+
+# Запуск приложения
+go run ./examples/04_testing_main/main.go -name Alice -repeat 2
+```
+
+**Что внутри:**
+- Тестирование с подменой stdout/stderr
+- Тестирование флагов командной строки
+- Example-тесты
+- Изоляция логики от main
+
+### 05_fuzzing - Фаззинг
+
+**Расположение:** `examples/05_fuzzing/`
+
+Примеры фаззинг-тестов для поиска багов.
+
+```bash
+# Запуск фаззинга (будет работать пока не найдет ошибку)
+go test -fuzz=FuzzReverse ./examples/05_fuzzing/
+
+# С ограничением по времени
+go test -fuzz=FuzzReverse -fuzztime=30s ./examples/05_fuzzing/
+
+# Запуск обычных тестов (включая регрессионные фазз-тесты)
+go test ./examples/05_fuzzing/
+```
+
+**Что внутри:**
+- Фаззинг строковых функций
+- Фаззинг парсеров (JSON, URL, key-value)
+- Проверка инвариантов
+- Поиск паник и крэшей
+
+### 06_advanced - Продвинутые техники
+
+**Расположение:** `examples/06_advanced/`
+
+Примеры с использованием моков и библиотеки testify.
+
+```bash
+# Запуск
+go test ./examples/06_advanced/
+
+# С подробным выводом
+go test -v ./examples/06_advanced/
+
+# Пропуск длительных интеграционных тестов
+go test -short ./examples/06_advanced/
+```
+
+**Что внутри:**
+- Использование testify (assert, require)
+- Моки с помощью testify/mock
+- Тестирование сервисного слоя
+- Интеграционные тесты
 
 ## Типы тестирования
 
@@ -996,6 +1166,81 @@ func FuzzParseURL(f *testing.F) {
                 urlStr, serialized, err)
         }
     })
+}
+```
+
+## Продвинутые техники
+
+### Использование testify
+
+Библиотека testify предоставляет удобные функции для написания тестов.
+
+**См. примеры в:** `examples/06_advanced/`
+
+```bash
+# Установка
+go get github.com/stretchr/testify
+
+# Запуск примеров
+go test -v ./examples/06_advanced/
+```
+
+### Моки (Mocks)
+
+Моки позволяют тестировать код, который зависит от внешних сервисов или компонентов.
+
+**Пример из:** `examples/06_advanced/user_service_test.go`
+
+```go
+type MockUserRepository struct {
+    mock.Mock
+}
+
+func (m *MockUserRepository) GetByID(id int) (*User, error) {
+    args := m.Called(id)
+    if args.Get(0) == nil {
+        return nil, args.Error(1)
+    }
+    return args.Get(0).(*User), args.Error(1)
+}
+
+func TestUserService_GetUser(t *testing.T) {
+    mockRepo := new(MockUserRepository)
+    expectedUser := &User{ID: 1, Name: "John", Email: "john@example.com"}
+
+    mockRepo.On("GetByID", 1).Return(expectedUser, nil)
+
+    service := NewUserService(mockRepo)
+    user, err := service.GetUser(1)
+
+    require.NoError(t, err)
+    assert.Equal(t, expectedUser, user)
+
+    mockRepo.AssertExpectations(t)
+}
+```
+
+### Табличные тесты для сложных сценариев
+
+**Пример из:** `examples/06_advanced/user_service_test.go:32`
+
+```go
+tests := []struct {
+    name        string
+    user        *User
+    setupMock   func(*MockUserRepository)
+    wantErr     bool
+    errContains string
+}{
+    {
+        name: "success",
+        user: &User{Name: "Alice", Email: "alice@example.com", Age: 25},
+        setupMock: func(m *MockUserRepository) {
+            m.On("Create", mock.AnythingOfType("*advanced.User")).Return(nil)
+        },
+        wantErr: false,
+    },
+    // ... другие тесты
 }
 ```
 
