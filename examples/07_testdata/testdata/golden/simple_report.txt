@@ -1,0 +1,9 @@
+=== Monthly Report ===
+Date: 2024-01-15
+
+This is a summary of monthly activities.
+
+Items:
+  1. Task A completed
+  2. Task B in progress
+  3. Task C pending

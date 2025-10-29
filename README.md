@@ -34,7 +34,8 @@ examples/
 ├── 03_benchmarks/      - Примеры бенчмарков
 ├── 04_testing_main/    - Тестирование функции main
 ├── 05_fuzzing/         - Примеры фаззинг-тестов
-└── 06_advanced/        - Продвинутые примеры (моки, testify)
+├── 06_advanced/        - Продвинутые примеры (моки, testify)
+└── 07_testdata/        - Использование testdata и golden files
 ```
 
 ## Содержание
@@ -45,9 +46,11 @@ examples/
 - [Табличные тесты](#табличные-тесты)
 - [Способы запуска тестов](#способы-запуска-тестов)
 - [Бенчмарки](#бенчмарки)
+  - [Что такое b.N?](#что-такое-bn)
 - [Тестирование main](#тестирование-main)
 - [Фаззинг](#фаззинг)
 - [Продвинутые техники](#продвинутые-техники)
+- [Директория testdata](#директория-testdata)
 
 ## Примеры кода
 
@@ -181,6 +184,43 @@ go test -short ./examples/06_advanced/
 - Моки с помощью testify/mock
 - Тестирование сервисного слоя
 - Интеграционные тесты
+
+### 07_testdata - Testdata и Golden Files
+
+**Расположение:** `examples/07_testdata/`
+
+Примеры использования директории testdata для хранения тестовых данных и golden files.
+
+```bash
+# Запуск тестов
+go test -v ./examples/07_testdata/
+
+# Обновление golden files
+go test ./examples/07_testdata/ -update
+```
+
+**Что внутри:**
+- Чтение тестовых данных из файлов
+- Табличные тесты с множеством файлов
+- Golden files для тестирования генерации текста
+- Фикстуры для переиспользования данных
+- Обновление golden files через флаг
+- Структура testdata директории с README
+
+**Структура testdata:**
+```
+testdata/
+├── README.md                      # Документация
+├── valid_config.json              # Тестовые данные
+├── invalid_config.json
+├── production_config.json
+├── fixtures/                      # Фикстуры
+│   └── users.json
+└── golden/                        # Эталонные результаты
+    ├── simple_report.txt
+    ├── empty_report.txt
+    └── quarterly_report.txt
+```
 
 ## Типы тестирования
 
@@ -567,6 +607,67 @@ func BenchmarkAdd(b *testing.B) {
         Add(2, 3)
     }
 }
+```
+
+### Что такое b.N?
+
+`b.N` - это количество итераций, которое Go автоматически подбирает для получения стабильных результатов.
+
+**Как это работает:**
+
+1. Go начинает с `b.N = 1` и запускает бенчмарк
+2. Если бенчмарк выполнился слишком быстро (< 1 секунды), Go увеличивает `b.N` (удваивает или увеличивает в 10 раз)
+3. Процесс повторяется до тех пор, пока бенчмарк не будет выполняться достаточно долго для стабильных измерений
+4. Go запускает бенчмарк несколько раз и вычисляет среднее время на операцию
+
+```go
+func BenchmarkExample(b *testing.B) {
+    // Setup код выполняется 1 раз
+    data := setupData()
+
+    // Этот цикл выполнится b.N раз
+    // b.N может быть: 1, 10, 100, 1000, 10000, 100000, 1000000...
+    for i := 0; i < b.N; i++ {
+        // Этот код будет измеряться
+        processData(data)
+    }
+}
+```
+
+**Важные моменты:**
+
+- **НЕ используйте b.N внутри логики**: `b.N` нужен только для цикла
+- **Не изменяйте b.N**: Go сам подбирает оптимальное значение
+- **Используйте b.ResetTimer()**: чтобы исключить setup из измерений
+
+```go
+// ❌ НЕПРАВИЛЬНО
+func BenchmarkWrong(b *testing.B) {
+    for i := 0; i < b.N; i++ {
+        data := make([]int, b.N) // НЕ ДЕЛАЙТЕ ТАК!
+        processData(data)
+    }
+}
+
+// ✅ ПРАВИЛЬНО
+func BenchmarkCorrect(b *testing.B) {
+    data := make([]int, 1000) // Setup
+    b.ResetTimer()           // Сброс таймера после setup
+
+    for i := 0; i < b.N; i++ {
+        processData(data)
+    }
+}
+```
+
+**Пример работы b.N:**
+
+```bash
+# При запуске бенчмарка вы можете видеть что-то вроде:
+# BenchmarkAdd-8   	  # первый запуск с b.N = 1
+# BenchmarkAdd-8   	  # b.N = 100
+# BenchmarkAdd-8   	  # b.N = 10000
+# BenchmarkAdd-8   	1000000000   0.5234 ns/op  # финальный результат
 ```
 
 ### Бенчмарк с подготовкой
@@ -1313,6 +1414,266 @@ func TestRender(t *testing.T) {
     expected, _ := os.ReadFile(golden)
     assert.Equal(t, string(expected), result)
 }
+```
+
+## Директория testdata
+
+`testdata` - это специальная директория в Go, которая игнорируется компилятором и предназначена для хранения тестовых данных.
+
+### Особенности testdata
+
+1. **Игнорируется go build**: Файлы в `testdata` не компилируются и не попадают в финальный бинарник
+2. **Доступна в тестах**: Можно загружать файлы из `testdata` во время выполнения тестов
+3. **Версионируется в Git**: Тестовые данные сохраняются в репозитории
+4. **Стандартная практика**: Все Go разработчики знают это соглашение
+
+### Структура testdata
+
+```
+mypackage/
+├── mycode.go
+├── mycode_test.go
+└── testdata/
+    ├── input.json           # Входные данные
+    ├── output.json          # Ожидаемые результаты
+    ├── golden/              # Golden files
+    │   ├── result1.golden
+    │   └── result2.golden
+    └── fixtures/            # Фикстуры
+        ├── user1.json
+        └── user2.json
+```
+
+### Пример использования testdata
+
+**См. примеры в:** `examples/07_testdata/`
+
+```bash
+# Запуск примеров
+go test -v ./examples/07_testdata/
+```
+
+#### Чтение файлов из testdata
+
+```go
+func TestParseConfig(t *testing.T) {
+    // Путь относительно текущего пакета
+    data, err := os.ReadFile("testdata/config.json")
+    if err != nil {
+        t.Fatalf("failed to read test data: %v", err)
+    }
+
+    config, err := ParseConfig(data)
+    if err != nil {
+        t.Fatalf("ParseConfig failed: %v", err)
+    }
+
+    assert.Equal(t, "localhost", config.Host)
+    assert.Equal(t, 8080, config.Port)
+}
+```
+
+#### Табличные тесты с testdata
+
+```go
+func TestParseMultipleConfigs(t *testing.T) {
+    tests := []struct {
+        name     string
+        filename string
+        wantHost string
+        wantPort int
+        wantErr  bool
+    }{
+        {
+            name:     "valid config",
+            filename: "testdata/valid.json",
+            wantHost: "localhost",
+            wantPort: 8080,
+            wantErr:  false,
+        },
+        {
+            name:     "invalid config",
+            filename: "testdata/invalid.json",
+            wantErr:  true,
+        },
+    }
+
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+            data, err := os.ReadFile(tt.filename)
+            if err != nil {
+                t.Fatalf("failed to read %s: %v", tt.filename, err)
+            }
+
+            config, err := ParseConfig(data)
+
+            if tt.wantErr {
+                assert.Error(t, err)
+                return
+            }
+
+            require.NoError(t, err)
+            assert.Equal(t, tt.wantHost, config.Host)
+            assert.Equal(t, tt.wantPort, config.Port)
+        })
+    }
+}
+```
+
+#### Golden files в testdata
+
+Golden files - это эталонные файлы, которые содержат ожидаемый результат работы функции.
+
+```go
+func TestRenderHTML(t *testing.T) {
+    tests := []struct {
+        name  string
+        input *PageData
+        golden string
+    }{
+        {
+            name:   "simple page",
+            input:  &PageData{Title: "Test", Body: "Hello World"},
+            golden: "testdata/golden/simple.html",
+        },
+        {
+            name:   "page with list",
+            input:  &PageData{Title: "List", Items: []string{"A", "B", "C"}},
+            golden: "testdata/golden/list.html",
+        },
+    }
+
+    for _, tt := range tests {
+        t.Run(tt.name, func(t *testing.T) {
+            result := RenderHTML(tt.input)
+
+            // Флаг для обновления golden files
+            if *updateGolden {
+                err := os.WriteFile(tt.golden, []byte(result), 0644)
+                require.NoError(t, err)
+                t.Log("Updated golden file:", tt.golden)
+                return
+            }
+
+            // Сравнение с golden file
+            expected, err := os.ReadFile(tt.golden)
+            require.NoError(t, err)
+
+            assert.Equal(t, string(expected), result)
+        })
+    }
+}
+
+// Флаг для обновления golden files
+var updateGolden = flag.Bool("update", false, "update golden files")
+```
+
+**Обновление golden files:**
+
+```bash
+# Обновить все golden files
+go test -update
+
+# После обновления проверить что тесты проходят
+go test
+```
+
+#### Использование embed для testdata
+
+С Go 1.16+ можно встраивать testdata в бинарник с помощью `embed`:
+
+```go
+import _ "embed"
+
+//go:embed testdata/config.json
+var testConfigData []byte
+
+func TestWithEmbed(t *testing.T) {
+    config, err := ParseConfig(testConfigData)
+    require.NoError(t, err)
+    assert.Equal(t, "localhost", config.Host)
+}
+
+// Или для множества файлов
+//go:embed testdata/*.json
+var testFS embed.FS
+
+func TestMultipleWithEmbed(t *testing.T) {
+    data, err := testFS.ReadFile("testdata/config.json")
+    require.NoError(t, err)
+    // ...
+}
+```
+
+#### Фикстуры в testdata
+
+Фикстуры - это предопределенные данные для тестов.
+
+```go
+// testdata/fixtures/users.json
+[
+    {"id": 1, "name": "Alice", "email": "alice@example.com"},
+    {"id": 2, "name": "Bob", "email": "bob@example.com"}
+]
+
+func loadUserFixtures(t *testing.T) []User {
+    t.Helper()
+
+    data, err := os.ReadFile("testdata/fixtures/users.json")
+    require.NoError(t, err)
+
+    var users []User
+    err = json.Unmarshal(data, &users)
+    require.NoError(t, err)
+
+    return users
+}
+
+func TestUserService_WithFixtures(t *testing.T) {
+    users := loadUserFixtures(t)
+
+    for _, user := range users {
+        t.Run(user.Name, func(t *testing.T) {
+            valid := ValidateUser(&user)
+            assert.True(t, valid)
+        })
+    }
+}
+```
+
+### Best practices для testdata
+
+1. **Организация**: Группируйте файлы по категориям (golden/, fixtures/, inputs/)
+2. **Именование**: Используйте понятные имена файлов (valid_config.json, invalid_email.json)
+3. **Размер**: Не храните слишком большие файлы (используйте минимальные данные)
+4. **Формат**: Используйте текстовые форматы (JSON, XML, YAML) когда возможно
+5. **Версионирование**: Коммитьте testdata в Git
+6. **Документация**: Добавляйте README.md в testdata/ если структура сложная
+7. **Очистка**: Регулярно проверяйте и удаляйте неиспользуемые файлы
+
+### Пример структуры testdata
+
+```
+testdata/
+├── README.md                  # Описание тестовых данных
+├── fixtures/                  # Фикстуры для тестов
+│   ├── users.json
+│   ├── products.json
+│   └── orders.json
+├── golden/                    # Эталонные результаты
+│   ├── report_monthly.html
+│   ├── report_yearly.html
+│   └── invoice.pdf
+├── inputs/                    # Входные данные
+│   ├── valid/
+│   │   ├── config1.yaml
+│   │   └── config2.yaml
+│   └── invalid/
+│       ├── missing_field.yaml
+│       └── wrong_type.yaml
+└── fuzz/                      # Данные для фаззинга (автогенерируется)
+    └── FuzzParseConfig/
+        └── ...
 ```
 
 ## Лучшие практики
