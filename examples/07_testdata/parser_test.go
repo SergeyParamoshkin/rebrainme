@@ -145,10 +145,10 @@ func TestGenerateReport_GoldenFile(t *testing.T) {
 
 			if *updateGolden {
 				dir := filepath.Dir(tt.golden)
-				err := os.MkdirAll(dir, 0755)
+				err := os.MkdirAll(dir, 0o755)
 				require.NoError(t, err)
 
-				err = os.WriteFile(tt.golden, []byte(result), 0644)
+				err = os.WriteFile(tt.golden, []byte(result), 0o644)
 				require.NoError(t, err)
 				t.Logf("Updated golden file: %s", tt.golden)
 				return
@@ -202,10 +202,10 @@ func TestGenerateReport_MultipleGoldenFiles(t *testing.T) {
 
 			if *updateGolden {
 				dir := filepath.Dir(tt.golden)
-				err := os.MkdirAll(dir, 0755)
+				err := os.MkdirAll(dir, 0o755)
 				require.NoError(t, err)
 
-				err = os.WriteFile(tt.golden, []byte(result), 0644)
+				err = os.WriteFile(tt.golden, []byte(result), 0o644)
 				require.NoError(t, err)
 				t.Logf("Updated golden file: %s", tt.golden)
 				return
